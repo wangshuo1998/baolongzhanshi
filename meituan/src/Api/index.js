@@ -4,3 +4,9 @@ import Ajax from '@/Ajax/mock'
 //   method:'GET',
 //   url:'/index'
 // })
+export const reqFilters = () => {
+  return Ajax({
+    method: 'GET',
+    url: '/filters'
+  });
+}

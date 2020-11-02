@@ -317,6 +317,7 @@
             </li>
           </ul>
         </div>
+        <!-- 自我封装分页组件 -->
       </div>
       <!-- 分类区右侧 -->
       <div class="right">
@@ -448,6 +449,10 @@ export default {
     Header,
     Footer,
   },
+  data() {
+    return {}
+  },
+  methods: {},
 }
 </script>
 
