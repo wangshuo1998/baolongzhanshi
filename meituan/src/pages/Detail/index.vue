@@ -130,7 +130,193 @@
             </ul>
           </div>
         </div>
-        <div class="list">111</div>
+        <div class="list-container">
+          <div class="tags">
+            <span class="active">默认</span>
+            <span>销量</span>
+            <span>价格</span>
+            <span>好评最多</span>
+          </div>
+          <ul class="list">
+            <li>
+              <div class="pic">
+                <a href="javascript:;">
+                  <img
+                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="content">
+                <a href="javascript:;">
+                  <h4>
+                    胡同•烧烤小酒馆
+                  </h4>
+                  <div class="merchant-star">
+                    <ul class="star-len">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <ul class="star-end">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <span class="score">3分</span>
+                    <span class="comment">999条评论</span>
+                  </div>
+                  <p class="merchant-pos">
+                    朝阳区十里堡晨光东路
+                  </p>
+                  <p class="price">人均￥100</p>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="pic">
+                <a href="javascript:;">
+                  <img
+                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="content">
+                <a href="javascript:;">
+                  <h4>
+                    胡同•烧烤小酒馆
+                  </h4>
+                  <div class="merchant-star">
+                    <ul class="star-len">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <ul class="star-end">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <span class="score">3分</span>
+                    <span class="comment">999条评论</span>
+                  </div>
+                  <p class="merchant-pos">
+                    朝阳区十里堡晨光东路
+                  </p>
+                  <p class="price">人均￥100</p>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="pic">
+                <a href="javascript:;">
+                  <img
+                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="content">
+                <a href="javascript:;">
+                  <h4>
+                    胡同•烧烤小酒馆
+                  </h4>
+                  <div class="merchant-star">
+                    <ul class="star-len">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <ul class="star-end">
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                      <li>
+                        <i class="iconfont iconxingxing1"></i>
+                      </li>
+                    </ul>
+                    <span class="score">3分</span>
+                    <span class="comment">999条评论</span>
+                  </div>
+                  <p class="merchant-pos">
+                    朝阳区十里堡晨光东路
+                  </p>
+                  <p class="price">人均￥100</p>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- 分类区右侧 -->
       <div class="right">
@@ -325,11 +511,106 @@ export default {
         .clearfix();
       }
     }
-    .list {
+    .list-container {
       border: 1px solid #e5e5e5;
       background-color: #fff;
       border-radius: 5px;
       margin-top: 14px;
+      padding: 15px 20px 21px;
+      .tags {
+        border-bottom: 1px solid #e5e5e5;
+        line-height: 20px;
+        padding-bottom: 13px;
+        span {
+          font-size: 14px;
+          display: inline-block;
+          min-width: 96px;
+          padding: 0 10px;
+          &.active {
+            color: #31bcad;
+          }
+        }
+      }
+      .list {
+        > li {
+          padding: 20px 0 18px;
+          border-bottom: 1px solid #e5e5e5;
+          .clearfix();
+          .pic {
+            height: 125px;
+            width: 220px;
+            border-radius: 5px;
+            float: left;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+            }
+          }
+          .content {
+            float: left;
+            padding: 4px 0 0 20px;
+            max-width: 666px;
+            font-size: 12px;
+            h4 {
+              font-size: 16px;
+              line-height: 22px;
+              color: 222;
+              font-weight: 700;
+            }
+            a {
+              color: #222;
+            }
+            .merchant-star {
+              position: relative;
+              padding-top: 6px;
+              line-height: 13px;
+              .star-len,
+              .star-end {
+                color: #c3c3c3;
+                float: left;
+                width: 80px;
+                height: 13px;
+                overflow: hidden;
+                li {
+                  float: left;
+                  white-space: nowrap;
+                }
+                .clearfix();
+              }
+              // 评定星级 更改宽度
+              .star-end {
+                position: absolute;
+                color: #f60;
+                width: 10px;
+              }
+              .score {
+                float: left;
+                padding-left: 6px;
+                font-size: 12px;
+              }
+              .comment {
+                float: left;
+                padding-left: 8px;
+                font-size: 12px;
+                color: #f60;
+              }
+
+              .clearfix();
+            }
+            .merchant-pos {
+              line-height: 17px;
+              color: #666;
+              padding-top: 7px;
+            }
+            .price {
+              line-height: 17px;
+              color: #666;
+              padding-top: 7px;
+            }
+          }
+        }
+      }
     }
   }
   .right {
