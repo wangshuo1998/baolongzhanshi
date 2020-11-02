@@ -1,24 +1,2 @@
-# meituan
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+day 01
+    美团官网导航区 美团规则 中的 规则中心 页面，静态页面初步搭建完成
