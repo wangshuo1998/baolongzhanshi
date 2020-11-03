@@ -120,3 +120,6 @@ ChromeGo
 *.msi
 
 project
+
+# 忽略备份文件
+index copy.vue
