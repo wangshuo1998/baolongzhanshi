@@ -18,7 +18,7 @@
       </div>
       <!-- 导航区 -->
       <div class="nav">
-        <ul class="bavbar">
+        <ul class="navbar">
           <li class="first">
             <a href="javascript:;">首页</a>
           </li>
@@ -52,8 +52,8 @@
       </div>
       <!-- 头部搜索区 -->
       <form action="" class="" target="_blank">
-        <input type="search" maxlength="32" class="search" />
-        <input type="submit" class="submit" value />
+        <input type="search" maxlength="32" class="search" placeholder="找影视剧,影人，影院"/>
+        <input type="submit" class="iconfont iconfangdajing" value />
       </form>
       <!-- 头部登录区 -->
       <div class="user-info">
@@ -83,6 +83,7 @@ export default {
   width: 1200px;
   height: 80px;
   margin: 0 auto;
+  position: relative;
 }
 // 猫眼电影logo
 .header .logo {
@@ -96,7 +97,7 @@ export default {
 }
 // 城市选择区
 .city-container {
-  position: relative;
+  // position: relative;
   float: left;
   margin: 0 8px;
   height: 100%;
@@ -116,9 +117,85 @@ export default {
 
 }
 // 导航区
-.header .nav{
+.header .header-inner .nav{
+  width: 490px;
   display: inline-block;
+}
+.header .navbar{
   overflow: hidden;
+  width: 490px;
+}
+.header li{
+  float: left;
+  width: 70px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  text-align: center;
+  list-style: none;
+}
+.header .navbar a{
+  color: #333;
+}
+.header .navbar a:hover{
+  color: #ef4238;
+}
+.header .first{
+  background-color: #ef4238;
+}
+.header .navbar .first a{
+  color: #fff;
+}
+// 登录区
+.header .header-inner .user-info{
+  position: absolute;
+  width: 78px;
+  height: 80px;
+  top: 10px;
+  left: 1122px;
 
 }
+.header .user-info .user-login{
+  width: 56px;
+  height: 100%;
+}
+.header .user-info .user-login img{
+  margin-top: 14px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.header .user-info .user-login .iconcaretdown{
+  position: absolute;
+  top: 30px;
+  margin-left: 5px;
+}
+// 搜索区
+.header-inner form{
+  position: absolute;
+  top: 20px;
+  left: 870px;
+
+}
+.header-inner .search{
+  border-radius: 30px;
+  color: #333;
+  overflow: hidden;
+  background-color: #faf8fa;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  height: 40px;
+  width: 220px;
+  text-align: center;
+}
+// app下载区
+.header .header-inner .app-download{
+  float: right;
+  margin-right: 355px;
+  margin-top: 30px;
+}
+.header .header-inner .app-download a{
+  color: #000;
+}
+
 </style>
