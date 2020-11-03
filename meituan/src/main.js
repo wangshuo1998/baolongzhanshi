@@ -169,11 +169,7 @@ Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
 
-<<<<<<< HEAD
-// 测试API
-=======
 // 测试API 
->>>>>>> main
 import './Api'
 
 Vue.config.productionTip = false

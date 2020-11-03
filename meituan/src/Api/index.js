@@ -19,3 +19,15 @@ import Ajax from '@/Ajax/mock'
 // }, e => {
 //   console.log(e);
 // })
+
+/**
+ * @description: 获取详情页筛选分类数据
+ * @param {*} 无
+ * @return {*} {cates:[],areas:[]}
+ */
+export const reqFilters = () => {
+  return Ajax({
+    url: '/filters',
+    method: 'GET'
+  })
+}

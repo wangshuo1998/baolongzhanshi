@@ -9,133 +9,18 @@
       <!-- 分类区 -->
       <div class="left">
         <div class="filter">
-          <div class="condition">
-            <div class="classification">分类</div>
-            <div class="all">
-              <a href="javascript:;" class="active">
-                全部
-              </a>
-            </div>
-            <ul class="con">
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-            </ul>
-          </div>
-          <div class="condition">
-            <div class="classification">分类</div>
-            <div class="all">
-              <a href="javascript:;" class="active">
-                全部
-              </a>
-            </div>
-            <ul class="con">
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-            </ul>
-          </div>
-          <div class="condition">
-            <div class="classification">分类</div>
-            <div class="all">
-              <a href="javascript:;" class="active">
-                全部
-              </a>
-            </div>
-            <ul class="con">
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-              <li>
-                <a href="javascript:;">代金券</a>
-              </li>
-            </ul>
-          </div>
+          <DetailFilterCondition :filtersDatas="filtersDatas.cates"></DetailFilterCondition>
+          <DetailFilterCondition :filtersDatas="filtersDatas.areas" :classification="'区域'"></DetailFilterCondition>
+          <DetailFilterCondition
+            :filtersDatas="filtersDatas.dinnerCountsAttr"
+            :classification="'用餐人数'"
+          ></DetailFilterCondition>
         </div>
         <div class="list-container">
           <div class="tags">
-            <span class="active">默认</span>
-            <span>销量</span>
-            <span>价格</span>
-            <span>好评最多</span>
+            <span class="active" v-for="(item, index) in filtersDatas.sortTypesAttr" :key="item.id">{{
+              item.name
+            }}</span>
           </div>
           <ul class="list">
             <li>
@@ -318,6 +203,18 @@
           </ul>
         </div>
         <!-- 自我封装分页组件 -->
+        <div class="my-pagination">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-size="10"
+            :pager-count="pagerCount"
+            layout="prev, pager, next"
+            :total="400"
+          >
+          </el-pagination>
+        </div>
       </div>
       <!-- 分类区右侧 -->
       <div class="right">
@@ -438,9 +335,12 @@
 <script>
 // 引入面包屑导航
 import DetailTopNav from '@/components/DetailTopNav'
+// 引入商品分类筛选组件
+import DetailFilterCondition from './DetailFilterCondition'
 // 引入头部脚部组件
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { mapState } from 'vuex'
 export default {
   name: 'Detail',
   components: {
@@ -448,11 +348,37 @@ export default {
     DetailTopNav,
     Header,
     Footer,
+    DetailFilterCondition,
   },
   data() {
-    return {}
+    return {
+      currentPage: 4,
+      pagerCount: 5,
+    }
   },
-  methods: {},
+  methods: {
+    // 每页 ${val} 条
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`)
+    },
+    // 当前页: ${val}
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`)
+    },
+    //  获取筛选数据
+    getFiltersDatas() {
+      this.$store.dispatch('getFiltersDatas')
+    },
+  },
+  mounted() {
+    // DOM加载完毕获取数据
+    this.getFiltersDatas()
+  },
+  computed: {
+    ...mapState({
+      filtersDatas: (state) => state.Detail.filtersDatas,
+    }),
+  },
 }
 </script>
 
@@ -467,54 +393,6 @@ export default {
       border: 1px solid #e5e5e5;
       background-color: #fff;
       border-radius: 5px;
-      .condition {
-        padding: 10px 0 0 20px;
-        color: #333;
-        font-size: 14px;
-        &:last-of-type .con {
-          border-bottom: none;
-        }
-        .classification {
-          float: left;
-          width: 65px;
-        }
-        .con {
-          float: left;
-          width: 788px;
-          border-bottom: 1px solid #e5e5e5;
-          li {
-            float: left;
-            height: 28px;
-            min-width: 125px;
-            cursor: pointer;
-            a {
-              padding: 0 10px;
-            }
-          }
-          .clearfix();
-        }
-
-        .all {
-          float: left;
-          width: 53px;
-          min-width: auto;
-          text-align: center;
-          margin: 0 13px 0 9px;
-          a {
-            display: block;
-            color: #333;
-          }
-        }
-        .active {
-          background-color: #13d1be;
-          color: #fff !important;
-          border-radius: 100px;
-        }
-        a {
-          color: #666;
-        }
-        .clearfix();
-      }
     }
     .list-container {
       border: 1px solid #e5e5e5;
@@ -612,6 +490,44 @@ export default {
               line-height: 17px;
               color: #666;
               padding-top: 7px;
+            }
+          }
+        }
+      }
+    }
+    // 自定义分页器
+    .my-pagination {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .el-pagination {
+        /deep/ button {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          padding: 0;
+          line-height: 42px;
+          font-weight: 400;
+          i {
+            font-size: 16px;
+          }
+        }
+        /deep/ .el-pager {
+          li {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            padding: 0;
+            line-height: 42px;
+            margin: 0 10px;
+            font-size: 16px;
+            color: #999;
+            font-weight: 400;
+            /deep/ &.active {
+              color: #fff;
+              background-color: #13d1be;
+              border-color: #13d1be;
             }
           }
         }
