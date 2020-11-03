@@ -9,10 +9,32 @@
       <!-- 分类区 -->
       <div class="left">
         <div class="filter">
+          <div class="condition-flter-list" v-if="conditionList.length > 0">
+            <div class="checkedCondition">已选条件</div>
+            <ul class="conditionList">
+              <li class="iconfont" v-for="(item, index) in conditionList" :key="item" @click="removeCondition(item)">
+                {{ item }}
+              </li>
+            </ul>
+            <div class="clearAllCondition" @click="clearAllCondition">
+              <a href="javascript:;">· 清除全部</a>
+            </div>
+          </div>
           <!-- 筛选区域 -->
-          <DetailFilterCondition :filtersDatas="filtersDatas.cates"></DetailFilterCondition>
-          <DetailFilterCondition :filtersDatas="filtersDatas.areas" :classification="'区域'"></DetailFilterCondition>
           <DetailFilterCondition
+            :detailFilterId="0"
+            :filtersDatas="filtersDatas.cates"
+            @conditionFlterHandler="conditionFlterHandler"
+          ></DetailFilterCondition>
+          <DetailFilterCondition
+            :detailFilterId="1"
+            @conditionFlterHandler="conditionFlterHandler"
+            :filtersDatas="filtersDatas.areas"
+            :classification="'区域'"
+          ></DetailFilterCondition>
+          <DetailFilterCondition
+            :detailFilterId="2"
+            @conditionFlterHandler="conditionFlterHandler"
             :filtersDatas="filtersDatas.dinnerCountsAttr"
             :classification="'用餐人数'"
           ></DetailFilterCondition>
@@ -20,9 +42,13 @@
         <div class="list-container">
           <!-- 排序区域 -->
           <div class="tags">
-            <span class="active" v-for="(item, index) in filtersDatas.sortTypesAttr" :key="item.id">{{
-              item.name
-            }}</span>
+            <span
+              :class="{ active: index === sortIndex }"
+              v-for="(item, index) in filtersDatas.sortTypesAttr"
+              :key="item.id"
+              @click="detailSort(index)"
+              >{{ item.name }}
+            </span>
           </div>
           <!-- 商品详情列表 -->
           <ul class="list">
@@ -148,6 +174,8 @@ export default {
     return {
       currentPage: 4,
       pagerCount: 5,
+      sortIndex: 0,
+      conditionFlterList: [],
     }
   },
   methods: {
@@ -171,6 +199,54 @@ export default {
     getGuessInfo() {
       this.$store.dispatch('getGuessInfo')
     },
+    // 商品排序事件
+    detailSort(index) {
+      this.sortIndex = index
+      switch (index) {
+        case 0:
+          // 发送请求更改数据,把数据改为默认数据
+          this.getPoiList()
+          break
+        case 1:
+          // 商品销售进行排序
+          this.detailSortHandle('poiId')
+          break
+        case 2:
+          // 商品价格进行排序
+          this.detailSortHandle('avgPrice')
+          break
+        case 3:
+          // 商品评论进行排序
+          this.detailSortHandle('allCommentNum')
+          break
+      }
+    },
+    detailSortHandle(item) {
+      this.poiList.sort((a, b) => {
+        return b[item] - a[item]
+      })
+    },
+    // 自定义事件 接收子组件
+    conditionFlterHandler(data) {
+      const { conditionFlterList } = this
+      // 绑定分类数据
+      this.$set(conditionFlterList, data.id, data.conditionname)
+    },
+    // 清空筛选数据
+    clearAllCondition() {
+      this.conditionFlterList = []
+    },
+    // 删除点击的分类数据
+    removeCondition(name) {
+      const { conditionFlterList } = this
+      let newCondition = conditionFlterList.map((item) => {
+        if (name !== item) {
+          return item
+        }
+        return undefined
+      })
+      this.conditionFlterList = newCondition
+    },
   },
   mounted() {
     // DOM加载完毕获取数据
@@ -185,6 +261,11 @@ export default {
       poiList: (state) => state.Detail.poiList.poiInfos,
       guessInfo: (state) => state.Detail.guessInfo,
     }),
+    conditionList() {
+      return this.conditionFlterList.filter((item) => {
+        if (item) return item
+      })
+    },
   },
 }
 </script>
@@ -200,6 +281,35 @@ export default {
       border: 1px solid #e5e5e5;
       background-color: #fff;
       border-radius: 5px;
+      .condition-flter-list {
+        padding: 10px 0 10px 20px;
+        font-size: 12px;
+        display: flex;
+        border-bottom: 1px solid #e5e5e5;
+        .checkedCondition {
+          margin-right: 18px;
+        }
+        .conditionList {
+          display: flex;
+          cursor: pointer;
+          li {
+            color: #13d1be;
+            border: 1px solid #13d1be;
+            margin-right: 10px;
+            padding: 0 5px;
+            font-size: 12px;
+            border-radius: 10px;
+            &::after {
+              content: '\e658';
+            }
+          }
+        }
+        .clearAllCondition {
+          a {
+            color: #999;
+          }
+        }
+      }
     }
     .list-container {
       border: 1px solid #e5e5e5;

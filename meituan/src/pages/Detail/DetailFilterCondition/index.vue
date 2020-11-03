@@ -6,15 +6,15 @@
         全部
       </a>
     </div>
-    <ul class="con">
+    <ul class="con" @click="conditionHandler">
       <li v-for="(item, index) in filtersDatas" :key="item.id">
-        <a href="javascript:;" v-if="!item.subAreas">
+        <a href="javascript:;" v-if="!item.subAreas" :data-conditionName="item.name">
           {{ item.name }}
         </a>
         <div class="areasContainer" v-else>
           <div class="areas">
             <!-- 城市 -->
-            <span>{{ item.name }}</span>
+            <span :data-conditionNameAll="item.name">{{ item.name }}</span>
             <i class="iconfont iconxiasanjiaoxing"></i>
             <!-- 城市详情列表 -->
             <div class="areasList">
@@ -24,7 +24,7 @@
                 </p>
                 <ul>
                   <li v-for="(subArea, index) in item.subAreas" :key="subArea.id">
-                    <a href="javascript:;">
+                    <a href="javascript:;" :data-conditionName="subArea.name" :data-conditionNameAll="item.name">
                       {{ subArea.name }}
                     </a>
                   </li>
@@ -50,6 +50,21 @@ export default {
     },
     filtersDatas: {
       type: Array,
+    },
+    detailFilterId: {
+      type: Number,
+    },
+  },
+  methods: {
+    conditionHandler(e) {
+      let { conditionname, conditionnameall } = e.target.dataset
+      if (conditionname === '全部') conditionname = conditionnameall
+      if (!conditionname) return
+      const conditionData = {
+        id: this.detailFilterId,
+        conditionname,
+      }
+      this.$emit('conditionFlterHandler', conditionData)
     },
   },
   // props: ['classification', 'filtersDatas'],
