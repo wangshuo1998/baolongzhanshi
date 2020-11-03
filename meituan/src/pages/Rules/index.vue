@@ -12,7 +12,8 @@
               <a href="javascript:;">首页</a>
             </li>
             <li>
-              <a href="javascript:;">规则目录</a>
+              <router-link to="/rules/catalouge">规则目录</router-link>
+              <!-- <a href="javascript:;">规则目录</a> -->
             </li>
             <li>
               <a href="javascript:;">规则评议院</a>
@@ -31,7 +32,7 @@
               class="input"
             />
             <div class="btn">
-              <i class="iconfont iconsousuo"></i>
+              <i class="iconfont iconsearch"></i>
             </div>
           </div>
         </div>
@@ -221,29 +222,29 @@
                 <li><a href="javascript:;">美团官网招聘</a></li>
               </ul>
             </div>
-            <div class="item">
+            <div class="item2">
               <h2>美团</h2>
               <ul>
                 <li>
-                  <a href="javascript">
+                  <a href="javascript:;">
                     <img src="./images/weibo.png" />
                     美团微博
                   </a>
                 </li>
                 <li>
-                  <a href="javascript">
+                  <a href="javascript:;">
                     <img src="./images/wechat.png" />
                     美团微信公众号
                   </a>
                 </li>
                 <li>
-                  <a href="javascript">
+                  <a href="javascript:;">
                     <img src="./images/weibo.png" />
                     美团微博
                   </a>
                 </li>
                 <li>
-                  <a href="javascript">
+                  <a href="javascript:;">
                     <img src="./images/wechat.png" />
                     美团微信公众号
                   </a>
@@ -302,14 +303,18 @@ export default {
         line-height: 22px;
         a {
           color: #333;
-        }
-        a:after {
-          position: relative;
-          top: 40px;
-          content: "";
-          display: block;
-          height: 4px;
-          background-image: linear-gradient(135deg, #ffd000, #ffbd00);
+          &:hover {
+            transition: color 0.2s ease;
+            color: #ffbd00;
+          }
+          &:after {
+            position: relative;
+            top: 40px;
+            content: "";
+            display: block;
+            height: 4px;
+            background-image: linear-gradient(135deg, #ffd000, #ffbd00);
+          }
         }
       }
     }
@@ -395,6 +400,10 @@ export default {
             font-size: 14px;
             a {
               color: #333;
+              &:hover {
+                transition: color 0.2s ease;
+                color: #ffbd00;
+              }
             }
           }
         }
@@ -403,7 +412,7 @@ export default {
     //右侧文本区域
     .rightContent {
       width: 230px;
-      float: right;
+      float: left;
       .top {
         border: 1px solid #e5e5e5;
         border-radius: 4px;
@@ -417,12 +426,22 @@ export default {
           font-weight: bold;
           color: #333;
         }
+        a {
+          &:hover {
+            transition: color 0.2s ease;
+            color: #ffbd00;
+          }
+        }
         .text {
           font-size: 12px;
           margin-top: 15px;
           line-height: 17px;
           a {
             color: #333;
+            &:hover {
+              transition: color 0.2s ease;
+              color: #ffbd00;
+            }
           }
         }
         li {
@@ -476,19 +495,29 @@ export default {
     }
     .bottomCotent {
       border-bottom: 1px solid #e6e6e6;
-      :last-child{
-        vertical-align: middle;
-        margin-top: 12px;
-        h2{
-          font-size: 30px;
+      .item2 {
+        width: 198px;
+        padding: 46px 0 76px;
+        float: left;
+        margin-top: -10px;
+        h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+          color: #999;
+          font-weight: 700;
         }
-        a{
-          font-size: 14px;
-          
-          img{
-            width: 27px;
-            height: 27px;
-            margin-right: 2px;
+        li {
+          margin-top: 10px;
+          a {
+            font-size: 14px;
+            color: #999;
+            img {
+              width: 27px;
+              height: 27px;
+              margin-right: 2px;
+              vertical-align: middle;
+              opacity: 0.5;
+            }
           }
         }
       }
@@ -508,17 +537,25 @@ export default {
           font-weight: bold;
         }
         li {
+          margin-bottom: 8px;
           a {
-            line-height: 30px;
+            text-decoration: none;
+            line-height: 20px;
             font-size: 14px;
             color: #666;
+            &:hover {
+              transition: color 0.4s ease;
+              color: #333;
+            }
           }
         }
       }
     }
   }
   .footer2 {
+    width: 1188px;
     height: 60px;
+    margin: 0 auto;
     color: #666;
     font-size: 12px;
     line-height: 60px;
@@ -532,7 +569,7 @@ export default {
     }
     .footer2Right {
       float: right;
-      a{
+      a {
         color: #666;
       }
     }
