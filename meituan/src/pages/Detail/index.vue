@@ -9,6 +9,7 @@
       <!-- 分类区 -->
       <div class="left">
         <div class="filter">
+          <!-- 筛选区域 -->
           <DetailFilterCondition :filtersDatas="filtersDatas.cates"></DetailFilterCondition>
           <DetailFilterCondition :filtersDatas="filtersDatas.areas" :classification="'区域'"></DetailFilterCondition>
           <DetailFilterCondition
@@ -17,25 +18,24 @@
           ></DetailFilterCondition>
         </div>
         <div class="list-container">
+          <!-- 排序区域 -->
           <div class="tags">
             <span class="active" v-for="(item, index) in filtersDatas.sortTypesAttr" :key="item.id">{{
               item.name
             }}</span>
           </div>
+          <!-- 商品详情列表 -->
           <ul class="list">
-            <li>
+            <li v-for="(item, index) in poiList" :key="item.poiId">
               <div class="pic">
                 <a href="javascript:;">
-                  <img
-                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
-                    alt=""
-                  />
+                  <img :src="item.frontImg" alt="" />
                 </a>
               </div>
               <div class="content">
                 <a href="javascript:;">
                   <h4>
-                    胡同•烧烤小酒馆
+                    {{ item.title }}
                   </h4>
                   <div class="merchant-star">
                     <ul class="star-len">
@@ -55,7 +55,7 @@
                         <i class="iconfont iconxingxing1"></i>
                       </li>
                     </ul>
-                    <ul class="star-end">
+                    <ul class="star-end" :style="{ width: ((item.avgScore * 2) / 10) * 80 + 'px' }">
                       <li>
                         <i class="iconfont iconxingxing1"></i>
                       </li>
@@ -72,131 +72,13 @@
                         <i class="iconfont iconxingxing1"></i>
                       </li>
                     </ul>
-                    <span class="score">3分</span>
-                    <span class="comment">999条评论</span>
+                    <span class="score">{{ item.avgScore }}分</span>
+                    <span class="comment">{{ item.allCommentNum }}条评论</span>
                   </div>
                   <p class="merchant-pos">
-                    朝阳区十里堡晨光东路
+                    {{ item.address }}
                   </p>
-                  <p class="price">人均￥100</p>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="pic">
-                <a href="javascript:;">
-                  <img
-                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="content">
-                <a href="javascript:;">
-                  <h4>
-                    胡同•烧烤小酒馆
-                  </h4>
-                  <div class="merchant-star">
-                    <ul class="star-len">
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                    </ul>
-                    <ul class="star-end">
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                    </ul>
-                    <span class="score">3分</span>
-                    <span class="comment">999条评论</span>
-                  </div>
-                  <p class="merchant-pos">
-                    朝阳区十里堡晨光东路
-                  </p>
-                  <p class="price">人均￥100</p>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="pic">
-                <a href="javascript:;">
-                  <img
-                    src="https://img.meituan.net/msmerchant/fa0c86f6ed596b64cf417fe99253d1432325470.jpg@220w_125h_1e_1c"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="content">
-                <a href="javascript:;">
-                  <h4>
-                    胡同•烧烤小酒馆
-                  </h4>
-                  <div class="merchant-star">
-                    <ul class="star-len">
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                    </ul>
-                    <ul class="star-end">
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                      <li>
-                        <i class="iconfont iconxingxing1"></i>
-                      </li>
-                    </ul>
-                    <span class="score">3分</span>
-                    <span class="comment">999条评论</span>
-                  </div>
-                  <p class="merchant-pos">
-                    朝阳区十里堡晨光东路
-                  </p>
-                  <p class="price">人均￥100</p>
+                  <p class="price">人均￥{{ item.avgPrice }}</p>
                 </a>
               </div>
             </li>
@@ -221,106 +103,18 @@
         <div class="guess-you-like">
           <h3>猜你喜欢</h3>
           <ul>
-            <li>
+            <li v-for="(item, index) in guessInfo" :key="item.itemId">
               <a href="javascript:;">
                 <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
+                  <img :src="item.imgUrl" alt="" />
                 </div>
                 <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
+                  {{ item.title }}
                 </p>
                 <p class="merchant-pos">
-                  望京
+                  {{ item.areaName }}
                 </p>
-                <p class="price"><b>￥</b>98.0</p>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
-                </div>
-                <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
-                </p>
-                <p class="merchant-pos">
-                  望京
-                </p>
-                <p class="price"><b>￥</b>98.0</p>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
-                </div>
-                <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
-                </p>
-                <p class="merchant-pos">
-                  望京
-                </p>
-                <p class="price"><b>￥</b>98.0</p>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
-                </div>
-                <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
-                </p>
-                <p class="merchant-pos">
-                  望京
-                </p>
-                <p class="price"><b>￥</b>98.0</p>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
-                </div>
-                <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
-                </p>
-                <p class="merchant-pos">
-                  望京
-                </p>
-                <p class="price"><b>￥</b>98.0</p>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <div class="pic">
-                  <img
-                    src="https://p1.meituan.net//bbia/f58fafc0be2bc3a69dfcac20260888c2201000.jpg@188w_106h_1e_1c"
-                    alt=""
-                  />
-                </div>
-                <p class="merchant-name">
-                  晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）晓寿司（望京soho店）
-                </p>
-                <p class="merchant-pos">
-                  望京
-                </p>
-                <p class="price"><b>￥</b>98.0</p>
+                <p class="price"><b>￥</b>{{ item.avgPrice }}</p>
               </a>
             </li>
           </ul>
@@ -369,14 +163,27 @@ export default {
     getFiltersDatas() {
       this.$store.dispatch('getFiltersDatas')
     },
+    // 获取商品列表数据
+    getPoiList() {
+      this.$store.dispatch('getPoiList')
+    },
+    // 获取猜你喜欢列表数据
+    getGuessInfo() {
+      this.$store.dispatch('getGuessInfo')
+    },
   },
   mounted() {
     // DOM加载完毕获取数据
     this.getFiltersDatas()
+    this.getPoiList()
+    this.getGuessInfo()
   },
   computed: {
+    // 从vuex 中把商品筛选数据拿出来
     ...mapState({
       filtersDatas: (state) => state.Detail.filtersDatas,
+      poiList: (state) => state.Detail.poiList.poiInfos,
+      guessInfo: (state) => state.Detail.guessInfo,
     }),
   },
 }
@@ -452,12 +259,12 @@ export default {
               .star-end {
                 color: #c3c3c3;
                 float: left;
-                width: 80px;
                 height: 13px;
+                text-align: left;
+                white-space: nowrap;
                 overflow: hidden;
                 li {
-                  float: left;
-                  white-space: nowrap;
+                  display: inline-block;
                 }
                 .clearfix();
               }

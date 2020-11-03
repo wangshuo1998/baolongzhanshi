@@ -1,3 +1,4 @@
+// mock
 import Ajax from '@/Ajax/mock'
 // 接口格式  每个接口必须注释 注释格式为
 
@@ -30,4 +31,28 @@ export const reqFilters = () => {
     url: '/filters',
     method: 'GET'
   })
+}
+
+/**
+ * @description:  获取详情页列表信息
+ * @param {*} 无
+ * @return {*}   
+ */
+export const reqPoiList = () => {
+  return Ajax({
+    url: '/getPoiList',
+    method: 'GET'
+  });
+}
+
+/**
+ * @description: 获取猜你喜欢列表
+ * @param {*} 无
+ * @return {*} 
+ */
+export const reqGuessInfo = () => {
+  return Ajax({
+    url: '/guessInfo',
+    method: 'GET'
+  });
 }
