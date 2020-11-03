@@ -32,7 +32,10 @@
             <input type="password" class="pw-input" name="password" placeholder="密码">
         </div>
         <div class="login-cf">
-            <a href="##" target="top" class="forget-password">忘记密码?</a>
+            <a href="java-scripc:;" target="top" class="forget-password">忘记密码?</a>
+        </div>
+        <div class="btn">
+          <button class="btn-one">登录</button>
         </div>
       </div>
     </div>
@@ -72,7 +75,7 @@ export default {
     margin-right: 115px;
   }
   .login-section {
-    width: 350px;
+    width: 270px;
     height: 100%;
     /* background: cornflowerblue; */
     /* float: right; */
@@ -89,7 +92,7 @@ export default {
       .right-span {
         font-size: 12px;
         float: right;
-        margin-right: 115px;
+        margin-right: 37px;
       }
     }
 
@@ -131,12 +134,23 @@ export default {
           bottom: 2px;
         }
       }
-
+      input{  
+	background:none;  
+	outline:none;  
+	border:1px solid #ccc;
+}
+input:focus{   
+	border:none;
+}
+/* 
       input {
         font-family: inherit;
         font-size: inherit;
         font-weight: inherit;
-      }
+        &:focus{
+          background-color: #fff;
+        }
+      } */
 
       .phone-input {
         width: 180px;
@@ -146,6 +160,7 @@ export default {
         max-width: 200px !important;
         float: right;
         line-height: 36px;
+        font-size: 14px;
       }
     }
 
@@ -172,6 +187,30 @@ export default {
 
     .forget-password{
         float: right;
+        text-decoration: none;
+        margin-right: 35px;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 10px;
+        color: #FE8C00;
+    }
+
+    .btn{
+      width: 100%;
+      height: 370px;
+      /* background: red; */
+
+      .btn-one{
+        display: block;
+        background: #ffc300;
+        float: left;
+        width: 235px;
+        height: 33.8px;
+        line-height: 33.8px;
+        border: none;
+        margin: 10px 0;
+        font-weight: bold;
+      }
     }
   }
 }
