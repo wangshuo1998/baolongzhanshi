@@ -1,17 +1,4 @@
 import Ajax from '@/Ajax/mock'
-<<<<<<< HEAD
-// 格式
-// export const aaa = Ajax({
-//   method:'GET',
-//   url:'/index'
-// })
-export const reqFilters = () => {
-  return Ajax({
-    method: 'GET',
-    url: '/filters'
-  });
-}
-=======
 // 接口格式  每个接口必须注释 注释格式为
 
 /**
@@ -32,4 +19,3 @@ export const reqFilters = () => {
 // }, e => {
 //   console.log(e);
 // })
->>>>>>> main
