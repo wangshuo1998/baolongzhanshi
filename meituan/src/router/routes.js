@@ -1,6 +1,6 @@
 import Home from '@/pages/Home'
 import HomeIndex from '@/pages/HomeIndex'
-import Detail from '@/pages/Detail'
+import ShopList from '@/pages/ShopList'
 export default [{
   path: '/',
   name: 'Home',
@@ -12,7 +12,7 @@ export default [{
     component: HomeIndex,
   }]
 }, {
-  path: '/detail',
-  name: 'Detail',
-  component: Detail,
+  path: '/shopList',
+  name: 'shopList',
+  component: ShopList,
 }]

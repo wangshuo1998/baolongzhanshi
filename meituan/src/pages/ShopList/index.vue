@@ -5,7 +5,7 @@
     <!-- 商品列表容器 -->
     <div class="detailContainer">
       <!-- 面包屑导航 -->
-      <DetailTopNav></DetailTopNav>
+      <Breadcrumbs></Breadcrumbs>
       <!-- 分类区 -->
       <div class="left">
         <div class="filter">
@@ -21,23 +21,23 @@
             </div>
           </div>
           <!-- 筛选区域 -->
-          <DetailFilterCondition
+          <ShopFilterCondition
             :detailFilterId="0"
             :filtersDatas="filtersDatas.cates"
             @conditionFlterHandler="conditionFlterHandler"
-          ></DetailFilterCondition>
-          <DetailFilterCondition
+          ></ShopFilterCondition>
+          <ShopFilterCondition
             :detailFilterId="1"
             @conditionFlterHandler="conditionFlterHandler"
             :filtersDatas="filtersDatas.areas"
             :classification="'区域'"
-          ></DetailFilterCondition>
-          <DetailFilterCondition
+          ></ShopFilterCondition>
+          <ShopFilterCondition
             :detailFilterId="2"
             @conditionFlterHandler="conditionFlterHandler"
             :filtersDatas="filtersDatas.dinnerCountsAttr"
             :classification="'用餐人数'"
-          ></DetailFilterCondition>
+          ></ShopFilterCondition>
         </div>
         <div class="list-container">
           <!-- 排序区域 -->
@@ -154,21 +154,21 @@
 
 <script>
 // 引入面包屑导航
-import DetailTopNav from '@/components/DetailTopNav'
+import Breadcrumbs from '@/components/Breadcrumbs'
 // 引入商品分类筛选组件
-import DetailFilterCondition from './DetailFilterCondition'
+import ShopFilterCondition from './ShopFilterCondition'
 // 引入头部脚部组件
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { mapState } from 'vuex'
 export default {
-  name: 'Detail',
+  name: 'ShopList',
   components: {
     // 注册组件
-    DetailTopNav,
+    Breadcrumbs,
     Header,
     Footer,
-    DetailFilterCondition,
+    ShopFilterCondition,
   },
   data() {
     return {
@@ -257,9 +257,9 @@ export default {
   computed: {
     // 从vuex 中把商品筛选数据拿出来
     ...mapState({
-      filtersDatas: (state) => state.Detail.filtersDatas,
-      poiList: (state) => state.Detail.poiList.poiInfos,
-      guessInfo: (state) => state.Detail.guessInfo,
+      filtersDatas: (state) => state.ShopList.filtersDatas,
+      poiList: (state) => state.ShopList.poiList.poiInfos,
+      guessInfo: (state) => state.ShopList.guessInfo,
     }),
     conditionList() {
       return this.conditionFlterList.filter((item) => {
