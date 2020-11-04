@@ -56,3 +56,22 @@ export const reqGuessInfo = () => {
     method: 'GET'
   });
 }
+
+/**
+ * @description:  获取商品详情页信息
+ * @param {*} shopId => 为对象 格式为 {shopId:"123"}
+ * @return {*} 商品详情页信息 => {}
+ */
+export const reqShopDetailData = (shopId = {}) => {
+  return Ajax({
+    url: '/getShopDetailInfo',
+    method: 'POST',
+    data: shopId
+  })
+}
+
+// reqShopDetailData({
+//   shopId: '159279615'
+// }).then(v => {
+//   console.log(v);
+// })
