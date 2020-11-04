@@ -7,8 +7,4 @@
 export default {}
 </script>
 
-<<<<<<< HEAD
-<style lang="less" scoped></style>
-=======
 <style></style>
->>>>>>> main
