@@ -44,28 +44,28 @@
             <a href="javascript:;" class="item">平台基础规则</a>
             <a href="javascript:;" class="item">美团平台规则</a>
             <li class="firstItem">
-              <div @click="showSecondList" class="firstList">
+              <div @click="showSecondList(1)" class="firstList">
                 大众点评平台规则
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{active:!isShowSecondList}">
+              <ul :class="{ active: !isShowSecondList }">
                 <a href="javascript:;" class="secondItem">大众点评基础规则</a>
                 <a href="javascript:;" class="secondItem">大众点评商户管理</a>
                 <a href="javascript:;" class="secondItem">大众点评运营规则</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div @click="showSecondList" class="firstList">
+              <div @click="showSecondList(2)" class="firstList">
                 业务规则
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{active:!isShowSecondList}">
+              <ul :class="{ active: !isShowSecondList }">
                 <li>
                   <div class="second" @click="showThirdList">
                     美团外卖
                     <i class="iconfont iconjiantouarrow487"></i>
                   </div>
-                  <ul :class="{active2:!isShowThirdList}">
+                  <ul :class="{ active2: !isShowThirdList }">
                     <a href="javascript:;" class="thirdItem">招商规范</a>
                     <a href="javascript:;" class="thirdItem">商品规范</a>
                     <a href="javascript:;" class="thirdItem">品控规范</a>
@@ -80,38 +80,38 @@
             <a href="javascript:;" class="item">消费者权益保障</a>
             <a href="javascript:;" class="item">隐私政策</a>
             <li class="firstItem">
-              <div @click="showSecondList" class="firstList">
+              <div @click="showSecondList(3)" class="firstList">
                 公示通知
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{active:!isShowSecondList}">
+              <ul :class="{ active: !isShowSecondList }">
                 <a href="javascript:;" class="secondItem">规则公告</a>
                 <a href="javascript:;" class="secondItem">平台公告</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div @click="showSecondList" class="firstList">
+              <div @click="showSecondList(4)" class="firstList">
                 普法专栏
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{active:!isShowSecondList}">
+              <ul :class="{ active: !isShowSecondList }">
                 <a href="javascript:;" class="secondItem">法规解读</a>
                 <a href="javascript:;" class="secondItem">政策解读</a>
               </ul>
             </li>
-            <li class="firstItem" >
-              <div @click="showSecondList">
+            <li class="firstItem">
+              <div @click="showSecondList(5)" class="firstList">
                 规则动态
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{active:!isShowSecondList}">
+              <ul :class="{ active: currentIndex === 5 }">
                 <a href="javascript:;" class="secondItem">意见征集</a>
                 <li>
                   <div class="second" @click="showThirdList">
                     历史规则
                     <i class="iconfont iconjiantouarrow487"></i>
                   </div>
-                  <ul :class="{active2:!isShowThirdList}">
+                  <ul :class="{ active2: !isShowThirdList }">
                     <a href="javascript:;" class="thirdItem">失效规则</a>
                     <a href="javascript:;" class="thirdItem">发布汇总</a>
                   </ul>
@@ -149,15 +149,9 @@
               </ul>
               <!-- 自我封装分页组件 -->
               <div class="my-pagination">
-                <el-pagination
-                  
-                  
-                  
-                  layout="prev, pager, next"
-                  :total="80"
-                >
-                <!-- :current-page="currentPage" -->
-                <!-- pager-count="pagerCount" -->
+                <el-pagination layout="prev, pager, next" :total="80">
+                  <!-- :current-page="currentPage" -->
+                  <!-- pager-count="pagerCount" -->
                 </el-pagination>
               </div>
             </div>
@@ -260,18 +254,21 @@ export default {
   name: "Catalogue",
   data() {
     return {
-      isShowSecondList:false,
-      isShowThirdList:false
-    }
+      currentIndex: "",
+      isShowSecondList: false,
+      isShowThirdList: false,
+    };
   },
   methods: {
-    showSecondList(){
-      this.isShowSecondList = !this.isShowSecondList
-      console.log(this.isShowSecondList)
+    showSecondList(index) {
+      if (this.currentIndex === index) {
+        this.isShowSecondList = !this.isShowSecondList;
+        console.log(this.isShowSecondList)
+      }
     },
-    showThirdList(){
-      this.isShowThirdList = !this.isShowThirdList
-    }
+    showThirdList() {
+      this.isShowThirdList = !this.isShowThirdList;
+    },
   },
 };
 </script>
@@ -381,7 +378,7 @@ export default {
       border: 1px solid #e5e5e5;
       height: 465px;
       overflow: auto;
-      .active2{
+      .active2 {
         display: none;
       }
       .item {
@@ -411,8 +408,8 @@ export default {
         line-height: 22px;
         padding: 10px 10px 10px 30px;
         cursor: pointer;
-        .active{
-          display: none;
+        .active {
+          display: block;
         }
         .second {
           font-weight: 700;

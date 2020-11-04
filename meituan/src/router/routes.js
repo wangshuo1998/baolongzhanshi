@@ -1,7 +1,9 @@
 import Home from '@/pages/Home'
 import HomeIndex from '@/pages/HomeIndex'
 import Rules from '@/pages/Rules'
+import FastFood from '@/pages/FastFood'
 import Advices from '@/pages/Rules/Advices'
+import Homestay from '@/pages/Homestay'
 import Catalogue from '@/pages/Rules/Catalogue'
 export default [
   {
@@ -31,8 +33,12 @@ export default [
     component:Catalogue
   },
   {
-    path:'/advices',
-    component:Advices
+    path:'/fastfood',
+    component:FastFood
+  },
+  {
+    path:'/homestay',
+    component:Homestay
   }
 
 
