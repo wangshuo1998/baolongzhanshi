@@ -921,12 +921,175 @@
             </div>
           </div>
         </div>
-        <div class="btm-right">right</div>
+        <div class="btm-right">
+          <div class="guess-you-like">
+            <h3>猜你喜欢</h3>
+            <ul>
+              <li v-for="(item, index) in guessInfo" :key="item.itemId">
+                <a href="javascript:;">
+                  <div class="pic">
+                    <img :src="item.imgUrl" alt="" />
+                  </div>
+                  <p class="merchant-name">
+                    {{ item.title }}
+                  </p>
+                  <p class="merchant-pos">
+                    {{ item.areaName }}
+                  </p>
+                  <p class="price"><b>￥</b>{{ item.avgPrice }}</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <!-- 附近商家 -->
       <div class="nearby-businesses">
         <h4>附近商家</h4>
-        <div class="nearby"></div>
+        <div class="nearby">
+          <ul>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <div class="pic">
+                  <img
+                    src="https://p0.meituan.net//bbia/3e36af692ce40ea56575b7c19dc3581c464792.png@214w_120h_1e_1c"
+                    alt=""
+                  />
+                </div>
+                <p class="title">P.STYLE 派斯造型（五道口店）</p>
+                <p class="source">5分 <span>188792人消费</span></p>
+                <p class="desc source">免费停车</p>
+                <p class="price"><b>￥</b> 766 <b>起</b></p>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -934,6 +1097,7 @@
 
 <script>
 import Breadcrumbs from '@/components/Breadcrumbs'
+import { mapState } from 'vuex'
 export default {
   name: 'ShopDetail',
   components: {
@@ -955,6 +1119,19 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`)
     },
+    // 获取猜你喜欢列表数据
+    getGuessInfo() {
+      this.$store.dispatch('getGuessInfo')
+    },
+  },
+  mounted() {
+    this.getGuessInfo()
+  },
+  computed: {
+    // 从vuex 中把商品筛选数据拿出来
+    ...mapState({
+      guessInfo: (state) => state.ShopList.guessInfo,
+    }),
   },
 }
 </script>
@@ -1413,7 +1590,54 @@ export default {
       }
       .btm-right {
         width: 20%;
-        background-color: #f00;
+        margin-top: 32px;
+        .guess-you-like {
+          border: 1px solid #e5e5e5;
+          border-radius: 5px;
+          background-color: #fff;
+          padding: 16px 20px 0;
+          h3 {
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: 12px;
+            color: #333;
+            font-weight: 600;
+          }
+          .pic {
+            height: 106px;
+            border-radius: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+            }
+          }
+          .merchant-name {
+            width: 100%;
+            // 禁止换行
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 14px;
+            line-height: 20px;
+            color: #222;
+            margin: 10px 0 4px;
+          }
+          .merchant-pos {
+            font-size: 12px;
+            line-height: 17px;
+            color: #999;
+          }
+          .price {
+            font-size: 22px;
+            color: #f60;
+            line-height: 27px;
+            b {
+              font-weight: normal;
+              font-size: 14px;
+            }
+          }
+        }
       }
     }
     // 附近商家
@@ -1430,7 +1654,58 @@ export default {
         border: 1px solid #e5e5e5;
         border-radius: 5px;
         background-color: #fff;
-        height: 500px;
+        padding: 20px 20px 0;
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          li {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-bottom: 20px;
+            a {
+              width: 214px;
+              overflow: hidden;
+              color: #222;
+              .pic {
+                width: 100%;
+                img {
+                  width: 100%;
+                  border-radius: 5px;
+                }
+              }
+              p {
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              .title {
+                font-size: 16px;
+                line-height: 22px;
+                margin: 10px 0 6px;
+              }
+              .source {
+                color: #999;
+                font-size: 12px;
+              }
+              .desc {
+                min-height: 32px;
+              }
+              .price {
+                color: #f60;
+                line-height: 27px;
+                font-size: 22px;
+                font-weight: 700;
+                b {
+                  font-weight: 400;
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
