@@ -3,7 +3,7 @@ import HomeIndex from '@/pages/HomeIndex'
 import Rules from '@/pages/Rules'
 import FastFood from '@/pages/FastFood'
 import Advices from '@/pages/Rules/Advices'
-import Homestay from '@/pages/Homestay'
+import HomestayInfo from '@/pages/HomestayInfo'
 import Catalogue from '@/pages/Rules/Catalogue'
 export default [
   {
@@ -37,8 +37,8 @@ export default [
     component:FastFood
   },
   {
-    path:'/homestay',
-    component:Homestay
+    path:'/homestayInfo',
+    component:HomestayInfo
   }
 
 
