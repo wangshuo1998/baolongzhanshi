@@ -19,7 +19,7 @@ export default [{
   component: ShopList,
   redirect: '/shopList/shopListIndex',
   children: [{
-      path: 'shopDetail/:shopIdId?',
+      path: 'shopDetail/:shopId?',
       name: 'shopDetail',
       component: ShopDetail
     },

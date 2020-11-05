@@ -48,16 +48,16 @@
           </span>
         </div>
         <!-- 商品详情列表 -->
-        <ul class="list">
+        <ul class="list" @click="shopListHandler">
           <li v-for="(item, index) in poiList" :key="item.poiId">
             <div class="pic">
               <!-- 临时征用 -->
-              <router-link to="/shopList/shopDetail">
+              <!-- <router-link to="/shopList/shopDetail">
                 <img :src="item.frontImg" alt="" />
-              </router-link>
-              <!-- <a href="javascript:;">
-                <img :src="item.frontImg" alt="" />
-              </a> -->
+              </router-link> -->
+              <!-- <a href="javascript:;" :data-shopIdId="item.poiId"> -->
+              <img :src="item.frontImg" alt="" :data-shopId="item.poiId" />
+              <!-- </a> -->
             </div>
             <div class="content">
               <a href="javascript:;">
@@ -239,6 +239,17 @@ export default {
       })
       this.conditionFlterList = newCondition
     },
+    shopListHandler(e) {
+      const target = e.target
+      const { shopid: shopId } = target.dataset
+      const location = {
+        name: 'shopDetail',
+        params: {
+          shopId,
+        },
+      }
+      this.$router.push(location)
+    },
   },
   mounted() {
     // DOM加载完毕获取数据
@@ -327,12 +338,14 @@ export default {
         > li {
           padding: 20px 0 18px;
           border-bottom: 1px solid #e5e5e5;
+
           .clearfix();
           .pic {
             height: 125px;
             width: 220px;
             border-radius: 5px;
             float: left;
+            cursor: pointer;
             img {
               width: 100%;
               height: 100%;

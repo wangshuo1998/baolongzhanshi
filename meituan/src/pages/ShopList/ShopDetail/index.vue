@@ -12,7 +12,10 @@
           <!-- 头部名称 -->
           <div class="title">
             <div class="title-name">
-              <h2>一珍香.江南渔府</h2>
+              <h2>
+                <!-- 店铺名称 -->
+                {{ baseInfo.name }}
+              </h2>
               <span> <i class="iconfont icondunpai"></i> 食品安全档案</span>
             </div>
             <!-- 评分 -->
@@ -34,7 +37,7 @@
                   <i class="iconfont iconxingxing1"></i>
                 </li>
               </ul>
-              <ul class="avg-star">
+              <ul class="avg-star" :style="{ width: baseInfo.avgScore * 2 * 8 + 'px' }">
                 <li>
                   <i class="iconfont iconxingxing1"></i>
                 </li>
@@ -51,29 +54,28 @@
                   <i class="iconfont iconxingxing1"></i>
                 </li>
               </ul>
-              <span class="avg-score">4.4分</span>
-              <span class="avg-price">人均￥315</span>
+              <span class="avg-score">{{ baseInfo.avgScore }}分</span>
+              <span class="avg-price">人均￥{{ baseInfo.avgPrice }}</span>
             </div>
           </div>
           <!-- 地址 -->
           <div class="address">
-            <p>地址：西城区复兴门内大街51号民族饭店2楼 <i class="iconfont iconweizhi"></i></p>
-            <p>电话：010-66072788</p>
-            <p>营业时间：周一至周日 09:30-21:30</p>
+            <p>{{ baseInfo.address }} <i class="iconfont iconweizhi"></i></p>
+            <p>电话：{{ baseInfo.phone }}</p>
+            <p>营业时间：{{ baseInfo.openTime }}</p>
           </div>
           <!-- 标签选项 -->
           <ul class="tags">
-            <li>
-              <i class="iconfont iconicon-test"></i>
-              <span>提供wifi</span>
-            </li>
-            <li>
-              <i class="iconfont iconicon-test"></i>
-              <span>提供wifi</span>
-            </li>
-            <li>
-              <i class="iconfont iconicon-test"></i>
-              <span>提供wifi</span>
+            <li v-for="(item, index) in baseInfo.extraInfos" :key="index">
+              <!-- <i class="iconfont iconicon-test">
+                <img :src="item.iconUrl" alt="" />
+              </i> -->
+              <i class="icon-url">
+                <img :src="item.iconUrl" alt="" />
+              </i>
+              <span>
+                {{ item.text }}
+              </span>
             </li>
           </ul>
         </div>
@@ -1123,15 +1125,27 @@ export default {
     getGuessInfo() {
       this.$store.dispatch('getGuessInfo')
     },
+    // 发送请求店铺获取数据
+    getShopDetailData() {
+      const { shopId } = this.$route.params
+      this.$store.dispatch('getShopDetailData', { shopId })
+    },
   },
   mounted() {
+    // 调用 获取猜你喜欢数据函数
     this.getGuessInfo()
+    // 调用 获取列表信息函数
+    this.getShopDetailData()
   },
   computed: {
     // 从vuex 中把商品筛选数据拿出来
     ...mapState({
       guessInfo: (state) => state.ShopList.guessInfo,
+      shopDetailData: (state) => state.ShopDetail.shopDetailData,
     }),
+    baseInfo() {
+      return this.shopDetailData.baseInfo || {}
+    },
   },
 }
 </script>
@@ -1226,8 +1240,15 @@ export default {
             align-items: center;
             padding-right: 30px;
             i {
-              font-size: 24px;
+              width: 24px;
+              height: 34px;
+              display: block;
+              // font-size: 24px;
               padding-bottom: 10px;
+              img {
+                width: 100%;
+                height: 100%;
+              }
             }
           }
         }
