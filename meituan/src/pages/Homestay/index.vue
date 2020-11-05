@@ -139,6 +139,16 @@
             </div>
           </div>
         </div>
+        <!-- 品牌民宿 -->
+        <div class="section1">
+          <div class="rs-container1">
+            <div class="block-header1">
+              <h2>品牌民宿</h2>
+              <span class="top-desc1 brand">BRAND</span>
+            </div>
+            <div class="react-root1"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -230,13 +240,14 @@ export default {
     }
   }
 }
-// 主题精选样式
+
 .home-page {
   width: 100%;
   height: 1890px;
-
+  // 主题精选样式
   .section {
     width: 100%;
+    padding-bottom: 40px;
 
     .rs-container {
       max-width: 1180px;
@@ -271,8 +282,8 @@ export default {
           .topic-lists {
             display: flex;
 
-            &>li:first-child{
-                margin-left: 0;
+            & > li:first-child {
+              margin-left: 0;
             }
 
             .topic-list {
@@ -282,9 +293,34 @@ export default {
               z-index: 0;
               cursor: pointer;
 
+              &::before {
+                content: "";
+                width: 180px;
+                height: 180px;
+                background: #eceef4;
+                border-radius: 10px;
+                position: absolute;
+                left: 21px;
+                bottom: 0;
+                z-index: -1;
+              }
+
               .topic-card {
                 display: inline-block;
                 overflow: hidden;
+
+                &::after {
+                  content: "";
+                  background: #e1e3ea;
+                  padding: 0 11px;
+                  width: 200px;
+                  height: 200px;
+                  border-radius: 10px;
+                  position: absolute;
+                  left: 10px;
+                  bottom: 10px;
+                  z-index: -1;
+                }
 
                 .cards {
                   width: 223px !important;
@@ -312,6 +348,52 @@ export default {
               }
             }
           }
+        }
+      }
+    }
+  }
+  // 品牌民宿
+  .section1 {
+    width: 100%;
+    padding-top: 40px;
+
+    .rs-container1 {
+      max-width: 1180px;
+      padding: 0 15px;
+      margin: 0 auto;
+
+      .block-header1 {
+        display: flex;
+        margin-bottom: 16px;
+
+        h2 {
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 24px;
+          color: #252626;
+          letter-spacing: 0;
+          margin: 0;
+        }
+
+        .top-desc1 {
+          background-image: linear-gradient(
+            -135deg,
+            #e5b46a,
+            #fadda1 36%,
+            #dfb264
+          );
+          text-shadow: 0 6px 2px #e3c193;
+          color: #cbcccd;
+          font-size: 10px;
+          margin-left: 4px;
+          font-family: MThom, X-LocaleSpecific-Sans, Arial, sans-serif;
+          height: 14px;
+          border-radius: 2px;
+          font-size: 10px;
+          font-weight: bold;
+          color: #fff;
+          padding: 2px 4px;
+          line-height: 9px;
         }
       }
     }
