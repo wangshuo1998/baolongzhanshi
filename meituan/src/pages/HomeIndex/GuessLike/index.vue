@@ -65,6 +65,7 @@
   .guessLikeContainer {
     width: 1190px;
     margin: 40px auto 0 auto;
+    background: #fff;
     /*导航*/
     .guessLikeNav {
       background: #47BBD0;
@@ -83,6 +84,7 @@
           font-size: 18px;
           margin-left: 13px;
           margin-right: 10px;
+          font-family: MFShangHei-Regular !important;
         }
 
         dd {
@@ -126,6 +128,11 @@
           float: left;
           width: 20%;
           padding: 10px;
+          cursor: pointer;
+          transition: background 0.3s;
+          &:hover{
+            background: #f7f7f7;
+          }
           img{
             width: 100%;
             border-radius: 4px;

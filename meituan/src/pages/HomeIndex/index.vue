@@ -16,7 +16,9 @@
               <i class="iconfont"
                  :class="category1.leftPcHomeCategoryList[0].icon"
                  :style="{color:category1.leftPcHomeCategoryList[0].color}"></i>
-              <a href="javascript:;">
+              <a href="javascript:;"
+                 :data-category1Name="category1.leftPcHomeCategoryList[0].name"
+                 :data-category1Id="category1.leftPcHomeCategoryList[0].id">
                 {{category1.leftPcHomeCategoryList[0].name}}
               </a>
               <label>

@@ -71,6 +71,7 @@
   .recommendHouseContainer {
     width: 1190px;
     margin: 40px auto 0 auto;
+    background: #fff;
     /*导航*/
     .recommendHouseNav {
       background: #F2C246;
@@ -89,6 +90,7 @@
           font-size: 18px;
           margin-left: 13px;
           margin-right: 10px;
+          font-family: MFShangHei-Regular !important;
         }
 
         dd {

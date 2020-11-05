@@ -144,6 +144,7 @@
           font-size: 18px;
           margin-left: 13px;
           margin-right: 10px;
+          font-family: MFShangHei-Regular !important;
         }
 
         dd {
