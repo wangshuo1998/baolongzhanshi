@@ -7,8 +7,8 @@
         <div class="title">
           <span>全部分类</span>
         </div>
-        <div class="navContent">
-          <ul>
+        <div class="navContent" >
+          <ul @click="toSearch">
             <li class="clearfix"
                 @mouseenter="moveIn(index)"
                 v-for="(category1,index) in categoryList"
@@ -16,8 +16,12 @@
               <i class="iconfont"
                  :class="category1.leftPcHomeCategoryList[0].icon"
                  :style="{color:category1.leftPcHomeCategoryList[0].color}"></i>
+              <a href="javascript:;"
+                 :data-category1Name="category1.leftPcHomeCategoryList[0].name"
+                 :data-category1Id="category1.leftPcHomeCategoryList[0].id">
+                {{category1.leftPcHomeCategoryList[0].name}}
+              </a>
               <label>
-                <a href="javascript:;">{{category1.leftPcHomeCategoryList[0].name}}</a>
                 <label v-show="category1.leftPcHomeCategoryList.length>1">
                   <span v-for="(item,index) in category1.leftPcHomeCategoryList"
                         v-if="index>0"
@@ -40,7 +44,9 @@
                   </div>
                   <dl class="clearfix">
                     <dd v-for="(shop) in rightPcHomeCategoryList[index]"
-                        :key="shop.id">
+                        :key="shop.id"
+                        :data-category2Name="shop.name"
+                        :data-category2Id="shop.id">
                       {{shop.name}}
                     </dd>
                   </dl>
@@ -52,7 +58,7 @@
       </div>
       <!--      中间的轮播图-->
       <div class="middleBanner">
-<!--        banner上方的导航列表-->
+        <!--        banner上方的导航列表-->
         <div class="bannerTopNav">
           <a class="waimai" href="javascript:;" title="美团外卖">美团外卖</a>
           <a class="movies" href="javascript:;" title="猫眼电影">猫眼电影</a>
@@ -61,21 +67,17 @@
           <a class="saler" href="javascript:;" title="商家入驻">商家入驻</a>
           <a class="heart" href="javascript:;" title="美团公益">美团公益</a>
         </div>
+        <!--        轮播图-->
         <div class="topBanner clearfix">
           <div class="swiper-container" ref="indexBanner">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="http://p0.meituan.net/codeman/daa73310c9e57454dc97f0146640fd9f69772.jpg" alt="">
+              <div class="swiper-slide" v-for="(banner,index) in bannersList" :key="banner.imgId">
+                <img :src="banner.imgUrl" alt="">
               </div>
-              <div class="swiper-slide">
-                <img src="http://p1.meituan.net/codeman/826a5ed09dab49af658c34624d75491861404.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="http://p0.meituan.net/codeman/a97baf515235f4c5a2b1323a741e577185048.jpg" alt="">
-              </div>
-              <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
-              <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
             </div>
+            <div class="swiper-button-prev"></div><!--左箭头。-->
+            <div class="swiper-button-next"></div><!--右箭头。-->
+            <div class="swiper-pagination kaikaiSwiper"></div><!--分页器。-->
           </div>
           <div class="swiperRightPic">
             <img src="../../assets/life.jpg" alt="休闲生活">
@@ -117,32 +119,61 @@
         </div>
       </div>
     </div>
+<!--    猫眼电影-->
+    <CateMovies :hotMoviesList="hotMoviesList" :comingMoviesList="comingMoviesList"></CateMovies>
+<!--    推荐民宿-->
+    <RecommendHouse :recommendHouseCities="recommendHouseCities"
+                    :recommendHouseList="recommendHouseList"></RecommendHouse>
+<!--    猜你喜欢-->
+    <GuessLike :guessLikeList="guessLikeList"></GuessLike>
+<!--    美团导航-->
+    <IndexNav></IndexNav>
   </div>
 </template>
 <script>
   import {mapState} from "vuex";
   import Swiper from "swiper";
   import "swiper/css/swiper.min.css";
+  import CateMovies from "@/pages/HomeIndex/CateMovies";
+  import RecommendHouse from "@/pages/HomeIndex/RecommendHouse";
+  import GuessLike from "@/pages/HomeIndex/GuessLike";
+  import IndexNav from "@/pages/HomeIndex/IndexNav";
+  import {reqBannersList,reqHotMoviesList,reqComingMoviesList,reqRecommendHouseCities,reqRecommendHouseList,reqGuessLikeList} from "@/Api";
 
   export default {
     name: 'Home',
     data() {
       return {
         isMoveIn: false,
-        categoryDetail: {}
+        categoryDetail: {},
+        bannersList:[],
+        hotMoviesList:[],
+        comingMoviesList:[],
+        recommendHouseCities:[],
+        recommendHouseList:[],
+        guessLikeList:[]
       }
+    },
+    components:{
+      CateMovies,
+      RecommendHouse,
+      GuessLike,
+      IndexNav
     },
     mounted() {
       this.getCategoryList();
-      new Swiper (this.$refs.indexBanner, {//此出的class选择器可以换称ref选择器获取到对应的Swiper轮播
-        autoplay:true,//自动切换
-        effect:"fade",//淡入淡出
-        loop:true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      })
+      //获取轮播图的数据
+      this.getBannersList();
+      //获取正在热映的数据
+      this.getHotMoviesList();
+      //获取即将上映的数据
+      this.getComingMoviesList();
+      //获取民宿城市列表
+      this.getRecommendHouseCities();
+      //获取民宿信息列表
+      this.getRecommendHouseList();
+      //获取猜你喜欢信息列表
+      this.getGuessLikeList();
     },
     methods: {
       //移入分类列表
@@ -157,6 +188,57 @@
       //二级分类列表
       getCategoryList() {
         this.$store.dispatch("getCategoryList");
+      },
+      //获取轮播图数据
+      async getBannersList(){
+        let result = await reqBannersList();
+        this.bannersList = result.data;
+      },
+      //热映电影
+      async getHotMoviesList(){
+        let result = await reqHotMoviesList();
+        this.hotMoviesList = result.data.hot;
+      },
+      //即将上映得电影
+      async getComingMoviesList(){
+        let result = await reqComingMoviesList();
+        this.comingMoviesList = result.data.coming;
+      },
+      //民宿城市
+      async getRecommendHouseCities(){
+        let result = await reqRecommendHouseCities();
+        this.recommendHouseCities = result.cityList;
+      },
+      //民宿信息
+      async getRecommendHouseList(){
+        let result = await reqRecommendHouseList();
+        this.recommendHouseList = result.data;
+      },
+      //猜你喜欢
+      async getGuessLikeList(){
+        let result = await reqGuessLikeList();
+        this.guessLikeList = result;
+      },
+      //跳转搜索页
+      toSearch(event){
+        let target = event.target;
+        let data = target.dataset;
+        let {category1name,category1id,category2name,category2id} = data;
+        let location = {
+          name:"Search"
+        }
+        if(category1name){
+          location.category1Name = category1name;
+          location.category1Id = category1id;
+        }
+        else if (category2name){
+          let category1Info = target.parentNode.parentNode.parentNode.parentNode.children[1].dataset;
+          location.category1Name = category1Info.category1name;
+          location.category1Id = category1Info.category1id;
+          location.category2Name = category2name;
+          location.category2Id = category2id;
+        }
+        console.log(location);
       }
     },
     computed: {
@@ -168,6 +250,29 @@
       },
       rightPcHomeCategoryList() {
         return this.categoryDetail.rightPcHomeCategoryList || []
+      }
+    },
+    watch:{
+      bannersList:{
+        handler(){
+          this.$nextTick(()=>{
+            //轮播图配置
+            new Swiper(this.$refs.indexBanner, {//此出的class选择器可以换称ref选择器获取到对应的Swiper轮播
+              autoplay: {
+                disableOnInteraction: false
+              },//自动切换
+              effect: "fade",//淡入淡出
+              loop: true,
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+              pagination: {
+                el: '.swiper-pagination',
+              }
+            });
+          })
+        }
       }
     }
   }
@@ -182,15 +287,13 @@
     height: 0;
     font-size: 0;
   }
-
   .container {
     width: 100%;
-
+    /*轮播首屏*/
     .bannerContainer {
       width: 1190px;
       margin: 0 auto;
       /*二级分类列表*/
-
       .leftCategoryList {
         position: relative;
         float: left;
@@ -338,44 +441,51 @@
           }
         }
       }
-
       /*  中间的banner*/
-
       .middleBanner {
         float: left;
         margin: 10px 0 0 10px;
         width: 720px;
         height: 415px;
         position: relative;
-        .bannerTopNav{
+
+        .bannerTopNav {
           position: absolute;
           top: -45px;
           left: 20px;
-          a{
+
+          a {
             font-weight: 700;
             color: #222;
             font-size: 16px;
             margin: 0 20px;
-            &.waimai:hover{
+
+            &.waimai:hover {
               color: #FBC700;
             }
-            &.movies:hover{
+
+            &.movies:hover {
               color: #ED1E24;
             }
-            &.hotel:hover{
+
+            &.hotel:hover {
               color: #F04D4E;
             }
-            &.house:hover{
+
+            &.house:hover {
               color: #FDC411;
             }
-            &.saler:hover{
+
+            &.saler:hover {
               color: #FE8C00;
             }
-            &.heart:hover{
+
+            &.heart:hover {
               color: #F24D4E;
             }
           }
         }
+
         .topBanner {
           width: 100%;
 
@@ -383,36 +493,56 @@
             float: left;
             width: 550px;
             height: 240px;
-          }
-          .swiperRightPic {
-            float: left;
-            height: 240px;
-            width: 150px;
-            margin: 0 10px;
+            --swiper-navigation-size: 20px;
+            --swiper-pagination-color: #fff;
+
+            &:hover .swiper-button-next {
+              opacity: 1;
+            }
+
+            &:hover .swiper-button-prev {
+              opacity: 1;
+            }
+
+            .swiper-button-next, .swiper-button-prev {
+              opacity: 0;
+              background: rgba(0, 0, 0, 0.8);
+              font-size: 20px;
+              color: #fff;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              font-weight: bold;
+              transition: opacity 0.3s;
+            }
           }
         }
 
-        .bottomBanner {
-          width: 100%;
-
-          .leftPic, .middlePic {
-            float: left;
-            width: 270px;
-            height: 165px;
-            margin: 10px 10px 0 0;
-          }
-
-          .rightPic {
-            float: left;
-            width: 150px;
-            height: 165px;
-            margin: 10px 10px 0 0;
-          }
+        .swiperRightPic {
+          float: left;
+          height: 240px;
+          width: 150px;
+          margin: 0 10px;
         }
       }
+      .bottomBanner {
+        width: 100%;
 
+        .leftPic, .middlePic {
+          float: left;
+          width: 270px;
+          height: 165px;
+          margin: 10px 10px 0 0;
+        }
+
+        .rightPic {
+          float: left;
+          width: 150px;
+          height: 165px;
+          margin: 10px 10px 0 0;
+        }
+      }
       /*  右侧的信息*/
-
       .rightUserInfo {
         float: left;
         width: 230px;
@@ -504,4 +634,5 @@
       }
     }
   }
+
 </style>
