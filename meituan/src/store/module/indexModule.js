@@ -19,7 +19,9 @@ let actions = {
 };
 
 let  getters = {
-
+  my(state){
+    return state.categoryList || []
+  }
 };
 
 export default {

@@ -7,18 +7,16 @@
         <div class="title">
           <span>全部分类</span>
         </div>
-        <div class="navContent" >
+        <div class="navContent">
           <ul @click="toSearch">
             <li class="clearfix"
                 @mouseenter="moveIn(index)"
                 v-for="(category1,index) in categoryList"
-                :key="category1.leftPcHomeCategoryList[0].id">
+                :key="category1.leftPcHomeCategoryList[0].icon">
               <i class="iconfont"
                  :class="category1.leftPcHomeCategoryList[0].icon"
                  :style="{color:category1.leftPcHomeCategoryList[0].color}"></i>
-              <a href="javascript:;"
-                 :data-category1Name="category1.leftPcHomeCategoryList[0].name"
-                 :data-category1Id="category1.leftPcHomeCategoryList[0].id">
+              <a href="javascript:;">
                 {{category1.leftPcHomeCategoryList[0].name}}
               </a>
               <label>
@@ -32,25 +30,23 @@
               </label>
               <label class="rightArrow"></label>
               <div class="navDetail" :class="{active:isMoveIn}">
-                <div class="detailList" v-for="(title,index) in categoryDetail.leftPcHomeCategoryList"
-                     :key="title.id"
-                     v-if="index < rightPcHomeCategoryList.length">
-                  <div class="menuTitle clearfix">
-                    <span>{{title.name}}</span>
-                    <span>
-                      更多
-                      <i></i>
+                <dl v-for="(navItem,index) in category1.rightPcHomeCategoryList" :key="index">
+                  <dd class="clearfix"
+                      v-for="(item,index) in navItem"
+                      :key="item.id"
+                      :class="{firstChild:index===0}">
+                    <span :data-category2Name="item.name"
+                          :data-category2Id="item.id"
+                          :data-category1Name="category1.leftPcHomeCategoryList[0].name"
+                          :data-category1Id="category1.leftPcHomeCategoryList[0].id">
+                      {{item.name}}
                     </span>
-                  </div>
-                  <dl class="clearfix">
-                    <dd v-for="(shop) in rightPcHomeCategoryList[index]"
-                        :key="shop.id"
-                        :data-category2Name="shop.name"
-                        :data-category2Id="shop.id">
-                      {{shop.name}}
-                    </dd>
-                  </dl>
-                </div>
+                    <span v-if="index===0">
+                      更多
+                      <i class="arrow"></i>
+                    </span>
+                  </dd>
+                </dl>
               </div>
             </li>
           </ul>
@@ -119,42 +115,48 @@
         </div>
       </div>
     </div>
-<!--    猫眼电影-->
+    <!--    猫眼电影-->
     <CateMovies :hotMoviesList="hotMoviesList" :comingMoviesList="comingMoviesList"></CateMovies>
-<!--    推荐民宿-->
+    <!--    推荐民宿-->
     <RecommendHouse :recommendHouseCities="recommendHouseCities"
                     :recommendHouseList="recommendHouseList"></RecommendHouse>
-<!--    猜你喜欢-->
+    <!--    猜你喜欢-->
     <GuessLike :guessLikeList="guessLikeList"></GuessLike>
-<!--    美团导航-->
+    <!--    美团导航-->
     <IndexNav></IndexNav>
   </div>
 </template>
 <script>
-  import {mapState} from "vuex";
+  import {mapState, mapGetters} from "vuex";
   import Swiper from "swiper";
   import "swiper/css/swiper.min.css";
   import CateMovies from "@/pages/HomeIndex/CateMovies";
   import RecommendHouse from "@/pages/HomeIndex/RecommendHouse";
   import GuessLike from "@/pages/HomeIndex/GuessLike";
   import IndexNav from "@/pages/HomeIndex/IndexNav";
-  import {reqBannersList,reqHotMoviesList,reqComingMoviesList,reqRecommendHouseCities,reqRecommendHouseList,reqGuessLikeList} from "@/Api";
+  import {
+    reqBannersList,
+    reqHotMoviesList,
+    reqComingMoviesList,
+    reqRecommendHouseCities,
+    reqRecommendHouseList,
+    reqGuessLikeList
+  } from "@/Api";
 
   export default {
     name: 'Home',
     data() {
       return {
         isMoveIn: false,
-        categoryDetail: {},
-        bannersList:[],
-        hotMoviesList:[],
-        comingMoviesList:[],
-        recommendHouseCities:[],
-        recommendHouseList:[],
-        guessLikeList:[]
+        bannersList: [],
+        hotMoviesList: [],
+        comingMoviesList: [],
+        recommendHouseCities: [],
+        recommendHouseList: [],
+        guessLikeList: []
       }
     },
-    components:{
+    components: {
       CateMovies,
       RecommendHouse,
       GuessLike,
@@ -179,7 +181,6 @@
       //移入分类列表
       moveIn(index) {
         this.isMoveIn = true;
-        this.categoryDetail = this.categoryList[index];
       },
       //移出分类列表
       moveOut() {
@@ -190,72 +191,67 @@
         this.$store.dispatch("getCategoryList");
       },
       //获取轮播图数据
-      async getBannersList(){
+      async getBannersList() {
         let result = await reqBannersList();
         this.bannersList = result.data;
       },
       //热映电影
-      async getHotMoviesList(){
+      async getHotMoviesList() {
         let result = await reqHotMoviesList();
         this.hotMoviesList = result.data.hot;
       },
       //即将上映得电影
-      async getComingMoviesList(){
+      async getComingMoviesList() {
         let result = await reqComingMoviesList();
         this.comingMoviesList = result.data.coming;
       },
       //民宿城市
-      async getRecommendHouseCities(){
+      async getRecommendHouseCities() {
         let result = await reqRecommendHouseCities();
         this.recommendHouseCities = result.cityList;
       },
       //民宿信息
-      async getRecommendHouseList(){
+      async getRecommendHouseList() {
         let result = await reqRecommendHouseList();
         this.recommendHouseList = result.data;
       },
       //猜你喜欢
-      async getGuessLikeList(){
+      async getGuessLikeList() {
         let result = await reqGuessLikeList();
         this.guessLikeList = result;
       },
       //跳转搜索页
-      toSearch(event){
+      toSearch(event) {
         let target = event.target;
         let data = target.dataset;
-        let {category1name,category1id,category2name,category2id} = data;
-        let location = {
-          name:"Search"
-        }
-        if(category1name){
+        let {category1name, category1id, category2name, category2id} = data;
+        if (category1name) {
+          let location = {
+            name: "Search",
+            city:this.city
+          }
           location.category1Name = category1name;
           location.category1Id = category1id;
+          if (category2name) {
+            if (category1name !== category2name){
+              location.category2Name = category2name;
+              location.category2Id = category2id;
+            }
+          }
+          console.log(location);
         }
-        else if (category2name){
-          let category1Info = target.parentNode.parentNode.parentNode.parentNode.children[1].dataset;
-          location.category1Name = category1Info.category1name;
-          location.category1Id = category1Info.category1id;
-          location.category2Name = category2name;
-          location.category2Id = category2id;
-        }
-        console.log(location);
       }
     },
     computed: {
       ...mapState({
-        categoryList: state => state.indexModule.categoryList
-      }),
-      leftPcHomeCategoryList() {
-        return this.categoryDetail.leftPcHomeCategoryList || []
-      },
-      rightPcHomeCategoryList() {
-        return this.categoryDetail.rightPcHomeCategoryList || []
-      }
+        categoryList: state => state.indexModule.categoryList,
+        city:state=>state.headerModule.city
+      })
     },
-    watch:{
-      bannersList:{
-        handler(){
-          this.$nextTick(()=>{
+    watch: {
+      bannersList: {
+        handler() {
+          this.$nextTick(() => {
             //轮播图配置
             new Swiper(this.$refs.indexBanner, {//此出的class选择器可以换称ref选择器获取到对应的Swiper轮播
               autoplay: {
@@ -287,13 +283,16 @@
     height: 0;
     font-size: 0;
   }
+
   .container {
     width: 100%;
     /*轮播首屏*/
+
     .bannerContainer {
       width: 1190px;
       margin: 0 auto;
       /*二级分类列表*/
+
       .leftCategoryList {
         position: relative;
         float: left;
@@ -360,6 +359,11 @@
                 color: #222;
               }
 
+              &:hover > a {
+                font-weight: bold;
+                color: #222;
+              }
+
               &:hover .rightArrow {
                 border-color: #222;
               }
@@ -376,63 +380,63 @@
                 width: 400px;
                 height: 416px;
                 background: #fff;
-                padding: 26px 0 12px;
+                padding: 0px 0 12px;
                 z-index: 99;
 
-                .detailList {
-                  padding: 0 30px;
+                dl {
+                  padding: 0 20px 20px 20px;
 
-                  .menuTitle {
-                    padding-bottom: 32px;
-                    height: 22px;
-                    line-height: 22px;
-                    border-bottom: 1px solid #e5e5e5;
+                  dd {
+                    color: #999;
+                    font-size: 12px;
+                    /*margin-right: 15px;*/
+                    float: left;
+                    cursor: pointer;
+                    /*line-height: 20px;*/
+                    margin: 5px 8px;
 
-                    span:first-child {
-                      float: left;
-                      font-size: 16px;
-                      color: #222;
-                      font-weight: 500;
-                    }
-
-                    span:last-child {
-                      float: right;
-                      font-size: 12px;
-                      color: #999;
-                      position: relative;
-                      cursor: pointer;
-
-                      i {
-                        display: inline-block;
-                        width: 4px;
-                        height: 4px;
-                        background: transparent;
-                        border-bottom: 1px solid #999;
-                        border-right: 1px solid #999;
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%) rotate(-45deg);
-                        margin-left: 2px;
-                      }
+                    &:hover {
+                      color: #FE8C00;
                     }
                   }
 
-                  dl {
-                    padding-top: 10px;
-                    padding-bottom: 20px;
+                  .firstChild {
+                    display: block;
+                    font-size: 16px;
+                    color: #222;
+                    font-weight: 500;
+                    width: 100%;
+                    margin-top: 24px;
+                    height: 35px;
+                    line-height: 22px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #e5e5e5;
 
-                    dd {
-                      color: #999;
-                      font-size: 12px;
-                      /*margin-right: 15px;*/
+                    & > span:first-child {
                       float: left;
-                      cursor: pointer;
-                      /*line-height: 20px;*/
-                      margin: 5px 8px;
+                    }
 
-                      &:hover {
-                        color: #FE8C00;
+                    & > span:last-child {
+                      float: right;
+                      font-size: 12px;
+                      color: #999;
+                      font-weight: 400;
+                      margin-right: 6px;
+
+                      i {
+                        display: inline-block;
+                        width: 5px;
+                        height: 5px;
+                        border-bottom: 1px solid #999;
+                        border-right: 1px solid #999;
+                        background: transparent;
+                        transform: translateY(-1px) rotate(-45deg);
+                        vertical-align: middle;
                       }
+                    }
+
+                    &:hover {
+                      color: #222;
                     }
                   }
                 }
@@ -441,195 +445,200 @@
           }
         }
       }
-      /*  中间的banner*/
-      .middleBanner {
-        float: left;
-        margin: 10px 0 0 10px;
-        width: 720px;
-        height: 415px;
-        position: relative;
+    }
 
-        .bannerTopNav {
-          position: absolute;
-          top: -45px;
-          left: 20px;
+    /*  中间的banner*/
 
-          a {
-            font-weight: 700;
-            color: #222;
-            font-size: 16px;
-            margin: 0 20px;
+    .middleBanner {
+      float: left;
+      margin: 10px 0 0 10px;
+      width: 720px;
+      height: 415px;
+      position: relative;
 
-            &.waimai:hover {
-              color: #FBC700;
-            }
+      .bannerTopNav {
+        position: absolute;
+        top: -45px;
+        left: 20px;
 
-            &.movies:hover {
-              color: #ED1E24;
-            }
+        a {
+          font-weight: 700;
+          color: #222;
+          font-size: 16px;
+          margin: 0 20px;
 
-            &.hotel:hover {
-              color: #F04D4E;
-            }
-
-            &.house:hover {
-              color: #FDC411;
-            }
-
-            &.saler:hover {
-              color: #FE8C00;
-            }
-
-            &.heart:hover {
-              color: #F24D4E;
-            }
+          &.waimai:hover {
+            color: #FBC700;
           }
-        }
 
-        .topBanner {
-          width: 100%;
-
-          .swiper-container {
-            float: left;
-            width: 550px;
-            height: 240px;
-            --swiper-navigation-size: 20px;
-            --swiper-pagination-color: #fff;
-
-            &:hover .swiper-button-next {
-              opacity: 1;
-            }
-
-            &:hover .swiper-button-prev {
-              opacity: 1;
-            }
-
-            .swiper-button-next, .swiper-button-prev {
-              opacity: 0;
-              background: rgba(0, 0, 0, 0.8);
-              font-size: 20px;
-              color: #fff;
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              font-weight: bold;
-              transition: opacity 0.3s;
-            }
+          &.movies:hover {
+            color: #ED1E24;
           }
-        }
 
-        .swiperRightPic {
-          float: left;
-          height: 240px;
-          width: 150px;
-          margin: 0 10px;
+          &.hotel:hover {
+            color: #F04D4E;
+          }
+
+          &.house:hover {
+            color: #FDC411;
+          }
+
+          &.saler:hover {
+            color: #FE8C00;
+          }
+
+          &.heart:hover {
+            color: #F24D4E;
+          }
         }
       }
-      .bottomBanner {
+
+      .topBanner {
         width: 100%;
 
-        .leftPic, .middlePic {
+        .swiper-container {
           float: left;
-          width: 270px;
-          height: 165px;
-          margin: 10px 10px 0 0;
-        }
+          width: 550px;
+          height: 240px;
+          --swiper-navigation-size: 20px;
+          --swiper-pagination-color: #fff;
 
-        .rightPic {
-          float: left;
-          width: 150px;
-          height: 165px;
-          margin: 10px 10px 0 0;
+          &:hover .swiper-button-next {
+            opacity: 1;
+          }
+
+          &:hover .swiper-button-prev {
+            opacity: 1;
+          }
+
+          .swiper-button-next, .swiper-button-prev {
+            opacity: 0;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 20px;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
+            transition: opacity 0.3s;
+          }
         }
       }
-      /*  右侧的信息*/
-      .rightUserInfo {
+
+      .swiperRightPic {
         float: left;
+        height: 240px;
+        width: 150px;
+        margin: 0 10px;
+      }
+    }
+
+    .bottomBanner {
+      width: 100%;
+
+      .leftPic, .middlePic {
+        float: left;
+        width: 270px;
+        height: 165px;
+        margin: 10px 10px 0 0;
+      }
+
+      .rightPic {
+        float: left;
+        width: 150px;
+        height: 165px;
+        margin: 10px 10px 0 0;
+      }
+    }
+
+    /*  右侧的信息*/
+
+    .rightUserInfo {
+      float: left;
+      width: 230px;
+      height: 415px;
+      margin-top: 10px;
+
+      .userInfo {
         width: 230px;
-        height: 415px;
-        margin-top: 10px;
+        height: 240px;
+        border: 1px solid #e5e5e5;
+        box-sizing: border-box;
 
-        .userInfo {
-          width: 230px;
-          height: 240px;
-          border: 1px solid #e5e5e5;
-          box-sizing: border-box;
+        .infoDetail {
+          padding-top: 30px;
+          text-align: center;
 
-          .infoDetail {
-            padding-top: 30px;
+          .avatar {
+            width: 55px;
+            margin: 0 auto 4px auto;
+
+            img {
+              width: 47px;
+              height: 47px;
+              border-radius: 50%;
+              border: 4px solid #e5e5e5;
+              box-sizing: content-box;
+            }
+          }
+
+          p {
+            font-size: 16px;
+            color: #222;
+          }
+
+          a {
+            display: block;
+            font-size: 14px;
+            color: #333333;
+            width: 118px;
+            margin: 10px auto 15px auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 40px;
+            line-height: 38px;
             text-align: center;
+            background: #fff;
+            transition: background 0.5s;
 
-            .avatar {
-              width: 55px;
-              margin: 0 auto 4px auto;
-
-              img {
-                width: 47px;
-                height: 47px;
-                border-radius: 50%;
-                border: 4px solid #e5e5e5;
-                box-sizing: content-box;
-              }
-            }
-
-            p {
-              font-size: 16px;
-              color: #222;
-            }
-
-            a {
-              display: block;
-              font-size: 14px;
-              color: #333333;
-              width: 118px;
-              margin: 10px auto 15px auto;
-              border: 1px solid #e5e5e5;
-              border-radius: 40px;
-              line-height: 38px;
-              text-align: center;
-              background: #fff;
-              transition: background 0.5s;
-
-              &:hover {
-                background: #F7F7F7;
-              }
+            &:hover {
+              background: #F7F7F7;
             }
           }
         }
+      }
 
-        .mtCode {
-          width: 230px;
-          height: 167px;
-          border: 1px solid #e5e5e5;
-          margin-top: 10px;
-          text-align: center;
-          box-sizing: border-box;
+      .mtCode {
+        width: 230px;
+        height: 167px;
+        border: 1px solid #e5e5e5;
+        margin-top: 10px;
+        text-align: center;
+        box-sizing: border-box;
 
-          .qrCode {
+        .qrCode {
+          width: 95px;
+          margin: 10px auto 0 auto;
+
+          img {
             width: 95px;
-            margin: 10px auto 0 auto;
-
-            img {
-              width: 95px;
-              height: 95px;
-            }
+            height: 95px;
           }
+        }
 
-          p:first-child {
-            font-size: 16px;
-            font-weight: 500;
-          }
+        p:first-child {
+          font-size: 16px;
+          font-weight: 500;
+        }
 
-          p:last-child span:first-child {
-            font-size: 12px;
-            color: #EC5330;
-            margin-right: 5px;
-          }
+        p:last-child span:first-child {
+          font-size: 12px;
+          color: #EC5330;
+          margin-right: 5px;
+        }
 
-          p:last-child span:last-child {
-            font-size: 12px;
-            color: #3f3f3f;
-          }
+        p:last-child span:last-child {
+          font-size: 12px;
+          color: #3f3f3f;
         }
       }
     }
