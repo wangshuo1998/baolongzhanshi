@@ -2,7 +2,7 @@
   <!-- 商品列表容器 -->
   <div class="detailContainer">
     <!-- 面包屑导航 -->
-    <Breadcrumbs></Breadcrumbs>
+    <Breadcrumbs :breadcrumbsData="breadcrumbsData"></Breadcrumbs>
     <!-- 分类区 -->
     <div class="left">
       <div class="filter">
@@ -156,6 +156,7 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 // 引入商品分类筛选组件
 import ShopFilterCondition from '../ShopFilterCondition'
 import { mapState } from 'vuex'
+import Vue from 'vue'
 export default {
   name: 'ShopList',
   components: {
@@ -168,6 +169,9 @@ export default {
       pagerCount: 5,
       sortIndex: 0,
       conditionFlterList: [],
+      breadcrumbsData: {},
+      routeQuery: {},
+      isQuery: false,
     }
   },
   methods: {
@@ -223,10 +227,14 @@ export default {
       const { conditionFlterList } = this
       // 绑定分类数据
       this.$set(conditionFlterList, data.id, data.conditionname)
+      // 数据更新
+      this.initBreadcrumbsData()
     },
     // 清空筛选数据
     clearAllCondition() {
       this.conditionFlterList = []
+      // 数据更新
+      this.initBreadcrumbsData()
     },
     // 删除点击的分类数据
     removeCondition(name) {
@@ -238,7 +246,10 @@ export default {
         return undefined
       })
       this.conditionFlterList = newCondition
+      // 数据更新
+      this.initBreadcrumbsData()
     },
+    // 跳转店铺详情路由
     shopListHandler(e) {
       const target = e.target
       const { shopid: shopId } = target.dataset
@@ -250,12 +261,50 @@ export default {
       }
       this.$router.push(location)
     },
+    // 获取 query 信息
+    getRouteQuery() {
+      let routeQuery = this.$route.query
+      this.routeQuery = routeQuery
+    },
+    // 整理面包屑导航参数
+    initBreadcrumbsData() {
+      // 初始化面包屑导航数据
+      let breadcrumbsData = {}
+      // 获取当前路由上的数据
+      const { city, category1Name, category2Name } = this.routeQuery
+      // {city:'北京',info: ['美团','美食','蛋糕甜点','方庄/蒲黄榆']}
+      //  根据数据格式筛选数据
+      // 设置点击二级列表进来的分类数据
+
+      if (this.isQuery) {
+        // 如果没有获取过category2Name 数据中的category2Name 则设置在 筛选列表中
+        this.$set(this.conditionFlterList, 0, category2Name)
+        this.isQuery = false
+      }
+      // 初始化info数据
+      let conditionFlterList = [...this.conditionFlterList]
+      conditionFlterList[2] = undefined
+      console.log(conditionFlterList)
+      let info = ['美团', category1Name, ...conditionFlterList]
+      // 过滤数据中的无用数据
+      info = info.filter((item) => {
+        if (item) return item
+      })
+      // 设置面包屑导航数据
+      breadcrumbsData = { city, info }
+      console.log(breadcrumbsData)
+      // 设置动态面包屑导航数据
+      this.$set(this.$data, 'breadcrumbsData', breadcrumbsData)
+      // this.BreadcrumbsData = BreadcrumbsData
+    },
   },
   mounted() {
     // DOM加载完毕获取数据
     this.getFiltersDatas()
     this.getPoiList()
     this.getGuessInfo()
+    this.getRouteQuery()
+    this.initBreadcrumbsData()
   },
   computed: {
     // 从vuex 中把商品筛选数据拿出来
@@ -264,6 +313,7 @@ export default {
       poiList: (state) => state.ShopList.poiList.poiInfos,
       guessInfo: (state) => state.ShopList.guessInfo,
     }),
+    // 过滤筛选属性
     conditionList() {
       return this.conditionFlterList.filter((item) => {
         if (item) return item

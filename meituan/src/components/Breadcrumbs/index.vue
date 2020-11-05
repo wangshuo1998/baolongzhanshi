@@ -1,17 +1,8 @@
 <template>
   <div class="detailTopNavContainer">
     <div class="breadcrumbs">
-      <span>
-        <a href="javascript:;">北京美团</a>
-      </span>
-      <span>
-        <a href="javascript:;">北京美食</a>
-      </span>
-      <span>
-        <a href="javascript:;">北京美食</a>
-      </span>
-      <span>
-        <a href="javascript:;">北京美食</a>
+      <span v-for="(item, index) in breadcrumbsData.info" :key="index">
+        <a href="javascript:;">{{ breadcrumbsData.city + item }}</a>
       </span>
     </div>
   </div>
@@ -20,6 +11,15 @@
 <script>
 export default {
   name: 'DetailTopNav',
+  props: {
+    breadcrumbsData: {
+      type: Object,
+      default: {
+        city: '北京',
+        info: ['美团'],
+      },
+    },
+  },
 }
 </script>
 

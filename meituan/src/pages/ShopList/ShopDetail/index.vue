@@ -4,6 +4,7 @@
     <!-- 店铺详情内容部分 -->
     <div class="content">
       <!-- 面包屑导航 -->
+      <!--  :breadcrumbsData="crumbNav" -->
       <Breadcrumbs></Breadcrumbs>
       <!-- 详情部分 -->
       <div class="details">
@@ -1136,6 +1137,7 @@ export default {
     this.getGuessInfo()
     // 调用 获取列表信息函数
     this.getShopDetailData()
+    // console.log(this.crumbNav)
   },
   computed: {
     // 从vuex 中把商品筛选数据拿出来
@@ -1145,6 +1147,9 @@ export default {
     }),
     baseInfo() {
       return this.shopDetailData.baseInfo || {}
+    },
+    crumbNav() {
+      return this.shopDetailData.crumbNav || []
     },
   },
 }
