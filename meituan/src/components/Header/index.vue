@@ -9,7 +9,7 @@
           <div class="leftHeaderBar">
             <span class="iconfont iconweizhi location"></span>
             <span>{{city}}</span>
-            <button class="changeCity">切换城市</button>
+            <button class="changeCity" @click="$router.push('/changecity')">切换城市</button>
             <div class="cityInfo">
               <span>[</span>
               <a href="javascript:;">门头沟区</a>
@@ -117,9 +117,9 @@
         </div>
       </div>
       <!--        logo+搜索框-->
-      <div class="logoAndSearch clearfix">
+      <div class="logoAndSearch clearfix" :class="{city:$route.path==='/changecity'}">
         <h1 class="logo">
-          <img src="../../assets/logo.png" alt="美团logo">
+          <img @click="$router.push('/')" src="../../assets/logo.png" alt="美团logo">
         </h1>
         <div class="searchContainer">
           <div class="searchBar">
@@ -473,7 +473,9 @@
       margin: 0 auto;
       padding-bottom: 35px;
       position: relative;
-
+      &.city{
+        padding-bottom: 5px;
+      }
       .logo {
         float: left;
         padding-top: 28px;
