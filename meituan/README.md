@@ -1,24 +1,14 @@
-# meituan
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#负责首页和网站导航=>酒店旅游
+##day01(首页)
+####1.搭建五个主页所需的数据接口
+####2.首页的头部header静态页面完成,添加了1个二级菜单(还有三个)
+##day02
+####1.头部静态完成
+####2.底部静态完成
+####3.首页二级分类列表动态数据展示完成
+####4.首页banner区域页面完成(banner效果有待完善)
+##day03
+####1.首页搭建完成,动态数据展示完成
+####2.图片懒加载
+####3.二级列表跳转搜索收集对象
+####4.二级列表发现bug(待解决)

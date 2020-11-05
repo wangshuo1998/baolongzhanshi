@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Vuelazyload from "vue-lazyload";
+import '@/assets/css/font.css'
+Vue.use(Vuelazyload,{
+  loading:require("@/assets/lazy.png")
+})
 import 'element-ui/lib/theme-chalk/index.css';
 // 引入element-ui 全部引入 项目完毕整理
 import {
@@ -169,7 +174,7 @@ Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
 
-// 测试API 
+// 测试API
 import './Api'
 
 Vue.config.productionTip = false
