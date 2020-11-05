@@ -3,7 +3,9 @@ let state = {
 };
 
 let mutations = {
-
+  changeIndexCityMutation(state,data){
+    state.city = data;
+  }
 };
 
 let actions = {
