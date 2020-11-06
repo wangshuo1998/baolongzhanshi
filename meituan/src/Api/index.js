@@ -50,6 +50,20 @@ export const reqGuessLikeList = () => {
     method: "Get"
   })
 }
+//获取更改城市中下方的城市列表数据
+export const reqCitiesList = ()=>{
+  return Ajax({
+    url:"/cityList",
+    method:"Get"
+  })
+}
+//获取更改城市中对应省市的数据
+export const reqProvinceCity = ()=>{
+  return Ajax({
+    url:"/provincecity",
+    method:"Get"
+  })
+}
 // 接口格式  每个接口必须注释 注释格式为
 
 /**
