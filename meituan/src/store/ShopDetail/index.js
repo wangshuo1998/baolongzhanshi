@@ -1,14 +1,20 @@
 import {
   // 获取店铺详细信息
-  reqShopDetailData
+  reqShopDetailData,
+  reqMerchantComment
 } from '@/Api'
 const state = {
-  shopDetailData: {}
+  shopDetailData: {},
+  merchantComment: {}
 }
 const mutations = {
   // 修改店铺详细信息
   REVISESHOPDETAILDATA(state, shopDetailData) {
     state.shopDetailData = shopDetailData
+  },
+  // 修改商家评论信息
+  REVISEMERCHANTCOMMENT(state, merchantComment) {
+    state.merchantComment = merchantComment
   }
 }
 const actions = {
@@ -18,6 +24,16 @@ const actions = {
   }, shopId) {
     const result = await reqShopDetailData(shopId)
     commit('REVISESHOPDETAILDATA', result.data)
+  },
+  // 分发商家评论信息
+  async getMerchantComment({
+    commit
+  }, {
+    shopId,
+    isSea
+  }) {
+    const result = await reqMerchantComment(shopId, isSea)
+    commit('REVISEMERCHANTCOMMENT', result.data)
   }
 }
 const getters = {}

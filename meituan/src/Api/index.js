@@ -124,4 +124,23 @@ export const reqShopDetailData = (shopId = {}) => {
 //   shopId: '159279615'
 // }).then(v => {
 //   console.log(v);
-// })
+// }
+
+
+
+
+// http://www.wangshuo1998.cn:7300/mock/5f9fc77b5739e560520990e0/api/getMerchantComment/:shopId?
+/**
+ * @description: 获取商家评论信息
+ * @param {*} shopId 为商家店铺ID
+ * @return {*} {}
+ */
+export const reqMerchantComment = (shopId, isSea) => {
+  return Ajax({
+    url: `/getMerchantComment/${shopId}`,
+    method: 'GET',
+    params: {
+      isSea
+    }
+  });
+}

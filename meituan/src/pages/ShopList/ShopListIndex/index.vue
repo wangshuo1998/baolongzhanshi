@@ -171,7 +171,7 @@ export default {
       conditionFlterList: [],
       breadcrumbsData: {},
       routeQuery: {},
-      isQuery: false,
+      isQuery: true,
     }
   },
   methods: {
@@ -284,7 +284,7 @@ export default {
       // 初始化info数据
       let conditionFlterList = [...this.conditionFlterList]
       conditionFlterList[2] = undefined
-      console.log(conditionFlterList)
+      // console.log(conditionFlterList)
       let info = ['美团', category1Name, ...conditionFlterList]
       // 过滤数据中的无用数据
       info = info.filter((item) => {
@@ -292,7 +292,7 @@ export default {
       })
       // 设置面包屑导航数据
       breadcrumbsData = { city, info }
-      console.log(breadcrumbsData)
+      // console.log(breadcrumbsData)
       // 设置动态面包屑导航数据
       this.$set(this.$data, 'breadcrumbsData', breadcrumbsData)
       // this.BreadcrumbsData = BreadcrumbsData

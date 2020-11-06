@@ -5,7 +5,7 @@
     <div class="content">
       <!-- 面包屑导航 -->
       <!--  :breadcrumbsData="crumbNav" -->
-      <Breadcrumbs></Breadcrumbs>
+      <Breadcrumbs :breadcrumbsData="crumbNav"></Breadcrumbs>
       <!-- 详情部分 -->
       <div class="details">
         <!-- 左部 -->
@@ -83,41 +83,11 @@
         <!-- 右部 -->
         <div class="d-right">
           <div class="big-img">
-            <img
-              src="https://img.meituan.net/msmerchant/a15b1e24ed8b36ebefde1c925ed6c875117239.jpg@380w_214h_1e_1c"
-              alt=""
-            />
+            <img :src="photos.frontImgUrl" alt="" />
           </div>
           <ul class="img-list">
-            <li>
-              <img
-                src="https://img.meituan.net/msmerchant/2ef5e301a08649d840ab12b8ca8609ce3863042.jpg@92w_50h_1e_1c"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://img.meituan.net/msmerchant/2ef5e301a08649d840ab12b8ca8609ce3863042.jpg@92w_50h_1e_1c"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://img.meituan.net/msmerchant/2ef5e301a08649d840ab12b8ca8609ce3863042.jpg@92w_50h_1e_1c"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://img.meituan.net/msmerchant/2ef5e301a08649d840ab12b8ca8609ce3863042.jpg@92w_50h_1e_1c"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://img.meituan.net/msmerchant/2ef5e301a08649d840ab12b8ca8609ce3863042.jpg@92w_50h_1e_1c"
-                alt=""
-              />
+            <li v-for="(item, index) in photos.albumImgUrls" :key="index">
+              <img :src="item" alt="" />
             </li>
           </ul>
         </div>
@@ -139,113 +109,20 @@
             <h4>推荐菜</h4>
             <div class="recommend-content">
               <ul>
-                <li>
+                <li v-for="(item, index) in recommendedPic" :key="item.id">
                   <div class="pic">
                     <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
+                      <img :src="item.frontImgUrl" alt="" />
                       <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="pic">
-                    <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
-                      <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="pic">
-                    <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
-                      <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="pic">
-                    <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
-                      <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="pic">
-                    <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
-                      <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="pic">
-                    <div class="img-box">
-                      <img
-                        src="https://p0.meituan.net/bbia/e5a2bda2c4bd13e3fae23e16a8a468d4447156.jpg@130w_130h_1e_1c"
-                        alt=""
-                      />
-                      <div class="desc">
-                        <span>极品羊肉</span>
-                        <span>￥32</span>
+                        <span>{{ item.name }}</span>
+                        <span>￥{{ item.price }}</span>
                       </div>
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="list">
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
-                <span>火锅</span>
-                <span>麻酱调料</span>
-                <span>炸灌肠</span>
+                <span v-for="(item, index) in recommendedText" :key="item.id">{{ item.name }}</span>
               </div>
             </div>
           </div>
@@ -253,81 +130,39 @@
           <div class="comment">
             <!-- 网友点评头部->多少条 -->
             <div class="total">
-              <span>9880条网友点评</span>
+              <span>{{ merchantComment.total }}条网友点评</span>
               <div class="sort">
-                <span class="active">质量排序</span>
-                <span>时间排序</span>
+                <span :class="{ active: sortCurrentClass === 0 }" @click="commentSort(0)">质量排序</span>
+                <span :class="{ active: sortCurrentClass === 1 }" @click="commentSort(1)">时间排序</span>
               </div>
             </div>
             <!-- 网友点评内容区 -->
             <div class="comment-con">
               <!-- 网友点评标签区 -->
               <ul class="tags">
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
-                </li>
-                <li>
-                  <span>回头客</span>
-                  <i>(666)</i>
+                <li v-for="(item, index) in tags" :key="item.tag">
+                  <span>{{ item.tag }}</span>
+                  <i>({{ item.count }})</i>
                 </li>
               </ul>
               <!-- 网友点评查看图片评论 -->
-              <div class="sea">
-                <i class="iconfont iconweixuanzhong"></i>
+              <div class="sea" @click="seaImgComment">
+                <!--  -->
+                <i class="iconfont" :class="{ iconweixuanzhong: !isSea, iconyixuanzhong: isSea }"></i>
                 <span>只看有图片的评论</span>
               </div>
               <!-- 用户评论内容区列表 -->
               <ul class="user-comment-list">
-                <li>
+                <li v-for="(item, index) in comments" :key="index">
                   <!-- 用户头像 -->
                   <div class="pic">
                     <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
+                      <img :src="item.userUrl || 'https://www.dpfile.com/ugc/user/anonymous.png'" alt="" />
                     </div>
                   </div>
                   <!-- 评论信息 -->
                   <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
+                    <p class="user-name">{{ item.userName }}</p>
                     <!-- 评分 -->
                     <div class="d-score">
                       <ul class="default-star">
@@ -347,7 +182,13 @@
                           <i class="iconfont iconxingxing1"></i>
                         </li>
                       </ul>
-                      <ul class="avg-star">
+                      <!-- 算出星星的数量 -->
+                      <!-- 首先先算出一颗星星多少,数据是一颗星星为10分 -->
+                      <!-- 总宽度/5等于一颗星星多宽 -->
+                      <!-- 传入的数据分数/10 因为是5课星星 -->
+                      <!-- 然后根据传入的分数算出星星的宽度 -->
+                      <!-- 传入的分数 / 10 * 一颗星星的宽度 -->
+                      <ul class="avg-star" :style="{ width: item.star * (80 / 5 / 10) + 'px' }">
                         <li>
                           <i class="iconfont iconxingxing1"></i>
                         </li>
@@ -365,540 +206,16 @@
                         </li>
                       </ul>
                     </div>
-                    <span class="comment-time">2020年11月2日</span>
+                    <span class="comment-time">
+                      {{ item.commentTime | moment }}
+                    </span>
                     <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
+                      {{ item.comment }}
                     </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="great">
-                      <i class="iconfont iconzan"></i>
-                      <span>赞</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- 用户头像 -->
-                  <div class="pic">
-                    <div class="avatar">
-                      <img
-                        src="https://img.meituan.net/avatar/250725259f23672a034014a370ee92af14972.jpg@60w_60h_1e_1c"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <!-- 评论信息 -->
-                  <div class="info">
-                    <p class="user-name">巴拉巴拉Barbara</p>
-                    <!-- 评分 -->
-                    <div class="d-score">
-                      <ul class="default-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                      <ul class="avg-star">
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                        <li>
-                          <i class="iconfont iconxingxing1"></i>
-                        </li>
-                      </ul>
-                    </div>
-                    <span class="comment-time">2020年11月2日</span>
-                    <p class="user-desc">
-                      菜量很大 三个人吃了双人餐又点了两个菜 吃的饱饱的 服务态度也非常好 点菜时点多了
-                      阿姨还跟我们说不用太多 不够再加 点名表扬小油条和鱼豆腐 非常好吃 麻酱味道也很不错 菜很新鲜
-                      肉质也不错 环境也很高大上 下次要尝一尝羊上脑
-                    </p>
-                    <span class="reply">商家回复：亲，感谢您的惠顾，祝您生活愉快、天天开心！</span>
-                    <div class="user-pic-box">
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/88555f3f0ccd93a7ca77f6ff6b481a5c315542.jpg" alt="" />
-                      </div>
-                      <div class="user-pic">
-                        <img src="https://p0.meituan.net/shaitu/b2c0ce415ec541e69620deb56f8c7e6b3002010.jpg" alt="" />
+                    <span v-if="item.merchantComment" class="reply">{{ item.merchantComment }}</span>
+                    <div class="user-pic-box" v-if="item.picUrls.length > 0">
+                      <div class="user-pic" v-for="(pic, index) in item.picUrls" :key="pic.id">
+                        <img :src="pic.url" alt="" />
                       </div>
                     </div>
                     <div class="great">
@@ -1099,6 +416,9 @@
 </template>
 
 <script>
+// 引入时间初始化工具
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { mapState } from 'vuex'
 export default {
@@ -1111,7 +431,20 @@ export default {
       currentPage: 4,
       pagerCount: 5,
       sortIndex: 0,
+      shopId: '',
+      sortCurrentClass: 0,
+      commentsList: [],
+      isSea: false,
     }
+  },
+  // 管道函数 格式化时间
+  filters: {
+    moment: function(time) {
+      if (!time) {
+        return moment(Date.now()).format('LL')
+      }
+      return moment(time * 1).format('LL')
+    },
   },
   methods: {
     // 每页 ${val} 条
@@ -1129,7 +462,32 @@ export default {
     // 发送请求店铺获取数据
     getShopDetailData() {
       const { shopId } = this.$route.params
+      this.shopId = shopId
       this.$store.dispatch('getShopDetailData', { shopId })
+    },
+    // 获取店铺评论信息数据
+    getMerchantComment() {
+      let { shopId, isSea } = this
+      isSea = isSea ? '1' : '0'
+      this.$store.dispatch('getMerchantComment', { shopId, isSea })
+    },
+    // 评论排序
+    commentSort(sortCurrentClass) {
+      this.sortCurrentClass = sortCurrentClass
+      if (sortCurrentClass) {
+        this.comments.sort((a, b) => {
+          return a.commentTime - b.commentTime
+        })
+      } else {
+        // 调用获取参数评论信息函数
+        this.getMerchantComment()
+      }
+    },
+    // 查看只有图片的评论
+    seaImgComment() {
+      this.isSea = !this.isSea
+      // 调用获取参数评论信息函数
+      this.getMerchantComment()
     },
   },
   mounted() {
@@ -1137,19 +495,51 @@ export default {
     this.getGuessInfo()
     // 调用 获取列表信息函数
     this.getShopDetailData()
-    // console.log(this.crumbNav)
+    // 调用获取参数评论信息函数
+    this.getMerchantComment()
   },
   computed: {
     // 从vuex 中把商品筛选数据拿出来
     ...mapState({
       guessInfo: (state) => state.ShopList.guessInfo,
       shopDetailData: (state) => state.ShopDetail.shopDetailData,
+      merchantComment: (state) => state.ShopDetail.merchantComment,
     }),
+    // 取出店铺基础信息
     baseInfo() {
       return this.shopDetailData.baseInfo || {}
     },
+    // 取出导航信息
     crumbNav() {
-      return this.shopDetailData.crumbNav || []
+      return this.shopDetailData.crumbNav || {}
+    },
+    // 取出店铺图片信息
+    photos() {
+      return this.shopDetailData.photos || {}
+    },
+    // 取出推荐菜信息
+    recommended() {
+      return this.shopDetailData.recommended || []
+    },
+    // 取出推荐菜信息中带有图片信息的
+    recommendedPic() {
+      return this.recommended.filter((item) => {
+        if (item.frontImgUrl) return item
+      })
+    },
+    // 取出推荐菜信息中没有图片信息的
+    recommendedText() {
+      return this.recommended.filter((item) => {
+        if (!item.frontImgUrl) return item
+      })
+    },
+    // 获取用户评论信息
+    comments() {
+      return this.merchantComment.comments || []
+    },
+    // 获取店铺评论标签
+    tags() {
+      return this.merchantComment.tags || []
     },
   },
 }
@@ -1204,9 +594,9 @@ export default {
             width: 70%;
             display: flex;
             font-size: 14px;
-            height: 14px;
-            line-height: 14px;
-            margin: 6px 0 17px;
+            height: 16px;
+            line-height: 16px;
+            margin: 5px 0 15px;
             .default-star,
             .avg-star {
               display: flex;
@@ -1216,6 +606,8 @@ export default {
             }
             .avg-star {
               position: absolute;
+              left: 0;
+              top: 0;
               color: #f90;
               width: 70px;
               overflow: hidden;
@@ -1459,11 +851,12 @@ export default {
             }
             // 查看网友评论
             .sea {
+              cursor: pointer;
               margin-top: 22px;
               margin-left: 6px;
               font-size: 14px;
               line-height: 20px;
-              .iconweixuanzhong {
+              .iconfont {
                 margin-right: 5px;
               }
             }
