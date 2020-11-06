@@ -133,21 +133,21 @@
         <div class="detail clearfix">
           <div>
             <i class="iconfont iconicon-"></i>
-            <div class="">
+            <div class="intro">
               整套
               <p>45m²</p>
             </div>
           </div>
           <div>
             <i class="iconfont iconweishengjian"></i>
-            <div>
+            <div class="intro">
               1间卧室
               <p>0厅1厨1卫</p>
             </div>
           </div>
           <div>
             <i class="iconfont iconchuang"></i>
-            <div>
+            <div class="intro">
               宜住2人
               <div>
                 <span>1张双人床</span>
@@ -220,7 +220,75 @@
             评价
             <span>REVIEWS</span>
           </div>
-          <div class="reviewsContent"></div>
+          <div class="reviewsContent">
+            <div class="score">
+              <div class="left">
+                <div class="left1">
+                  <div>4.9</div>
+                  <p>共135条</p>
+                </div>
+                <div class="left2">
+                  <p>超赞</p>
+                  <button class="stars">
+                    <i class="stared"></i>
+                    <i class="unstared"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="right">
+                <div class="grade">
+                  <div class="num">4.9</div>
+                  <p>描述</p>
+                </div>
+                <div class="grade">
+                  <div class="num">4.8</div>
+                  <p>沟通</p>
+                </div>
+                <div class="grade">
+                  <div class="num">4.7</div>
+                  <p>卫生</p>
+                </div>
+                <div class="grade">
+                  <div class="num">4.8</div>
+                  <p>位置</p>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <img class="avatar" src="./images/avatar.jpg" />
+              <div class="details">
+                <div class="nickName">叶**0</div>
+                <div class="time">
+                  <button class="stars">
+                    <i class="stared"></i>
+                    <i class="unstared"></i>
+                  </button>
+                  <span>2019年10月发布</span>
+                </div>
+                <div class="label">
+                  <span class="blue">位置赞</span>
+                  <span class="blue">设施丰富</span>
+                  <span class="blue">性价比超高</span>
+                  <span class="blue">希望再来</span>
+                </div>
+                <div class="desc">
+                  风景秀丽、设施完善、装修豪华、是朋友、家人、公司聚会的佳地，建议业主在餐厅和客厅加上电源插座就更好了
+                </div>
+                <div class="commentPic">
+                  <img class="pic" src="./images/commentPic1.jpg" />
+                  <img class="pic" src="./images/commentPic2.jpg" />
+                  <img class="pic" src="./images/commentPic3.jpg" />
+                </div>
+                <div class="replay">
+                  房东回复：谢谢小姐姐对我们的别墅的肯定和支持以及十分有用的建议，我们会不断提高和完善设置设备，欢迎小姐姐下次再来喔😊
+                </div>
+              </div>
+            </div>
+            <div class="unfold">
+              展开更多真实评价
+              <i class="iconfont iconjiantou-copy-copy-copy"></i>
+            </div>
+          </div>
         </div>
         <!-- 设施服务 -->
         <div class="amenities">
@@ -430,6 +498,103 @@
           <div class="title">
             预定须知
             <span>NOTICE</span>
+          </div>
+          <div class="noticeContainer">
+            <div class="noticeForm">
+              <div class="left">退款权益</div>
+              <div class="content">
+                <div class="info">
+                  <span>极速退款</span>
+                  15分钟内免费取消
+                </div>
+                房东已为您提供预定成功后15分钟内免费取消权益。（该权益不受房源退订规则限制）
+              </div>
+            </div>
+            <div class="noticeForm">
+              <div class="left">退订规则</div>
+              <div class="content">
+                <div class="babel">
+                  <span>宽松</span>
+                  入住前1天12:00前退订，可获100%退款。之后退订不退款
+                </div>
+                <div class="time">
+                  <div class="success">
+                    <p>预定成功</p>
+                    <span>付款当天</span>
+                  </div>
+                  <div class="before">
+                    <p>入住前1天</p>
+                    <span>12:00前</span>
+                  </div>
+                  <div class="before">
+                    <p>入住当天</p>
+                    <span>14:00前</span>
+                  </div>
+                  <div class="before">
+                    <p>离店</p>
+                    <span>12:00后</span>
+                  </div>
+                </div>
+                <div class="percent">
+                  <div class="allReturn">
+                    <p>100%</p>
+                    <p>取消时全退款</p>
+                  </div>
+                  <div class="noReturn">
+                    <p>0%</p>
+                    <p>取消时不退款</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="noticeForm">
+              <div class="left">入离时间</div>
+              <div class="content">
+                14:00之后可入住（若晚于24:00请联系房东确认)，12:00之前需退房
+              </div>
+            </div>
+            <div class="noticeForm">
+              <div class="left">预定时长</div>
+              <div class="content">
+                随时可预订,最少预订1天, 最多预订天数不限
+              </div>
+            </div>
+            <div class="noticeForm">
+              <div class="left">房东要求</div>
+              <div class="content clearfix">
+                <div class="noticeItem">
+                  <i class="iconfont iconyunxu"></i>
+                  适合婴幼儿(2岁以下)
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont iconyunxu"></i>
+                  允许聚会
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont iconyunxu"></i>
+                  适合老人(60岁以上)
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont iconyunxu"></i>
+                  适合儿童(2-12岁)
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont iconyunxu"></i>
+                  允许抽烟
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont icondisable"></i>
+                  不允许做饭
+                </div>
+                <div class="noticeItem">
+                  <i class="iconfont icondisable"></i>
+                  不允许携带宠物
+                </div>
+                <div class="hint">
+                  温馨提示：未带身份证、未成年人、维吾尔族、和外宾本店没有权限，无法办理入住，敬请谅解！
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- 附近同类好房 -->
@@ -650,9 +815,7 @@
           </ul>
         </div>
         <div class="codePic2">
-          <div class="logo1">
-            <!-- <img src="./images/logo1.png" alt=""> -->
-          </div>
+          <div class="logo1"></div>
           <p>下载美团民宿APP</p>
         </div>
       </div>
@@ -878,11 +1041,33 @@ export default {
       background: #fff;
       padding: 20px 30px;
       margin-bottom: 15px;
-      // line-height: 100px;
       & > div {
         float: left;
-        // display: flex;
         margin: 0 30px;
+        i {
+          margin-right: 8px;
+          font-size: 25px;
+          color: #333;
+
+        }
+        .intro {
+          display: inline-block;
+          color: #252626;
+          font-size: 16px;
+          p {
+            margin-top: 4px;
+            color: #8a9094;
+          }
+          span {
+            margin-top: 4px;
+            color: #8a9094;
+          }
+          b {
+            font-size: 12px;
+            opacity: 60%;
+            margin-left: 4px;
+          }
+        }
       }
     }
     .event {
@@ -1022,7 +1207,168 @@ export default {
         width: 100%;
         background: #fff;
         padding: 16px;
-        height: 300px;
+        .stars {
+          position: relative;
+          display: inline-block;
+          width: 70px;
+          height: 12px;
+          background: #dedede;
+          border: 0;
+          .stared {
+            width: 98%;
+            // background: #fecd0f;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          .unstared {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background: url("./images/unstared.png") no-repeat;
+            background-size: 100%;
+          }
+        }
+
+        .score {
+          width: 100%;
+          height: 100px;
+          // background: pink;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 15px;
+          border-bottom: 1px solid #f7f8f8;
+          .left {
+            display: flex;
+            .left1 {
+              div {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+                text-align: center;
+                font-size: 24px;
+                color: #fff;
+                background: #3d3e3e;
+                border-radius: 50%;
+                margin-bottom: 5px;
+                margin-left: 3px;
+              }
+              p {
+                font-size: 14px;
+              }
+            }
+            .left2 {
+              margin-left: 10px;
+              margin-top: 18px;
+            }
+          }
+          .right {
+            display: flex;
+            justify-content: space-between;
+            .grade {
+              .num {
+                width: 38px;
+                height: 38px;
+                background: #3fd2a1;
+                color: #fbfefd;
+                font-weight: 700;
+                font-size: 14px;
+                text-align: center;
+                margin-right: 10px;
+                margin-bottom: 5px;
+                line-height: 50px;
+                border-radius: 4px;
+              }
+              p {
+                font-size: 12px;
+                text-align: center;
+                color: #8a9094;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        .content {
+          margin-top: 16px;
+          display: flex;
+          .avatar {
+            width: 48px;
+            height: 48px;
+            margin-right: 8px;
+            border-radius: 50%;
+          }
+          .details {
+            .nickName {
+              color: #252626;
+              font-size: 14px;
+              font-weight: 500;
+            }
+            .time {
+              span {
+                margin-left: 5px;
+                font-size: 12px;
+                color: #585a5a;
+              }
+            }
+          }
+          .label {
+            .blue {
+              color: #0af;
+              font-size: 12px;
+              padding: 0 8px;
+              border: 1px solid #d8f2ff;
+              border-radius: 4px;
+              margin-right: 8px;
+              background: #e5f6ff;
+            }
+          }
+          .desc {
+            margin-top: 12px;
+            line-height: 20px;
+            font-size: 14px;
+            white-space: wrap;
+          }
+          .commentPic {
+            margin-top: 8px;
+            .pic {
+              width: 80px;
+              height: 80px;
+              border-radius: 4px;
+              margin-right: 8px;
+            }
+          }
+          .replay {
+            position: relative;
+            color: #8a9094;
+            background: #f5f6fa;
+            padding: 8px;
+            margin-top: 12px;
+            line-height: 20px;
+            font-size: 14px;
+            &::before {
+              content: "";
+              position: absolute;
+              top: -10px;
+              left: 16px;
+              width: 0;
+              height: 0;
+              border-left: 12px solid rgba(0, 0, 0, 0);
+              border-right: 12px solid rgba(0, 0, 0, 0);
+              border-bottom: 12px solid #f5f6fa;
+            }
+          }
+        }
+        .unfold {
+          margin-top: 30px;
+          font-size: 12px;
+          font-weight: 500;
+          color: #0af;
+          i {
+            font-size: 10px;
+            vertical-align: middle;
+          }
+        }
       }
     }
     .amenities {
@@ -1077,6 +1423,166 @@ export default {
         }
       }
     }
+    .notice {
+      .noticeContainer {
+        width: 100%;
+        background: #fff;
+        padding: 16px 8px;
+        .noticeForm:first-child {
+          .content {
+            .info {
+              color: #1fb4ff;
+              margin-bottom: 10px;
+              span {
+                color: #fff;
+                background: #00aaff;
+                border-radius: 4px;
+                padding: 0 4px;
+              }
+            }
+          }
+        }
+        .noticeForm:nth-child(2) {
+          .babel{
+            color: #252626;
+            font-size: 12px;
+            margin-bottom: 4px;
+            span{
+              color: #fff;
+              background:#3FD2A1;
+              padding: 0 4px;
+              border-radius: 4px;
+            }
+          }
+          .time {
+            display: flex;
+            .success {
+              position: relative;
+              width: 13%;
+              padding-bottom: 12px;
+              border-bottom: 1px solid#54D7AB;
+              p {
+                font-size: 12px;
+                color: #252626;
+                text-align: left;
+                margin-top: 4px;
+              }
+              span {
+                margin-top: 4px;
+                color: #989ca0;
+                text-align: left;
+                font-size: 12px;
+                display: block;
+              }
+              &::after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 5px;
+                width: 1px;
+                background: #54d7ab;
+              }
+            }
+            .before {
+              position: relative;
+              width: 29%;
+              padding-bottom: 12px;
+              border-bottom: 1px solid #ff617b;
+              p {
+                font-size: 12px;
+                color: #252626;
+                text-align: left;
+                margin-top: 4px;
+              }
+              span {
+                margin-top: 4px;
+                color: #989ca0;
+                text-align: left;
+                font-size: 12px;
+                display: block;
+              }
+
+              &::after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 5px;
+                width: 1px;
+                background: #ff617b;
+              }
+            }
+          }
+          .percent{
+            display: flex;
+            .allReturn{
+              width: 13%;
+              background: #EDFAF6;
+              padding: 4px;
+              p{
+                font-size: 12px;
+                margin: 2px 0;
+                color: #54D7AB;
+              }
+            }
+            .noReturn{
+              width: 87%;
+                            background:#FFF2F4;
+              padding: 6px 8px;
+              p{
+                                font-size: 12px;
+                margin: 2px 0;
+                color:#FF617B;
+              }
+            }
+          }
+        }
+        .noticeForm {
+          display: flex;
+          margin-bottom: 15px;
+          .left {
+            color: #7d7e80;
+            margin-right: 12px;
+            font-size: 12px;
+            line-height: 17px;
+          }
+          .content {
+            flex: 1;
+            color: #252626;
+            font-size: 12px;
+            line-height: 15px;
+          }
+          .content:last-child {
+            // display: flex;
+            // flex-wrap: wrap;
+            // flex: 1;
+            color: #252626;
+            font-size: 12px;
+            .noticeItem {
+              width: 210px;
+              float: left;
+              margin-bottom: 8px;
+              .iconyunxu {
+                font-size: 14px;
+                color: #3fd2a1;
+              }
+              .icondisable {
+                font-size: 14px;
+                color: #ff4d6a;
+              }
+            }
+            .hint {
+              width: 640px;
+              float: left;
+              margin-top: 16px;
+            }
+          }
+        }
+      }
+    }
     .similar {
       .similarList {
         width: 100%;
@@ -1112,8 +1618,6 @@ export default {
               -webkit-line-clamp: 2;
               font-size: 14px;
               color: #252626;
-              // display: block;
-              // margin: 5px 0;
             }
             .price {
               margin: 5px 0;
@@ -1373,36 +1877,38 @@ export default {
       h5 {
         font-weight: 700;
         margin-bottom: 20px;
-        font-size: 23px;
+        font-size: 18px;
       }
       li {
         color: #87888a;
-        font-size: 17px;
+        font-size: 14px;
         margin-bottom: 12px;
         font-weight: 500;
         .span1 {
-          font-size: 23px;
+          font-size: 18px;
           font-weight: 700;
           color: #252626;
           margin-left: 12px;
         }
         .span2 {
-          font-size: 17px;
+          font-size: 14px;
           font-weight: 700;
           color: #252626;
           margin-left: 12px;
         }
       }
     }
-    .codePic2{
-      .logo1{
-        width: 160px;
-        height: 160px;
-      background: url('./images/logo1.png') no-repeat 50%/auto 30%,url('./images/2codePic.svg') no-repeat 50%/auto 100%;
+    .codePic2 {
+      .logo1 {
+        width: 120px;
+        height: 120px;
+        margin-right: 40px;
+        background: url("./images/logo1.png") no-repeat 50% / auto 30%,
+          url("./images/2codePic.svg") no-repeat 50% / auto 100%;
       }
-      p{
+      p {
         color: #333;
-        font-size: 15px;
+        font-size: 12px;
         text-align: center;
         margin: 0 0 20px 0;
       }
@@ -1411,9 +1917,12 @@ export default {
   p {
     margin: 30px;
     img {
+      width: 14px;
+      height: 14px;
       vertical-align: middle;
     }
     span {
+      font-size: 13px;
       color: #7d7e80;
       margin-left: 6px;
     }
