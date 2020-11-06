@@ -77,10 +77,10 @@
           <ul class="tags">
             <li v-for="(item, index) in baseInfo.extraInfos" :key="index">
               <!-- <i class="iconfont iconicon-test">
-                <img :src="item.iconUrl" alt="" />
+                <img v-lazy="item.iconUrl" alt="" />
               </i> -->
               <i class="icon-url">
-                <img :src="item.iconUrl" alt="" />
+                <img v-lazy="item.iconUrl" alt="" />
               </i>
               <span>
                 {{ item.text }}
@@ -91,20 +91,20 @@
         <!-- 右部 -->
         <div class="d-right">
           <div class="big-img">
-            <img :src="photos.frontImgUrl" alt="" />
+            <img v-lazy="photos.frontImgUrl" alt="" />
           </div>
 
           <!-- 轮播图组件 -->
           <div v-swiper:mySwiper="swiperOption" @click="isMask = true">
             <ul class="swiper-wrapper img-list">
               <li class="swiper-slide" v-for="(item, index) in photos.albumImgUrls" :key="index">
-                <img :src="item" />
+                <img v-lazy="item" />
               </li>
             </ul>
           </div>
           <!-- <ul class="img-list">
             <li v-for="(item, index) in photos.albumImgUrls" :key="index">
-              <img :src="item" alt="" />
+              <img v-lazy="item" alt="" />
             </li>
           </ul> -->
         </div>
@@ -129,7 +129,7 @@
                 <li v-for="(item, index) in recommendedPic" :key="item.id">
                   <div class="pic">
                     <div class="img-box">
-                      <img :src="item.frontImgUrl" alt="" />
+                      <img v-lazy="item.frontImgUrl" alt="" />
                       <div class="desc">
                         <span>{{ item.name }}</span>
                         <span>￥{{ item.price }}</span>
@@ -174,7 +174,7 @@
                   <!-- 用户头像 -->
                   <div class="pic">
                     <div class="avatar">
-                      <img :src="item.userUrl || 'https://www.dpfile.com/ugc/user/anonymous.png'" alt="" />
+                      <img v-lazy="item.userUrl || 'https://www.dpfile.com/ugc/user/anonymous.png'" alt="" />
                     </div>
                   </div>
                   <!-- 评论信息 -->
@@ -232,7 +232,7 @@
                     <span v-if="item.merchantComment" class="reply">{{ item.merchantComment }}</span>
                     <div class="user-pic-box" v-if="item.picUrls.length > 0">
                       <div class="user-pic" v-for="(pic, index) in item.picUrls" :key="pic.id">
-                        <img :src="pic.url" alt="" />
+                        <img v-lazy="pic.url" alt="" />
                       </div>
                     </div>
                     <div class="great">
@@ -265,7 +265,7 @@
               <li v-for="(item, index) in guessInfo" :key="item.itemId">
                 <a href="javascript:;">
                   <div class="pic">
-                    <img :src="item.imgUrl" alt="" :data-shopId="item.itemId" />
+                    <img v-lazy="item.imgUrl" alt="" :data-shopId="item.itemId" />
                   </div>
                   <p class="merchant-name">
                     {{ item.title }}
@@ -288,7 +288,7 @@
             <li v-for="item in shopDetailData.nearPoiList" :key="item.sold">
               <a href="javascript:;">
                 <div class="pic">
-                  <img :src="item.headIcon" alt="" />
+                  <img v-lazy="item.headIcon" alt="" />
                 </div>
                 <p class="title">
                   {{ item.name }}
@@ -311,7 +311,7 @@
         <!-- swiper1 -->
         <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop">
           <swiper-slide class="slide-1" v-for="(item, index) in photos.albumImgUrls" :key="index">
-            <img :src="item" />
+            <img v-lazy="item" />
           </swiper-slide>
           <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
           <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
@@ -319,7 +319,7 @@
         <!-- swiper2 Thumbs -->
         <swiper class="swiper gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
           <swiper-slide class="slide-1" v-for="(item, index) in photos.albumImgUrls" :key="index">
-            <img :src="item" />
+            <img v-lazy="item" />
           </swiper-slide>
         </swiper>
       </div>
@@ -1177,7 +1177,7 @@ export default {
       width: 60%;
       text-align: center;
       max-height: 637px;
-      margin: 10% auto 0;
+      margin: 3% auto 0;
       .closeMask {
         width: 30px;
         height: 30px;

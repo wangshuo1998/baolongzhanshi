@@ -53,10 +53,10 @@
             <div class="pic">
               <!-- 临时征用 -->
               <!-- <router-link to="/shopList/shopDetail">
-                <img :src="item.frontImg" alt="" />
+                <img v-lazy="item.frontImg" alt="" />
               </router-link> -->
               <!-- <a href="javascript:;" :data-shopIdId="item.poiId"> -->
-              <img :src="item.frontImg" alt="" :data-shopId="item.poiId" />
+              <img v-lazy="item.frontImg" alt="" :data-shopId="item.poiId" />
               <!-- </a> -->
             </div>
             <div class="content">
@@ -133,7 +133,7 @@
           <li v-for="(item, index) in guessInfo" :key="item.itemId">
             <a href="javascript:;">
               <div class="pic">
-                <img :src="item.imgUrl" alt="" />
+                <img v-lazy="item.imgUrl" alt="" />
               </div>
               <p class="merchant-name">
                 {{ item.title }}
