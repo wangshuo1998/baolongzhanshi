@@ -462,15 +462,286 @@
                   </div>
                 </li>
                 <!-- ul 3 -->
-                <li class="third-3">
-
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>4</i>
+                    <span class="zhong">如果声音不记得</span>
+                  </span>
+                  <span class="ranking-num-info">62636人想看</span>
                 </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>5</i>
+                    <span class="zhong">明天你是否依然爱我</span>
+                  </span>
+                  <span class="ranking-num-info">55851人想看</span>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>6</i>
+                    <span class="zhong">温暖的抱抱</span>
+                  </span>
+                  <span class="ranking-num-info">72222人想看</span>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>7</i>
+                    <span class="zhong">晴雅集</span>
+                  </span>
+                  <span class="ranking-num-info">47316人想看</span>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>8</i>
+                    <span class="zhong">除暴</span>
+                  </span>
+                  <span class="ranking-num-info">38098人想看</span>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>9</i>
+                    <span class="zhong">风平浪静</span>
+                  </span>
+                  <span class="ranking-num-info">37356人想看</span>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>10</i>
+                    <span class="zhong">西游记真假美猴王</span>
+                  </span>
+                  <span class="ranking-num-info">413444人想看</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 侧边栏第三个 -->
+          <div class="cebian-second-panel">
+            <div class="panel-header">
+              <span class="panel-1">TOP  100</span>
+              <span class="panel-2">查看完整榜单</span>
+            </div>
+            <div class="panel-content">
+              <ul class="ranking-box">
+                <li class="ranking-item-second" style="cursor:pointer">
+                  <div class="ranking-top-left">
+                    <img src="@/assets/xiaohuImages/dong.jpg" alt="">
+                  </div>
+                  <div class="ranking-top-right">
+                    <span class="ranking-top-moive-name">射雕英雄传之东成西就</span>
+                    <span class="stonefont">8.8分</span>
+                  </div>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>2</i>
+                    <span class="zhong">十二怒汉</span>
+                  </span>
+                  <span class="ranking-num-info">9.1分</span>
+                </li>
+                <li class="ranking-item3" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>3</i>
+                    <span class="zhong">剪刀手爱德华</span>
+                  </span>
+                  <span class="ranking-num-info">8.8分</span>
+                </li>
+                <li class="ranking-item4" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>4</i>
+                    <span class="zhong">乱世佳人</span>
+                  </span>
+                  <span class="ranking-num-info">9.1分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>5</i>
+                    <span class="zhong">初恋的那件小事</span>
+                  </span>
+                  <span class="ranking-num-info">8.8分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>6</i>
+                    <span class="zhong">泰坦尼克号</span>
+                  </span>
+                  <span class="ranking-num-info">9.4分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>7</i>
+                    <span class="zhong">搏击俱乐部</span>
+                  </span>
+                  <span class="ranking-num-info">8.8分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>8</i>
+                    <span class="zhong">海上钢琴师</span>
+                  </span>
+                  <span class="ranking-num-info">9.3分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>9</i>
+                    <span class="zhong">甜蜜蜜</span>
+                  </span>
+                  <span class="ranking-num-info">9.2分</span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>10</i>
+                    <span class="zhong">肖申克的救赎</span>
+                  </span>
+                  <span class="ranking-num-info">9.5分</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 侧边栏第四个 -->
+           <div class="panel-for">
+            <div class="panel-header">
+              <span class="panel-title">
+                <h2>热门影人</h2>
+              </span>
+            </div>
+            <div class="panel-content">
+              <ul class="ranking-box">
+                <li class="ranking-item" style="cursor:pointer">
+                  <div class="ranking-top-left">
+                    <img src="@/assets/xiaohuImages/peng.jpg" alt="">
+                  </div>
+                  <div class="ranking-top-right">
+                    <span class="stonefont">彭昱畅</span>
+                  </div>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>2</i>
+                    <span class="zhong">黄渤</span>
+                  </span>
+                </li>
+                <li class="ranking-item3" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>3</i>
+                    <span class="zhong">刘昊然</span>
+                  </span>
+                </li>
+                <li class="ranking-item4" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>4</i>
+                    <span class="zhong">张译</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>5</i>
+                    <span class="zhong">吴京</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>6</i>
+                    <span class="zhong">邓超</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>7</i>
+                    <span class="zhong">刘敏涛</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>8</i>
+                    <span class="zhong">巩俐</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>9</i>
+                    <span class="zhong">范伟</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>10</i>
+                    <span class="zhong">金晨</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 侧边栏第五个 -->
+          <div class="panel-last">
+            <div class="panel-header">
+              <span class="panel-title">
+                <h2>娱乐热点</h2>
+              </span>
+            </div>
+            <div class="panel-content">
+              <ul class="ranking-box">
+                <li class="ranking-item" style="cursor:pointer">
+                  <div class="ranking-top-left">
+                    <img src="@/assets/xiaohuImages/last.jpg" alt="">
+                  </div>
+                  <div class="ranking-top-right">
+                    <span class="stonefont">《如意芳霏》 探案危机四伏 鞠婧祎 张哲瀚甜蜜定情</span>
+                  </div>
+                </li>
+                <li class="ranking-item2" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>2</i>
+                    <span class="zhong">《风犬少年的天空》全剧收官曝告别海报 风犬故事不会到此为止</span>
+                  </span>
+                </li>
+                <li class="ranking-item3" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>3</i>
+                    <span class="zhong">《网络凶铃》短视频火了！网友花式搞怪，脑洞大开</span>
+                  </span>
+                </li>
+                <li class="ranking-item4" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>4</i>
+                    <span class="zhong">  动画电影《奇妙王国之魔法奇缘》定档2020年12月19日！</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>5</i>
+                    <span class="zhong">黄海操刀《海兽之子》中国区海报 11.20重拾夏日的美好悸动</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>6</i>
+                    <span class="zhong">《翱翔雄心》释出“誓死守卫”海报 11月13日空战一触即发</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>7</i>
+                    <span class="zhong">《风平浪静》首映礼徐峥曹保平姚晨助阵 后劲十足爱情戏高级甜</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>8</i>
+                    <span class="zhong">《地狱男爵》震撼视效大赏：地狱男爵生猛一挑三武力值冲破银幕</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>9</i>
+                    <span class="zhong">奇幻冒险动画电影《龙神之子》全国持续热映中</span>
+                  </span>
+                </li>
+                <li class="ranking-item5" style="cursor:pointer">
+                  <span class="normal-link">
+                    <i>10</i>
+                    <span class="zhong">100%还原大场面！《野性的呼唤》极致视效开启震撼冒险</span>
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
@@ -493,7 +764,7 @@ export default {
 <style lang="less" scoped>
 .container {
   width: 100%;
-  height: 3300px;
+  height: 3900px;
   // background-color: black;
 }
 .container .content {
@@ -699,7 +970,7 @@ export default {
 // 侧边栏第一个
 .aside {
   width: 360px;
-  height: 3300px;
+  height: 3700px;
   background-color: #fff;
   position: absolute;
   top: 585px;
@@ -903,6 +1174,7 @@ export default {
   width: 360px;
   height: 855px;
   margin-top: 85px;
+  margin-bottom: 115px;
 }
 .cebian-second-panel .panel-header {
   width: 360px;
@@ -954,6 +1226,7 @@ export default {
   width: 360px;
   height: 180px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .cebian-second-panel .min-1{
   float: left;
@@ -1006,5 +1279,81 @@ export default {
   font-size: 14px;
   color: #fdb863;
   margin-left: 10px;
+}
+.cebian-second-panel .ranking-num-info{
+  color: #ffb400;
+}
+// 侧边栏第三个
+.ranking-item-second{
+  width: 360px;
+  height: 84px;
+  margin-top: 35px;
+  position: relative;
+}
+.ranking-item-second:hover{
+  background-color: #efefef;
+}
+.ranking-item-second .ranking-top-moive-name{
+  position: absolute;
+  margin-left: 130px;
+  margin-top: -66px;
+  font-size: 18px;
+}
+.ranking-item-second .stonefont{
+  color: #ffb400;
+}
+// 侧边栏第四个
+.panel-for{
+  margin-top: -260px;
+  margin-bottom: 80px;
+}
+.panel-for .ranking-item{
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.panel-for .ranking-item .stonefont{
+ color: #333;
+}
+.panel-for li:hover{
+  background: #fff;
+}
+.panel-for .zhong{
+  font-size: 14px;
+
+}
+.panel-for .zhong:hover{
+  color: #ef4238;
+
+}
+// 侧边最后一个
+.panel-last .stonefont{
+  color: #333;
+  margin-top: -60px;
+}
+.panel-last .ranking-top-left{
+  margin-top: 20px;
+}
+.panel-last .stonefont:hover{
+  color: #ef4238;
+}
+.panel-last i{
+  font-size: 16px;
+}
+.panel-last .zhong{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 360px;
+  display: block;
+  margin-top: -38px;
+  font-size: 14px;
+  margin-left: 20px;
+}
+.panel-last .zhong:hover{
+  color: #ef4238;
+}
+.panel-last li:hover{
+  background-color: #fff;
+
 }
 </style>
