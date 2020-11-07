@@ -170,7 +170,7 @@
               </div>
               <!-- 用户评论内容区列表 -->
               <ul class="user-comment-list">
-                <li v-for="(item, index) in comments" :key="index">
+                <li v-for="(item, commentIndex) in comments" :key="commentIndex">
                   <!-- 用户头像 -->
                   <div class="pic">
                     <div class="avatar">
@@ -231,7 +231,22 @@
                     </p>
                     <span v-if="item.merchantComment" class="reply">{{ item.merchantComment }}</span>
                     <div class="user-pic-box" v-if="item.picUrls.length > 0">
-                      <div class="user-pic" v-for="(pic, index) in item.picUrls" :key="pic.id">
+                      <div
+                        class="user-pic"
+                        v-for="(pic, index) in item.picUrls"
+                        :key="pic.id"
+                        @click="changeUserPicShowBigImg = commentIndex + '-' + index"
+                        :class="{ active: changeUserPicShowBigImg === commentIndex + '-' + index }"
+                      >
+                        <img v-lazy="pic.url" alt="" />
+                      </div>
+                      <!-- 点击显示下方大图 -->
+                      <div
+                        class="user-pic-big"
+                        v-for="(pic, index) in item.picUrls"
+                        :key="index"
+                        v-show="changeUserPicShowBigImg == commentIndex + '-' + index"
+                      >
                         <img v-lazy="pic.url" alt="" />
                       </div>
                     </div>
@@ -390,6 +405,7 @@ export default {
       isMap: false,
       position: [],
       label: {},
+      changeUserPicShowBigImg: -1,
     }
   },
   // 管道函数 格式化时间
@@ -943,6 +959,9 @@ export default {
                     .default-star,
                     .avg-star {
                       display: flex;
+                      > li {
+                        border-bottom: none;
+                      }
                     }
                     .default-star {
                       margin-right: 8px;
@@ -972,12 +991,25 @@ export default {
                   .user-pic-box {
                     padding-top: 10px;
                     display: flex;
+                    flex-wrap: wrap;
+                    flex-shrink: 0;
+                    box-sizing: border-box;
                     .user-pic {
                       width: 140px;
                       height: 140px;
                       margin: 10px;
+                      &.active {
+                        border: 5px solid #ccc;
+                      }
                       img {
                         width: 100%;
+                        height: 100%;
+                      }
+                    }
+                    .user-pic-big {
+                      max-height: 637px;
+                      // display: none;
+                      img {
                         height: 100%;
                       }
                     }
