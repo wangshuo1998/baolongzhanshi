@@ -2,7 +2,7 @@
   <div class="Insgesamt">
     <!-- 头部 -->
     <div class="header">
-      <a class="logo" href="http://www.weituan.com"></a>
+      <a @click="$router.push('/')" class="logo"></a>
     </div>
     <!-- 版心 -->
     <div class="wrapper">
@@ -51,7 +51,7 @@
         </div>
         <p class="text-p">
           还没有账号?
-          <a href="###">免费注册</a>
+          <a @click="$router.push('/register')">免费注册</a>
         </p>
         <div class="oauth-wrapper">
           <h3 class="title-wrapper">
@@ -101,7 +101,7 @@ export default {
 };
 </script>
 
-<style lang = "less">
+<style scoped lang = "less">
 .Insgesamt {
   background: #fff;
   /* 头部 */
@@ -190,7 +190,7 @@ export default {
           }
         }
 
-        /* 
+        /*
       input {
         font-family: inherit;
         font-size: inherit;

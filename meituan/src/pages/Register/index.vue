@@ -4,10 +4,10 @@
     <!-- 头部 -->
     <div class="header">
       <div class="wapper">
-        <a class="logo" href="http://www.weituan.com"></a>
+        <a class="logo" @click="$router.push('/')"></a>
         <span class="tip">
           <i>已有美团账号?</i>
-          <button>登录</button>
+          <button @click="$router.push('/login')">登录</button>
         </span>
       </div>
     </div>
@@ -77,7 +77,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 body {
   background: none;
 }
@@ -122,6 +122,8 @@ body {
       .logo {
         width: 99px;
         height: 36px;
+        background: url("./images/logo1.png");
+        background-size: 100%;
       }
     }
   }

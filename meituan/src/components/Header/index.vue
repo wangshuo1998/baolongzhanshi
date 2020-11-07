@@ -21,8 +21,8 @@
               <a href="javascript:;">廊坊</a>
               <span>]</span>
             </div>
-            <a class="login" href="javascript:;">立即登录</a>
-            <a class="register" href="javascript:;">注册</a>
+            <a class="login" href="javascript:;" @click="$router.push('/login')">立即登录</a>
+            <a class="register" href="javascript:;" @click="$router.push('/register')">注册</a>
           </div>
           <!--            右侧-->
           <ul class="rightHeaderBar clearfix">
