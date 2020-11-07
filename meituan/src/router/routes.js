@@ -2,6 +2,7 @@ import Home from '@/pages/Home'
 import HomeIndex from '@/pages/HomeIndex'
 import maoyanHeader from '@/components/maoyanHeader'
 import maoyanshouye from '@/pages/maoyanshouye'
+import maoyanFooter from '@/components/maoyanFooter'
 export default [{
   path: '/',
   name: 'Home',
@@ -20,4 +21,8 @@ export default [{
   path: '/maoyanHeader',
   name: 'maoyanHeader',
   component: maoyanHeader,
+},{
+  path: '/maoyanFooter',
+  name: 'maoyanFooter',
+  component: maoyanFooter,
 }]

@@ -747,16 +747,18 @@
           </div>
         </div>
       </div>
+      <maoyanFooter></maoyanFooter>
     </div>
-  </div>
 </template>
 
 <script>
 import maoyanHeader from "@/components/maoyanHeader";
+import maoyanFooter from "@/components/maoyanFooter";
 export default {
   name: "maoyanshouye",
   components: {
     maoyanHeader,
+    maoyanFooter,
   },
 };
 </script>
@@ -764,8 +766,8 @@ export default {
 <style lang="less" scoped>
 .container {
   width: 100%;
-  height: 3900px;
-  // background-color: black;
+  height: 3680px;
+  background-color: rgb(255, 255, 255);
 }
 .container .content {
   height: 100%;
@@ -970,8 +972,7 @@ export default {
 // 侧边栏第一个
 .aside {
   width: 360px;
-  height: 3700px;
-  background-color: #fff;
+  height: 3600px;
   position: absolute;
   top: 585px;
   left: 1190px;
