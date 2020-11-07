@@ -5,6 +5,7 @@ import FastFood from '@/pages/FastFood'
 import Advices from '@/pages/Rules/Advices'
 import HomestayInfo from '@/pages/HomestayInfo'
 import Catalogue from '@/pages/Rules/Catalogue'
+import ChangeCity from "@/pages/ChangeCity"
 export default [
   {
     path: '/',
@@ -39,7 +40,10 @@ export default [
   {
     path:'/homestayInfo',
     component:HomestayInfo
+  },
+  {
+    path:"/changecity",
+    component:ChangeCity
   }
-
-
 ]
+
