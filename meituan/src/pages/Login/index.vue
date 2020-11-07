@@ -24,6 +24,7 @@
           </span>
           <input type="hidden" name="countrycode" value="86" />
           <input
+            v-model="phone"
             type="text"
             class="phone-input"
             name="email"
@@ -35,6 +36,7 @@
         <div class="pw-input-wrapper">
           <i class="iconfont iconsuotou icon-password"></i>
           <input
+            v-model="password"
             type="password"
             class="pw-input"
             name="password"
@@ -47,7 +49,7 @@
           >
         </div>
         <div class="btn">
-          <button class="btn-one">登录</button>
+          <button @click="login" class="btn-one">登录</button>
         </div>
         <p class="text-p">
           还没有账号?
@@ -96,8 +98,24 @@
 </template>
 
 <script>
+  import Encryption from "@/utils/encryption";
+  import {login} from "@/Api/mysqlApi";
 export default {
   name: "Login",
+  data(){
+    return{
+      phone:"",
+      password:""
+    }
+  },
+  methods:{
+    async login(){
+      let {phone,password} = this;
+      password = Encryption.encrypt(password,"meituanasdfghjkl");
+      let result = await login(phone,password);
+      console.log(result);
+    }
+  }
 };
 </script>
 
