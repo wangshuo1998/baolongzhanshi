@@ -1,8 +1,8 @@
 import Home from '@/pages/Home'
+
 import HomeIndex from '@/pages/HomeIndex'
-import maoyanHeader from '@/components/maoyanHeader'
 import maoyanshouye from '@/pages/maoyanshouye'
-import maoyanFooter from '@/components/maoyanFooter'
+import ChangeCity from "@/pages/ChangeCity"
 export default [{
   path: '/',
   name: 'Home',
@@ -12,17 +12,13 @@ export default [{
     path: 'index',
     name: 'Index',
     component: HomeIndex,
+  },  {
+    path:"/changecity",
+    component:ChangeCity
   }]
 },{
   path: '/maoyanshouye',
   name: 'maoyanshouye',
   component: maoyanshouye,
-},{
-  path: '/maoyanHeader',
-  name: 'maoyanHeader',
-  component: maoyanHeader,
-},{
-  path: '/maoyanFooter',
-  name: 'maoyanFooter',
-  component: maoyanFooter,
 }]
+

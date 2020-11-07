@@ -3,7 +3,10 @@
     <router-view></router-view>
   </div>
 </template>
+<script>
+  export default {
 
-<style>
+  }
+</script>
 
-</style>
+<style></style>
