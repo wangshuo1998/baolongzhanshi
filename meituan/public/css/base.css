@@ -66,3 +66,10 @@ button, input {
   background-color: #fff !important;
   border-radius: 0px !important;
 }
+/*kaikai的轮播*/
+.kaikaiSwiper>.swiper-pagination-bullet{
+  width: 10px !important;
+  height: 2px !important;
+  background-color: #fff !important;
+  border-radius: 0px !important;
+}

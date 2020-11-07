@@ -1,25 +1,13 @@
 <template>
   <div id="app">
-    <Homestay></Homestay>
-    <!-- <Login></Login> -->
-    <!-- <Register></Register> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from '@/pages/Login'
-import Register from '@/pages/Register'
-import Homestay from '@/pages/Homestay'
   export default {
-  name: "App",
-  components:{
-    Login,
-    Register,
-    Homestay
+
   }
-};
 </script>
+<style></style>
 
-<style scoped>
-
-</style>

@@ -77,7 +77,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 body {
   background: none;
 }
@@ -122,6 +122,8 @@ body {
       .logo {
         width: 99px;
         height: 36px;
+        background: url(./images/logo1.png);
+        background-size: 100%;
       }
     }
   }

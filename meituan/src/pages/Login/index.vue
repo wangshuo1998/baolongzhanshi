@@ -101,7 +101,7 @@ export default {
 };
 </script>
 
-<style lang = "less">
+<style scoped lang = "less">
 .Insgesamt {
   background: #fff;
   /* 头部 */
