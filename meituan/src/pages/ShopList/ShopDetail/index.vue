@@ -496,10 +496,12 @@ export default {
     },
     // 初始化地图数据
     initMapData() {
+      // 地图经纬度
       this.position.push(this.baseInfo.longitude, this.baseInfo.latitude)
       const label = {
         direction: 'top',
       }
+      // 地图定位点提示内容
       label.content = this.baseInfo.name
       this.$set(this.$data, 'label', label)
     },

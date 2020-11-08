@@ -121,15 +121,8 @@ ChromeGo
 
 project
 
-<<<<<<< HEAD
-# 忽略备份文件
-index copy.vue
-index copy 2.vue
-=======
-
 index copy.vue
 
 index copy 2.vue
 
 package-lock.json
->>>>>>> main
