@@ -34,3 +34,24 @@ export const login = (phone,password)=>{
     }
   })
 }
+//携带手机号获取随机验证码
+export const getPhoneCode = (phone)=>{
+  return msqAjax({
+    url:"/getPhoneCode",
+    method:"POST",
+    data:{
+      phone
+    }
+  })
+}
+//携带手机号和随机验证码进行登录
+export const phoneCodeLogin = (phone,code)=>{
+  return msqAjax({
+    url:"/phoneCodeLogin",
+    method:"POST",
+    data:{
+      phone,
+      code
+    }
+  })
+}

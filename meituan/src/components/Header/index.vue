@@ -21,8 +21,10 @@
               <a href="javascript:;">廊坊</a>
               <span>]</span>
             </div>
-            <a class="login" href="javascript:;" @click="$router.push('/login')">立即登录</a>
-            <a class="register" href="javascript:;" @click="$router.push('/register')">注册</a>
+            <a v-if="userInfo" class="nickName" href="javascript:;">{{userInfo.nickName}}</a>
+            <a v-else class="login" href="javascript:;" @click="$router.push('/login')">立即登录</a>
+            <a v-if="userInfo" @click="loginOut" class="loginOut" href="javascript:;">退出</a>
+            <a v-else class="register" href="javascript:;" @click="$router.push('/register')">注册</a>
           </div>
           <!--            右侧-->
           <ul class="rightHeaderBar clearfix">
@@ -146,8 +148,12 @@
     data() {
       return {
         location: "点击获取当前定位",
-        loading:false
+        loading:false,
+        userInfo:{}
       }
+    },
+    mounted(){
+      this.userInfo = JSON.parse(localStorage.getItem("USERINFO_KEY"));
     },
     methods: {
       getLocationInfo(){
@@ -213,6 +219,11 @@
           })
         })
       },
+      loginOut(){
+        this.userInfo = null;
+        this.$bus.$emit("changeStatus",null);
+        localStorage.removeItem("USERINFO_KEY");
+      }
     },
     computed: {
       ...mapState({
@@ -310,12 +321,12 @@
             }
           }
 
-          .login {
+          .login,.nickName {
             color: #FE8C00;
             margin-left: 21px;
           }
 
-          .register {
+          .register,.loginOut {
             margin-left: 10px;
 
             &:hover {
