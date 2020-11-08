@@ -2,12 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// import ElementUI from 'element-ui';
+
 import Vuelazyload from "vue-lazyload";
 import '@/assets/css/font.css'
-Vue.use(Vuelazyload,{
-  loading:require("@/assets/lazy.png")
+Vue.use(Vuelazyload, {
+  loading: require("@/assets/lazy.png")
 })
+
 import 'element-ui/lib/theme-chalk/index.css';
+// 添加表单验证
+import "@/utils/validate.js";
 // 引入element-ui 全部引入 项目完毕整理
 import {
   Pagination,
@@ -173,13 +178,27 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
+// 引入地图插件
+import AmapVue from '@amap/amap-vue';
 
-// 测试API
+AmapVue.config.version = '2.0'; // 默认2.0，这里可以不修改
+AmapVue.config.key = '9d6660bec3a3354fc23eb6c16345d1d4';
+Vue.use(AmapVue);
+
+
+// 测试API 
+
 import './Api'
 
+
+
 Vue.config.productionTip = false
+// Vue.use(ElementUI); 
 
 new Vue({
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  },
   router,
   store,
   render: h => h(App)
