@@ -4,63 +4,63 @@ import Ajax from '@/Ajax/mock'
 export const reqCategoryList = ()=>{
     return Ajax({
         url:"/categoryList",
-        method:"Get"
+        method:"GET"
     })
 }
 //获取首页中轮播图的数据
 export const reqBannersList = ()=>{
   return Ajax({
     url:"/indexBannersList",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取首页中正在热映的电影数据
 export const reqHotMoviesList = ()=>{
   return Ajax({
     url: "/hotMoviesList",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取首页中即将上映得电影数据
 export const reqComingMoviesList = ()=>{
   return Ajax({
     url:"/comingMoviesList",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取首页中推荐民宿得城市数据
 export const reqRecommendHouseCities = ()=>{
   return Ajax({
     url:"/minsuCitys",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取首页中推荐民宿得具体数据
 export const reqRecommendHouseList = ()=> {
   return Ajax({
     url: "/minsuInfoList",
-    method: "Get"
+    method: "GET"
   })
 }
 //获取首页中猜你喜欢的数据
 export const reqGuessLikeList= ()=>{
   return Ajax({
     url:"/recommends",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取更改城市中下方的城市列表数据
 export const reqCitiesList = ()=>{
   return Ajax({
     url:"/cityList",
-    method:"Get"
+    method:"GET"
   })
 }
 //获取更改城市中对应省市的数据
 export const reqProvinceCity = ()=>{
   return Ajax({
     url:"/provincecity",
-    method:"Get"
+    method:"GET"
   })
 }
 // 接口格式  每个接口必须注释 注释格式为
