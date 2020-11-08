@@ -63,6 +63,42 @@ export const reqProvinceCity = ()=>{
     method:"Get"
   })
 }
+//获取民宿详情页附近房源的列表数据
+export const reqSimilarInfoList = () =>{
+  return Ajax({
+    url:'/similarInfoList',
+    method:'GET'
+  })
+}
+//获取民宿详情页底部热门城市数据
+export const reqHotCity = () =>{
+  return Ajax({
+    url:'/hotCity',
+    method:'GET'
+  })
+}
+//获取民宿详情页底部热门房源数据
+export const reqHotHouse = () =>{
+  return Ajax({
+    url:'/hotHouse',
+    method:'GET'
+  })
+}
+//获取民宿详情页评价列表数据
+export const reqCommentTextList = () =>{
+  return Ajax({
+    url:'/commentTextList',
+    method:'GET'
+  })
+}
+// 获取房源位置周边列表数据
+export const reqSurroundingList = () =>{
+  return Ajax({
+    url:'/surroundList',
+    method:'GET'
+  })
+}
+
 // 接口格式  每个接口必须注释 注释格式为
 
 /**

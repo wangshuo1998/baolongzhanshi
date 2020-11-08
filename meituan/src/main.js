@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import ElementUI from 'element-ui';
+// import ElementUI from 'element-ui';
 
 import Vuelazyload from "vue-lazyload";
 import '@/assets/css/font.css'
@@ -183,7 +183,7 @@ Vue.prototype.$message = Message;
 import './Api'
 
 Vue.config.productionTip = false
-Vue.use(ElementUI) 
+// Vue.use(ElementUI); 
 
 new Vue({
   router,

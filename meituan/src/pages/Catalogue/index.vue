@@ -19,7 +19,6 @@
         </ul>
       </div>
     </div>
-
     <!-- 中间搜索框+内容区 -->
     <div class="container">
       <!-- 搜索框 -->
@@ -44,28 +43,28 @@
             <a href="javascript:;" class="item">平台基础规则</a>
             <a href="javascript:;" class="item">美团平台规则</a>
             <li class="firstItem">
-              <div @click="showSecondList(1)" class="firstList">
+              <div class="firstList">
                 大众点评平台规则
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{ active: !isShowSecondList }">
+              <ul>
                 <a href="javascript:;" class="secondItem">大众点评基础规则</a>
                 <a href="javascript:;" class="secondItem">大众点评商户管理</a>
                 <a href="javascript:;" class="secondItem">大众点评运营规则</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div @click="showSecondList(2)" class="firstList">
+              <div class="firstList">
                 业务规则
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{ active: !isShowSecondList }">
+              <ul>
                 <li>
-                  <div class="second" @click="showThirdList">
+                  <div class="second">
                     美团外卖
                     <i class="iconfont iconjiantouarrow487"></i>
                   </div>
-                  <ul :class="{ active2: !isShowThirdList }">
+                  <ul>
                     <a href="javascript:;" class="thirdItem">招商规范</a>
                     <a href="javascript:;" class="thirdItem">商品规范</a>
                     <a href="javascript:;" class="thirdItem">品控规范</a>
@@ -80,38 +79,38 @@
             <a href="javascript:;" class="item">消费者权益保障</a>
             <a href="javascript:;" class="item">隐私政策</a>
             <li class="firstItem">
-              <div @click="showSecondList(3)" class="firstList">
+              <div class="firstList">
                 公示通知
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{ active: !isShowSecondList }">
+              <ul>
                 <a href="javascript:;" class="secondItem">规则公告</a>
                 <a href="javascript:;" class="secondItem">平台公告</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div @click="showSecondList(4)" class="firstList">
+              <div class="firstList">
                 普法专栏
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{ active: !isShowSecondList }">
+              <ul>
                 <a href="javascript:;" class="secondItem">法规解读</a>
                 <a href="javascript:;" class="secondItem">政策解读</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div @click="showSecondList(5)" class="firstList">
+              <div class="firstList">
                 规则动态
                 <i class="iconfont iconjiantouarrow487"></i>
               </div>
-              <ul :class="{ active: currentIndex === 5 }">
+              <ul>
                 <a href="javascript:;" class="secondItem">意见征集</a>
                 <li>
-                  <div class="second" @click="showThirdList">
+                  <div class="second">
                     历史规则
                     <i class="iconfont iconjiantouarrow487"></i>
                   </div>
-                  <ul :class="{ active2: !isShowThirdList }">
+                  <ul>
                     <a href="javascript:;" class="thirdItem">失效规则</a>
                     <a href="javascript:;" class="thirdItem">发布汇总</a>
                   </ul>
@@ -159,7 +158,6 @@
         </div>
       </div>
     </div>
-
     <!-- 底部 -->
     <div class="bottomContainer">
       <div class="footer">
@@ -168,38 +166,36 @@
             <h3>关于我们</h3>
             <ul>
               <li><a href="javascript:;">基本介绍</a></li>
-              <li><a href="javascript:;">基本介绍</a></li>
-              <li><a href="javascript:;">基本介绍</a></li>
-              <li><a href="javascript:;">基本介绍</a></li>
-              <li><a href="javascript:;">基本介绍</a></li>
+              <li><a href="javascript:;">发展历史</a></li>
+              <li><a href="javascript:;">管理团队</a></li>
+              <li><a href="javascript:;">业务产品</a></li>
+              <li><a href="javascript:;">社会企业</a></li>
             </ul>
           </div>
           <div class="item">
             <h3>企业文化</h3>
             <ul>
               <li><a href="javascript:;">企业理念</a></li>
-              <li><a href="javascript:;">企业理念</a></li>
-              <li><a href="javascript:;">企业理念</a></li>
-              <li><a href="javascript:;">企业理念</a></li>
-              <li><a href="javascript:;">企业理念</a></li>
+              <li><a href="javascript:;">人才发展</a></li>
+              <li><a href="javascript:;">工作在美团</a></li>
             </ul>
           </div>
           <div class="item">
             <h3>新闻中心</h3>
             <ul>
               <li><a href="javascript:;">公司新闻</a></li>
-              <li><a href="javascript:;">公司新闻</a></li>
-              <li><a href="javascript:;">公司新闻</a></li>
-              <li><a href="javascript:;">公司新闻</a></li>
-              <li><a href="javascript:;">公司新闻</a></li>
+              <li><a href="javascript:;">美团研究院</a></li>
+              <li><a href="javascript:;">媒体新闻</a></li>
             </ul>
           </div>
           <div class="item">
             <h3>联系我们</h3>
             <ul>
               <li><a href="javascript:;">客户联系</a></li>
-              <li><a href="javascript:;">客户联系</a></li>
-              <li><a href="javascript:;">客户联系</a></li>
+              <li><a href="javascript:;">合作洽谈</a></li>
+              <li><a href="javascript:;">投资者关系</a></li>
+              <li><a href="javascript:;">监督举报</a></li>
+              <li><a href="javascript:;">办公地点</a></li>
             </ul>
           </div>
           <div class="item">
@@ -213,25 +209,25 @@
             <ul>
               <li>
                 <a href="javascript:;">
-                  <img src="..//images/weibo.png" />
+                  <img src="./images/weibo.png" />
                   美团微博
                 </a>
               </li>
               <li>
                 <a href="javascript:;">
-                  <img src="..//images/wechat.png" />
+                  <img src="./images/wechat.png" />
                   美团微信公众号
                 </a>
               </li>
               <li>
                 <a href="javascript:;">
-                  <img src="..//images/weibo.png" />
+                  <img src="./images/weibo.png" />
                   美团微博
                 </a>
               </li>
               <li>
                 <a href="javascript:;">
-                  <img src="..//images/wechat.png" />
+                  <img src="./images/wechat.png" />
                   美团微信公众号
                 </a>
               </li>
@@ -253,23 +249,9 @@
 export default {
   name: "Catalogue",
   data() {
-    return {
-      currentIndex: "",
-      isShowSecondList: false,
-      isShowThirdList: false,
-    };
+    return {};
   },
-  methods: {
-    showSecondList(index) {
-      if (this.currentIndex === index) {
-        this.isShowSecondList = !this.isShowSecondList;
-        console.log(this.isShowSecondList)
-      }
-    },
-    showThirdList() {
-      this.isShowThirdList = !this.isShowThirdList;
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -334,7 +316,7 @@ export default {
     width: 1190px;
     height: 100px;
     margin-bottom: 10px;
-    background-image: url("../images/search.png");
+    background-image: url("./images/search.png");
     background-size: cover;
     border-radius: 5px;
     .searchBox {
@@ -378,9 +360,6 @@ export default {
       border: 1px solid #e5e5e5;
       height: 465px;
       overflow: auto;
-      .active2 {
-        display: none;
-      }
       .item {
         display: block;
         color: #555;
@@ -408,9 +387,6 @@ export default {
         line-height: 22px;
         padding: 10px 10px 10px 30px;
         cursor: pointer;
-        .active {
-          display: block;
-        }
         .second {
           font-weight: 700;
           font-size: 14px;

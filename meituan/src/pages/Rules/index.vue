@@ -8,14 +8,13 @@
         <div class="headContent">
           <h1>美团规则中心</h1>
           <ul class="headerRight">
-            <li>
+            <li @click="changeNav(0)" class="active">
               <a href="javascript:;">首页</a>
             </li>
-            <li>
-              <router-link to="/rules/catalouge">规则目录</router-link>
-              <!-- <a href="javascript:;">规则目录</a> -->
+            <li @click="changeNav(1)">
+              <router-link to="/catalogue">规则目录</router-link>
             </li>
-            <li>
+            <li @click="changeNav(2)">
               <a href="javascript:;">规则评议院</a>
             </li>
           </ul>
@@ -46,31 +45,31 @@
                 <div class="title">平台基础规则</div>
                 <ul>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">美团用户服务协议</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团评价规则(总则)</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团用户诚信公约</a>
                   </li>
                   <li>
                     <a href="javascript:;">美团网络订餐食品安全管理办法</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">美团侵权投诉须知</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">美团只是产权声明</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">价格说明</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">美团评价规则细则</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">美团网络订餐食品安全管理办法</a>
+                    <a href="javascript:;">美团商户评价诚信管理办法</a>
                   </li>
                 </ul>
               </div>
@@ -81,10 +80,10 @@
                     <a href="javascript:;">大众点评基础规则</a>
                   </li>
                   <li>
-                    <a href="javascript:;">大众点评基础规则</a>
+                    <a href="javascript:;">大众点评商户规则</a>
                   </li>
                   <li>
-                    <a href="javascript:;">大众点评基础规则</a>
+                    <a href="javascript:;">大众点评运营规则</a>
                   </li>
                 </ul>
               </div>
@@ -92,19 +91,34 @@
                 <div class="title">业务规则</div>
                 <ul>
                   <li>
-                    <a href="javascript:;">美团机票/火车票</a>
+                    <a href="javascript:;">美团外卖</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团机票/火车票</a>
+                    <a href="javascript:;">团购业务</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团机票/火车票</a>
+                    <a href="javascript:;">小象生鲜</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团机票/火车票</a>
+                    <a href="javascript:;">美团买菜</a>
                   </li>
                   <li>
-                    <a href="javascript:;">美团机票/火车票</a>
+                    <a href="javascript:;">美团打车 </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团机票/火车票 </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团旅行 </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团单车 </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">美团民宿 </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">金融服务 </a>
                   </li>
                 </ul>
               </div>
@@ -148,12 +162,17 @@
                 <ul>
                   <li>
                     <a href="javascript:;"
-                      >关于《美团点评评价规则》修订公示通知</a
+                      >关于《美团点评团购服务条款》调整公示通知</a
                     >
                   </li>
                   <li>
                     <a href="javascript:;"
-                      >关于《美团点评评价规则》修订公示通知</a
+                      >关于美团名称简化后的平台规则/服务协议调整通知</a
+                    >
+                  </li>
+                  <li>
+                    <a href="javascript:;"
+                      >新增《 美团点评评价细则 》公示通知</a
                     >
                   </li>
                   <li>
@@ -182,38 +201,36 @@
               <h3>关于我们</h3>
               <ul>
                 <li><a href="javascript:;">基本介绍</a></li>
-                <li><a href="javascript:;">基本介绍</a></li>
-                <li><a href="javascript:;">基本介绍</a></li>
-                <li><a href="javascript:;">基本介绍</a></li>
-                <li><a href="javascript:;">基本介绍</a></li>
+                <li><a href="javascript:;">发展历史</a></li>
+                <li><a href="javascript:;">管理团队</a></li>
+                <li><a href="javascript:;">业务产品</a></li>
+                <li><a href="javascript:;">社会企业</a></li>
               </ul>
             </div>
             <div class="item">
               <h3>企业文化</h3>
               <ul>
                 <li><a href="javascript:;">企业理念</a></li>
-                <li><a href="javascript:;">企业理念</a></li>
-                <li><a href="javascript:;">企业理念</a></li>
-                <li><a href="javascript:;">企业理念</a></li>
-                <li><a href="javascript:;">企业理念</a></li>
+                <li><a href="javascript:;">人才发展</a></li>
+                <li><a href="javascript:;">工作在美团</a></li>
               </ul>
             </div>
             <div class="item">
               <h3>新闻中心</h3>
               <ul>
                 <li><a href="javascript:;">公司新闻</a></li>
-                <li><a href="javascript:;">公司新闻</a></li>
-                <li><a href="javascript:;">公司新闻</a></li>
-                <li><a href="javascript:;">公司新闻</a></li>
-                <li><a href="javascript:;">公司新闻</a></li>
+                <li><a href="javascript:;">美团研究院</a></li>
+                <li><a href="javascript:;">媒体新闻</a></li>
               </ul>
             </div>
             <div class="item">
               <h3>联系我们</h3>
               <ul>
                 <li><a href="javascript:;">客户联系</a></li>
-                <li><a href="javascript:;">客户联系</a></li>
-                <li><a href="javascript:;">客户联系</a></li>
+                <li><a href="javascript:;">合作洽谈</a></li>
+                <li><a href="javascript:;">投资者关系</a></li>
+                <li><a href="javascript:;">监督举报</a></li>
+                <li><a href="javascript:;">办公地点</a></li>
               </ul>
             </div>
             <div class="item">
@@ -267,6 +284,16 @@
 <script>
 export default {
   name: "rules",
+  data() {
+    return {
+      navNum: 0,
+    };
+  },
+  methods: {
+    changeNav(navNum) {
+      this.navNum = navNum;
+    },
+  },
 };
 </script>
 
@@ -295,25 +322,28 @@ export default {
       list-style-type: none;
       line-height: 100px;
       li {
+        position: relative;
         float: left;
+        height: 40px;
         display: inline-block;
         font-size: 16px;
         font-weight: bold;
         margin-right: 40px;
-        line-height: 22px;
+        line-height: 60px;
+        &.active:after {
+          position: absolute;
+          top: 40px;
+          content: "";
+          display: block;
+          height: 4px;
+          background-image: linear-gradient(135deg, #ffd000, #ffbd00);
+        }
+
         a {
           color: #333;
           &:hover {
             transition: color 0.2s ease;
             color: #ffbd00;
-          }
-          &:after {
-            position: relative;
-            top: 40px;
-            content: "";
-            display: block;
-            height: 4px;
-            background-image: linear-gradient(135deg, #ffd000, #ffbd00);
           }
         }
       }
