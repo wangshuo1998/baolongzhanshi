@@ -22,91 +22,14 @@
                   <a href="javascript:;">全部</a>
                 </span>
               </div>
-              <div class="panel-content">
+              <div class="panel-content"> 
                 <dl class="move-list">
-                  <dd>
+                  <dd v-for="(cat, index) in hotMoviesListHot" :key="cat.id">
                     <div class="move-item">
                       <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
+                        <img :src="cat.img" alt="">
                       </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
-                      <div class="move-detail">
-                        <a href="javascript:;">购票</a>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move.jpg" alt="">
-                      </div>
-                      <div class="move-title">金刚川</div>
+                      <div class="move-title">{{cat.nm}}</div>
                       <div class="move-detail">
                         <a href="javascript:;">购票</a>
                       </div>
@@ -126,119 +49,14 @@
               </div>
               <div class="panel-content">
                 <dl class="move-list">
-                  <dd>
+                  <dd v-for="(com,index) in comingMoviesListCom" :key="com.id">
                     <div class="move-item">
                       <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
+                        <img :src="com.img" alt="">
                       </div>
-                      <div class="move-title">风平浪静</div>
+                      <div class="move-title">{{com.nm}}</div>
                       <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="second-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="second-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="second-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
-                      </div>
-                      <div class="presale">
-                        <span class="yugao">预告片</span>
-                        <span class="yushou">预售</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="second-poster">
-                        <img src="@/assets/xiaohuImages/move2.jpg" alt="">
-                      </div>
-                      <div class="move-title">风平浪静</div>
-                      <div class="second-detail">
-                        <span>888人想看</span>
+                        <span>{{com.wish}}人想看</span>
                       </div>
                       <div class="presale">
                         <span class="yugao">预告片</span>
@@ -283,58 +101,12 @@
                       <div class="move-title">魁拔Ⅲ战神崛起</div>
                     </div>
                   </dd>
-                  <dd>
+                  <dd v-for="(comed,index) in comingMoviesListComed" :key="comed.id">
                     <div class="move-item">
                       <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
+                        <img :src="comed.img" alt="">
                       </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
-                      
-                    </div>
-                  </dd>
-                  
-                  <dd>
-                    <div class="move-item">
-                      <div class="move-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
-                      </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
-                      
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="last-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
-                      </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
-                      
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="last-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
-                      </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
-                      
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="last-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
-                      </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
-                      
-                    </div>
-                  </dd>
-                  <dd>
-                    <div class="move-item">
-                      <div class="last-poster">
-                        <img src="@/assets/xiaohuImages/move3.jpg" alt="">
-                      </div>
-                      <div class="move-title">魁拔Ⅲ战神崛起</div>
+                      <div class="move-title">{{comed.nm}}</div>
                       
                     </div>
                   </dd>
@@ -754,11 +526,58 @@
 <script>
 import maoyanHeader from "@/components/maoyanHeader";
 import maoyanFooter from "@/components/maoyanFooter";
+import {mapState} from 'vuex';
 export default {
   name: "maoyanshouye",
   components: {
     maoyanHeader,
     maoyanFooter,
+  },
+  data() {
+    return {
+      hotMoviesListHot:[],
+      comingMoviesListCom:[],
+      comingMoviesListComed:[]
+    }
+  },
+  mounted() {
+    this.getHotMoviesList();
+    this.getComingMoviesList();
+  },
+  methods: {
+    getHotMoviesList(){
+      this.$store.dispatch('getHotMoviesList')
+    },
+    getComingMoviesList(){
+      this.$store.dispatch('getComingMoviesList')
+    },
+  },
+  computed: {
+    ...mapState({
+      hotMoviesList:state=>state.catShouye.hotMoviesList,
+      comingMoviesList:state=>state.catShouye.comingMoviesList
+
+    }),
+
+  },
+  watch: {
+    hotMoviesList(value){
+      
+      this.hotMoviesListHot = value.hot.slice(0,8)
+    },
+    comingMoviesList:{
+      handler(){
+        this.comingMoviesListCom=this.comingMoviesList.coming.slice(0,8)
+      }
+    },
+    comingMoviesListCom:{
+      handler(){
+        this.comingMoviesListComed=this.comingMoviesList.coming.slice(0,6)
+      }
+    }
+    // comingMoviesList(value){
+    //   this.comingMoviesListComed=value.coming.slice(0,6)
+    // },
   },
 };
 </script>
@@ -767,7 +586,7 @@ export default {
 .container {
   width: 100%;
   height: 3680px;
-  background-color: rgb(255, 255, 255);
+  // background-color: rgb(255, 255, 255);
 }
 .container .content {
   height: 100%;
@@ -782,6 +601,7 @@ export default {
   width: 1903px;
   height: 440px;
   margin: 0 auto;
+
 }
 .banner-two {
   width: 1600px;
@@ -821,6 +641,9 @@ export default {
   color: white;
   margin-top: -35px;
   margin-left: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .content
   .main
@@ -870,6 +693,9 @@ export default {
   .move-detail
   a:hover {
   color: white;
+}
+.panel-content .move-poster{
+  cursor: pointer;
 }
 // 第二部分区域
 .content .main .movie-grid .kong {
@@ -976,6 +802,7 @@ export default {
   position: absolute;
   top: 585px;
   left: 1190px;
+  margin-left: 100px;
 }
 // 头部
 .aside .panel-header h2 {

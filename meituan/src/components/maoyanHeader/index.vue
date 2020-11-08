@@ -44,7 +44,7 @@
       </div>
       <!-- app下载区 -->
       <div class="app-download">
-        <a href="javascript:;" target="_blank">
+        <a href="javascript:;">
           <span class="iconfont iconshouji"></span>
           <span>APP下载</span>
           <span class="iconfont iconcaretdown"></span>
@@ -53,7 +53,7 @@
       <!-- 头部搜索区 -->
       <form action="" class="" target="_blank">
         <input type="search" maxlength="32" class="search" placeholder="找影视剧,影人，影院"/>
-        <input type="submit" class="iconfont iconfangdajing" value />
+        <!-- <input type="submit" class="iconfont iconfangdajing" value /> -->
       </form>
       <!-- 头部登录区 -->
       <div class="user-info">
