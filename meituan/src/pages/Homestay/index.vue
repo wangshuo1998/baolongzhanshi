@@ -31,25 +31,21 @@
           <div class="swiper-slide">
             <img
               src="https://img.meituan.net/iphoenix/fae12ad6cb45735f4835276ada9cb062167115.jpg.webp@2880w_460h_80Q_1e_1c"
-              alt="家哥~~~"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="https://img.meituan.net/iphoenix/09ec58e3673a4d6aceabd9e1151781f95251800.png.webp@2880w_460h_80Q_1e_1c"
-              alt="家哥~~~"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="https://p1.meituan.net/iphoenix/3d1f903d47e845f896568b43d3bccc282623564.jpg.webp@2880w_460h_80Q_1e_1c"
-              alt="家哥~~~"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="https://p0.meituan.net/iphoenix/5b2af7457f8f0feb26c030aeefecb33f2393508.jpg.webp@2880w_460h_80Q_1e_1c"
-              alt="家哥"
             />
           </div>
         </div>
@@ -64,12 +60,27 @@
           <div class="recat-root">
             <div class="city">
               <ul class="home-search">
-                <li class="home-search_hr">
-                  <span class="flex-center">
-                    <div class="dropdown dropdown-default search-menu__item">
-                      <button type="button" class="serch-menu"></button>
-                    </div>
-                  </span>
+                <li class="home-search__item-city">
+                  <div class="home-search__item-city_btn">
+                    <button type="button" class="serch-menu">北京</button>
+                    <i class="iconfont iconjiantouarrow483"></i>
+                  </div>
+                </li>
+                <li class="home-search__item-city_data_form">
+                  <el-date-picker
+                    size="large"
+                    v-model="value1"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                  >
+                  </el-date-picker>
+                </li>
+                <li class="home-search__item_search">
+                  <div class="home-search__item_search_btn">
+                    <button>去开房呀</button>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -425,30 +436,50 @@
               <div class="mod-header2">
                 <div class="hot-places">
                   <ul>
-                    <li class="current" role="button">
-                      <div class="name">北京大兴国际机场</div>
+                    <li
+                      class="current"
+                      role="button"
+                      @click="changeHotPlace(0)"
+                    >
+                      <div class="name" :class="{ active: hotPlaceNum === 0 }">
+                        北京大兴国际机场
+                      </div>
                       <div class="score">13%选择</div>
+                      <div class="indicator" v-show="hotPlaceNum === 0"></div>
                     </li>
-                    <li class role="button">
-                      <div class="name">果园环岛/通州区</div>
+                    <li class role="button" @click="changeHotPlace(1)">
+                      <div class="name" :class="{ active: hotPlaceNum === 1 }">
+                        果园环岛/通州区
+                      </div>
                       <div class="score">12%选择</div>
+                      <div class="indicator" v-show="hotPlaceNum === 1"></div>
                     </li>
-                    <li class role="button">
-                      <div class="name">良乡大学城</div>
+                    <li class role="button" @click="changeHotPlace(2)">
+                      <div class="name" :class="{ active: hotPlaceNum === 2 }">
+                        良乡大学城
+                      </div>
                       <div class="score">15%选择</div>
+                      <div class="indicator" v-show="hotPlaceNum === 2"></div>
                     </li>
-                    <li class role="button">
-                      <div class="name">小汤山温泉度假区</div>
+                    <li class role="button" @click="changeHotPlace(3)">
+                      <div class="name" :class="{ active: hotPlaceNum === 3 }">
+                        小汤山温泉度假区
+                      </div>
                       <div class="score">14%选择</div>
+                      <div class="indicator" v-show="hotPlaceNum === 3"></div>
                     </li>
                   </ul>
-                  <div class="indicator"></div>
+                  <!-- <div class="indicator"></div> -->
                 </div>
               </div>
               <div class="a-loader loader-hasContent">
                 <div class="loader-content">
                   <div class="r-card-list">
-                    <div class="list-item">
+                    <div
+                      class="list-item"
+                      v-for="airPortItem in placeList[hotPlaceNum]"
+                      :key="airPortItem.id"
+                    >
                       <a class="place" href="javaScript:;">
                         <div class="product-card">
                           <div class="product-card-header">
@@ -456,23 +487,22 @@
                               <div class="pro-img">
                                 <img
                                   class="origin-img"
-                                  src="https://img.meituan.net/phoenix/24db076f3545f22d4d344ef1d8afa2245784903.jpg@732w_412h_80Q_1e_1c"
-                                  alt="##"
+                                  :src="airPortItem.imgUrl"
                                 />
                               </div>
                             </div>
                           </div>
                           <div class="product-card-info">
                             <div class="product-card-title">
-                              大兴机场魏善庄实惠农家院单间4
+                              {{ airPortItem.title }}
                             </div>
                             <div class="product-card-type-detail">
-                              单间 · 四居室 · 可住2-4人 · 北京大兴机场
+                              {{ airPortItem.desc }}
                             </div>
                             <div class="product-card-price">
                               <span class="latest">
                                 <i class="unit">¥</i>
-                                188
+                                {{ airPortItem.price }}
                               </span>
                               <div class="price-tag-wrapper"></div>
                               <div class="more-more"></div>
@@ -604,9 +634,17 @@
 <script>
 import Swiper from "swiper";
 import "swiper/css/swiper.min.css";
+import { mapState } from "vuex";
 export default {
   name: "homestay",
+  data() {
+    return {
+      hotPlaceNum: 0,
+      value1: "",
+    };
+  },
   mounted() {
+    this.getPlaceList();
     new Swiper(".swiper-container", {
       //   direction: "vertical", // 垂直切换选项
       loop: true, // 循环模式选项
@@ -620,6 +658,19 @@ export default {
         prevEl: ".swiper-button-prev",
       },
     });
+  },
+  methods: {
+    getPlaceList() {
+      this.$store.dispatch("getPlaceList");
+    },
+    changeHotPlace(index) {
+      this.hotPlaceNum = index;
+    },
+  },
+  computed: {
+    ...mapState({
+      placeList: (state) => state.minsuModule.placeList,
+    }),
   },
 };
 </script>
@@ -716,15 +767,84 @@ export default {
       z-index: 999;
       margin: 0 auto;
       position: relative;
-
-      .home-search_hr {
-        width: 200px;
+      .home-search__item-city {
+        width: 190px;
         height: 56.4px;
         flex-grow: 0;
         flex-shrink: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 16px;
+        margin-right: 10px;
+        border-right: 1px solid #ccc;
+
+        .home-search__item-city_btn {
+          button {
+            background: none;
+            border: none;
+            color: #252626;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all linear 0.3s;
+          }
+          i {
+            display: inline-block;
+            background-color: #ccc;
+            border-radius: 50%;
+            font-size: 12px;
+            width: 14px;
+            height: 14px;
+            text-align: center;
+            line-height: 16px;
+            color: #fff;
+            transition: all linear 0.3s;
+          }
+          &:hover button {
+            color: #159cff;
+          }
+          &:hover i {
+            background-color: #159cff;
+            transform: rotate(180deg);
+          }
+        }
+      }
+      .home-search__item-city_data_form {
+        line-height: 56.4px;
+        .el-input__inner {
+          border: none;
+        }
+      }
+      .home-search__item_search {
+        margin-left: auto;
+        line-height: 56.4px;
+
+        .home-search__item_search_btn {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: 100%;
+          button {
+            width: 120px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 18px;
+            border-radius: 5px;
+            background: none;
+            border: none;
+            color: #252626;
+            cursor: pointer;
+            margin-right: 5px;
+            background-image: linear-gradient(
+              90deg,
+              #ffe24c,
+              #ffde35 60%,
+              #ffdb25
+            );
+            box-shadow: 0 2px 10px 0 rgba(37, 38, 38, 0.03),
+              0 2px 10px 0 rgba(255, 220, 44, 0.2);
+          }
+        }
       }
     }
   }
@@ -1089,14 +1209,13 @@ export default {
       }
       .recat-root2 {
         width: 1150px;
-        height: 451px;
         // background: rgb(236, 139, 139);
 
         .mod-header2 {
           margin-bottom: 10px;
 
           .hot-places {
-            position: relative;
+            // position: relative;
 
             ul {
               list-style: none;
@@ -1107,13 +1226,18 @@ export default {
               white-space: nowrap;
 
               li {
+                position: relative;
                 padding: 0 15px 12px;
                 cursor: pointer;
                 & > div:first-child {
-                  color: #252626;
+                  color: #cdcccd;
                 }
                 .name {
-                  color: #252626;
+                  // color: #252626;
+                  // color: #cdcccd;
+                  &.active {
+                    color: #252626;
+                  }
                   font-weight: 700;
                   font-size: 16px;
                   color: #cdcccd;
@@ -1124,24 +1248,31 @@ export default {
                   // color: #cdcccd;
                   margin-top: 6px;
                 }
+                .indicator {
+                  // visibility: visible;
+                  width: 80%;
+                  position: absolute;
+                  left: 15px;
+                  background: #494b50;
+                  border-radius: 2px;
+                  height: 4px;
+                  bottom: 0;
+                  // pointer-events: none;
+                }
               }
             }
 
-            .indicator {
-              visibility: visible;
-              width: 128px;
-              transform: translateX(0px) translateZ(0px);
-              transition-property: transform, width;
-              transition-duration: 0.5s;
-
-              position: absolute;
-              left: 0;
-              background: #494b50;
-              border-radius: 2px;
-              height: 4px;
-              bottom: 0;
-              pointer-events: none;
-            }
+            // .indicator {
+            //   visibility: visible;
+            //   width: 128px;
+            //   position: absolute;
+            //   left: 0;
+            //   background: #494b50;
+            //   border-radius: 2px;
+            //   height: 4px;
+            //   bottom: 0;
+            //   pointer-events: none;
+            // }
           }
         }
 
@@ -1150,9 +1281,6 @@ export default {
             .r-card-list {
               margin: -10px -8px;
               align-items: stretch;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-between;
 
               .list-item {
                 width: 33.33333333%;
