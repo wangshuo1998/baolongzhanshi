@@ -7,7 +7,8 @@ import '@/assets/css/font.css'
 Vue.use(Vuelazyload, {
   loading: require("@/assets/lazy.png")
 })
-import 'element-ui/lib/theme-chalk/index.css';
+// 添加表单验证
+import "@/utils/validate.js";
 // 引入element-ui 全部引入 项目完毕整理
 import {
   Pagination,
@@ -188,6 +189,9 @@ import './Api'
 Vue.config.productionTip = false
 
 new Vue({
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  },
   router,
   store,
   render: h => h(App)

@@ -107,13 +107,43 @@
       <!--      右侧的用户信息-->
       <div class="rightUserInfo">
         <div class="userInfo">
-          <div class="infoDetail">
+          <!--          登录时的状态信息-->
+          <div v-if="userInfo" class="infoDetail">
+            <div class="avatar">
+              <img src="../../assets/avatar.gif" alt="登录头像" />
+            </div>
+            <p>{{ userInfo.nickName }}</p>
+            <div class="iconContainer clearfix">
+              <div class="iconItem">
+                <i class="iconfont icondingdan"></i>
+                <div>我的订单</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont iconshoucang1"></i>
+                <div>我的收藏</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont icondiyongquan1"></i>
+                <div>抵用券</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont iconyue"></i>
+                <div>金额</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont icongengduo_tr"></i>
+                <div>更多</div>
+              </div>
+            </div>
+          </div>
+          <!--          未登录时的界面-->
+          <div v-else class="infoDetail">
             <div class="avatar">
               <img src="../../assets/avatar.jpg" alt="未登录头像" />
             </div>
             <p>Hi！你好</p>
-            <a href="javascript:;">注册</a>
-            <a href="javascript:;">立即登录</a>
+            <a @click="$router.push('/register')" href="javascript:;">注册</a>
+            <a @click="$router.push('/login')" href="javascript:;">立即登录</a>
           </div>
         </div>
         <div class="mtCode">
@@ -169,6 +199,7 @@ export default {
       recommendHouseCities: [],
       recommendHouseList: [],
       guessLikeList: [],
+      userInfo: {},
     }
   },
   components: {
@@ -201,6 +232,7 @@ export default {
     moveOut() {
       this.isMoveIn = false
     },
+
     //二级分类列表
     getCategoryList() {
       this.$store.dispatch('getCategoryList')
@@ -259,7 +291,30 @@ export default {
         console.log(location)
       }
     },
+    //改变登录状态
+    changeStatus(status) {
+      this.userInfo = status
+    },
   },
+  mounted() {
+    this.getCategoryList()
+    //获取轮播图的数据
+    this.getBannersList()
+    //获取正在热映的数据
+    this.getHotMoviesList()
+    //获取即将上映的数据
+    this.getComingMoviesList()
+    //获取民宿城市列表
+    this.getRecommendHouseCities()
+    //获取民宿信息列表
+    this.getRecommendHouseList()
+    //获取猜你喜欢信息列表
+    this.getGuessLikeList()
+    //获取用户的信息
+    this.userInfo = JSON.parse(localStorage.getItem('USERINFO_KEY'))
+    this.$bus.$on('changeStatus', this.changeStatus)
+  },
+
   computed: {
     ...mapState({
       categoryList: (state) => state.indexModule.categoryList,
@@ -601,65 +656,83 @@ export default {
             border: 4px solid #e5e5e5;
             box-sizing: content-box;
           }
-        }
+          .iconContainer {
+            padding: 0 15px;
+            width: 100%;
+            .iconItem {
+              margin-top: 10px;
+              float: left;
+              width: 33.333%;
+              cursor: pointer;
+              font-size: 12px;
+              i {
+                font-size: 22px;
+                color: #ffc300;
+              }
+              div {
+                margin: 5px 0;
+              }
+            }
+          }
 
-        p {
-          font-size: 16px;
-          color: #222;
-        }
+          p {
+            font-size: 16px;
+            color: #222;
+          }
 
-        a {
-          display: block;
-          font-size: 14px;
-          color: #333333;
-          width: 118px;
-          margin: 10px auto 15px auto;
-          border: 1px solid #e5e5e5;
-          border-radius: 40px;
-          line-height: 38px;
-          text-align: center;
-          background: #fff;
-          transition: background 0.5s;
+          a {
+            display: block;
+            font-size: 14px;
+            color: #333333;
+            width: 118px;
+            margin: 10px auto 15px auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 40px;
+            line-height: 38px;
+            text-align: center;
+            background: #fff;
+            transition: background 0.5s;
 
-          &:hover {
-            background: #f7f7f7;
+            &:hover {
+              background: #f7f7f7;
+            }
           }
         }
       }
-    }
 
-    .mtCode {
-      width: 230px;
-      height: 167px;
-      border: 1px solid #e5e5e5;
-      margin-top: 10px;
-      text-align: center;
-      box-sizing: border-box;
+      .mtCode {
+        width: 230px;
+        height: 167px;
+        border: 1px solid #e5e5e5;
+        margin-top: 10px;
+        text-align: center;
+        box-sizing: border-box;
 
-      .qrCode {
-        width: 95px;
-        margin: 10px auto 0 auto;
-
-        img {
+        .qrCode {
           width: 95px;
-          height: 95px;
+          margin: 10px auto 0 auto;
+
+          img {
+            width: 95px;
+            height: 95px;
+          }
         }
-      }
 
-      p:first-child {
-        font-size: 16px;
-        font-weight: 500;
-      }
+        p:first-child {
+          font-size: 16px;
+          font-weight: 500;
+        }
 
-      p:last-child span:first-child {
-        font-size: 12px;
-        color: #ec5330;
-        margin-right: 5px;
-      }
+        p:last-child span:first-child {
+          font-size: 12px;
+          color: #ec5330;
+          margin-right: 5px;
+        }
 
-      p:last-child span:last-child {
-        font-size: 12px;
-        color: #3f3f3f;
+        p:last-child span:last-child {
+          font-size: 12px;
+          color: #3f3f3f;
+        }
       }
     }
   }

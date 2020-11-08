@@ -3,6 +3,7 @@ module.exports = {
   // 关闭ESLint的规则
   lintOnSave: false,
   devServer: {
+    //页面的正常数据
     proxy: {
       '/api': {
         // 改成本地地址
@@ -11,6 +12,12 @@ module.exports = {
       '/poi': {
         // 改成本地地址
         target: 'https://bj.meituan.com/meishi/api',
+      },
+      '/mysql': {
+        target: "http://localhost:3000",
+        pathRewrite: {
+          "^/mysql": ""
+        }
       }
     }
   }
