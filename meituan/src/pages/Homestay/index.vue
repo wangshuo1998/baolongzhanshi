@@ -4,7 +4,7 @@
     <div class="header">
       <div class="headerContent">
         <div class="logo">
-          <a href="javascript:;" title="返回首页">
+          <a href="javascript:;" @click="$router.push('/')" title="返回首页">
             <img src="./images/logo.svg" />
           </a>
         </div>
