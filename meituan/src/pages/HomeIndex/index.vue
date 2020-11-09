@@ -348,169 +348,170 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-/*  清除浮动*/
-.clearfix::after {
-  content: '';
-  display: block;
-  clear: both;
-  visibility: hidden;
-  height: 0;
-  font-size: 0;
-}
+  /*  清除浮动*/
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+  }
 
-.container {
-  width: 100%;
-  /*轮播首屏*/
+  .container {
+    width: 100%;
+    /*轮播首屏*/
 
-  .bannerContainer {
-    width: 1190px;
-    margin: 0 auto;
-    /*二级分类列表*/
+    .bannerContainer {
+      width: 1190px;
+      margin: 0 auto;
+      /*二级分类列表*/
 
-    .leftCategoryList {
-      position: relative;
-      float: left;
-      width: 230px;
-      height: 475px;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      position: relative;
-      top: -50px;
-      box-sizing: border-box;
+      .leftCategoryList {
+        position: relative;
+        float: left;
+        width: 230px;
+        height: 475px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        position: relative;
+        top: -50px;
+        box-sizing: border-box;
 
-      .title {
-        width: 100%;
-        height: 50px;
-        padding-top: 15px;
+        .title {
+          width: 100%;
+          height: 50px;
+          padding-top: 15px;
 
-        span {
-          margin-left: 15px;
-          color: #222;
-          font-weight: 700;
+          span {
+            margin-left: 15px;
+            color: #222;
+            font-weight: 700;
+          }
         }
-      }
 
-      .navContent {
-        ul {
-          padding: 10px 0 8px;
-          height: 425px;
+        .navContent {
+          ul {
+            padding: 10px 0 8px;
+            height: 425px;
 
-          li {
-            padding: 2px 12px;
-            height: 25.5px;
-            /*position: relative;*/
+            li {
+              padding: 2px 12px;
+              height: 25.5px;
+              /*position: relative;*/
 
-            i {
-              font-size: 16px;
-            }
+              i {
+                font-size: 16px;
+              }
 
-            a {
-              color: #646464;
-              font-size: 13px;
-              line-height: 26px;
-            }
+              a {
+                color: #646464;
+                font-size: 13px;
+                line-height: 26px;
+              }
 
-            label > a:first-child {
-              margin-left: 11px;
-            }
+              label > a:first-child {
+                margin-left: 11px;
+              }
 
-            .rightArrow {
-              width: 4px;
-              height: 4px;
-              float: right;
-              border-bottom: 1px solid #999;
-              border-right: 1px solid #999;
-              transform: rotate(-45deg);
-              margin-top: 9px;
-            }
+              .rightArrow {
+                width: 4px;
+                height: 4px;
+                float: right;
+                border-bottom: 1px solid #999;
+                border-right: 1px solid #999;
+                transform: rotate(-45deg);
+                margin-top: 9px;
+              }
 
-            &:hover {
-              background: #fff7eb;
-            }
+              &:hover {
+                background: #FFF7EB;
+              }
 
-            &:hover label a {
-              font-weight: bold;
-              color: #222;
-            }
+              &:hover label a {
+                font-weight: bold;
+                color: #222;
+              }
 
-            &:hover > a {
-              font-weight: bold;
-              color: #222;
-            }
+              &:hover > a {
+                font-weight: bold;
+                color: #222;
+              }
 
-            &:hover .rightArrow {
-              border-color: #222;
-            }
+              &:hover .rightArrow {
+                border-color: #222;
+              }
 
-            &:hover .navDetail {
-              display: block;
-            }
+              &:hover .navDetail {
+                display: block;
+              }
 
-            .navDetail {
-              display: none;
-              position: absolute;
-              top: 60px;
-              left: 229px;
-              width: 400px;
-              height: 416px;
-              background: #fff;
-              padding: 0px 0 12px;
-              z-index: 99;
+              .navDetail {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 229px;
+                width: 400px;
+                height: 416px;
+                background: #fff;
+                padding: 0px 0 12px;
+                z-index: 99;
 
-              dl {
-                padding: 0 20px 20px 20px;
+                dl {
+                  padding: 0 20px 20px 20px;
 
-                dd {
-                  color: #999;
-                  font-size: 12px;
-                  /*margin-right: 15px;*/
-                  float: left;
-                  cursor: pointer;
-                  /*line-height: 20px;*/
-                  margin: 5px 8px;
-
-                  &:hover {
-                    color: #fe8c00;
-                  }
-                }
-
-                .firstChild {
-                  display: block;
-                  font-size: 16px;
-                  color: #222;
-                  font-weight: 500;
-                  width: 100%;
-                  margin-top: 24px;
-                  height: 35px;
-                  line-height: 22px;
-                  padding-bottom: 10px;
-                  border-bottom: 1px solid #e5e5e5;
-
-                  & > span:first-child {
-                    float: left;
-                  }
-
-                  & > span:last-child {
-                    float: right;
-                    font-size: 12px;
+                  dd {
                     color: #999;
-                    font-weight: 400;
-                    margin-right: 6px;
+                    font-size: 12px;
+                    /*margin-right: 15px;*/
+                    float: left;
+                    cursor: pointer;
+                    /*line-height: 20px;*/
+                    margin: 5px 8px;
 
-                    i {
-                      display: inline-block;
-                      width: 5px;
-                      height: 5px;
-                      border-bottom: 1px solid #999;
-                      border-right: 1px solid #999;
-                      background: transparent;
-                      transform: translateY(-1px) rotate(-45deg);
-                      vertical-align: middle;
+                    &:hover {
+                      color: #FE8C00;
                     }
                   }
 
-                  &:hover {
+                  .firstChild {
+                    display: block;
+                    font-size: 16px;
                     color: #222;
+                    font-weight: 500;
+                    width: 100%;
+                    margin-top: 24px;
+                    height: 35px;
+                    line-height: 22px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #e5e5e5;
+
+                    & > span:first-child {
+                      float: left;
+                    }
+
+                    & > span:last-child {
+                      float: right;
+                      font-size: 12px;
+                      color: #999;
+                      font-weight: 400;
+                      margin-right: 6px;
+
+                      i {
+                        display: inline-block;
+                        width: 5px;
+                        height: 5px;
+                        border-bottom: 1px solid #999;
+                        border-right: 1px solid #999;
+                        background: transparent;
+                        transform: translateY(-1px) rotate(-45deg);
+                        vertical-align: middle;
+                      }
+                    }
+
+                    &:hover {
+                      color: #222;
+                    }
                   }
                 }
               }
@@ -519,157 +520,155 @@ export default {
         }
       }
     }
-  }
 
-  /*  中间的banner*/
+    /*  中间的banner*/
 
-  .middleBanner {
-    float: left;
-    margin: 10px 0 0 10px;
-    width: 720px;
-    height: 415px;
-    position: relative;
+    .middleBanner {
+      float: left;
+      margin: 10px 0 0 10px;
+      width: 720px;
+      height: 415px;
+      position: relative;
 
-    .bannerTopNav {
-      position: absolute;
-      top: -45px;
-      left: 20px;
+      .bannerTopNav {
+        position: absolute;
+        top: -45px;
+        left: 20px;
 
-      a {
-        font-weight: 700;
-        color: #222;
-        font-size: 16px;
-        margin: 0 20px;
+        a {
+          font-weight: 700;
+          color: #222;
+          font-size: 16px;
+          margin: 0 20px;
 
-        &.waimai:hover {
-          color: #fbc700;
+          &.waimai:hover {
+            color: #FBC700;
+          }
+
+          &.movies:hover {
+            color: #ED1E24;
+          }
+
+          &.hotel:hover {
+            color: #F04D4E;
+          }
+
+          &.house:hover {
+            color: #FDC411;
+          }
+
+          &.saler:hover {
+            color: #FE8C00;
+          }
+
+          &.heart:hover {
+            color: #F24D4E;
+          }
         }
+      }
 
-        &.movies:hover {
-          color: #ed1e24;
-        }
+      .topBanner {
+        width: 100%;
 
-        &.hotel:hover {
-          color: #f04d4e;
-        }
+        .swiper-container {
+          float: left;
+          width: 550px;
+          height: 240px;
+          --swiper-navigation-size: 20px;
+          --swiper-pagination-color: #fff;
 
-        &.house:hover {
-          color: #fdc411;
-        }
+          &:hover .swiper-button-next {
+            opacity: 1;
+          }
 
-        &.saler:hover {
-          color: #fe8c00;
-        }
+          &:hover .swiper-button-prev {
+            opacity: 1;
+          }
 
-        &.heart:hover {
-          color: #f24d4e;
+          .swiper-button-next, .swiper-button-prev {
+            opacity: 0;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 20px;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
+            transition: opacity 0.3s;
+          }
         }
+      }
+
+      .swiperRightPic {
+        float: left;
+        height: 240px;
+        width: 150px;
+        margin: 0 10px;
       }
     }
 
-    .topBanner {
+    .bottomBanner {
       width: 100%;
 
-      .swiper-container {
+      .leftPic, .middlePic {
         float: left;
-        width: 550px;
-        height: 240px;
-        --swiper-navigation-size: 20px;
-        --swiper-pagination-color: #fff;
+        width: 270px;
+        height: 165px;
+        margin: 10px 10px 0 0;
+      }
 
-        &:hover .swiper-button-next {
-          opacity: 1;
-        }
-
-        &:hover .swiper-button-prev {
-          opacity: 1;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-          opacity: 0;
-          background: rgba(0, 0, 0, 0.8);
-          font-size: 20px;
-          color: #fff;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          font-weight: bold;
-          transition: opacity 0.3s;
-        }
+      .rightPic {
+        float: left;
+        width: 150px;
+        height: 165px;
+        margin: 10px 10px 0 0;
       }
     }
 
-    .swiperRightPic {
+    /*  右侧的信息*/
+
+    .rightUserInfo {
       float: left;
-      height: 240px;
-      width: 150px;
-      margin: 0 10px;
-    }
-  }
-
-  .bottomBanner {
-    width: 100%;
-
-    .leftPic,
-    .middlePic {
-      float: left;
-      width: 270px;
-      height: 165px;
-      margin: 10px 10px 0 0;
-    }
-
-    .rightPic {
-      float: left;
-      width: 150px;
-      height: 165px;
-      margin: 10px 10px 0 0;
-    }
-  }
-
-  /*  右侧的信息*/
-
-  .rightUserInfo {
-    float: left;
-    width: 230px;
-    height: 415px;
-    margin-top: 10px;
-
-    .userInfo {
       width: 230px;
-      height: 240px;
-      border: 1px solid #e5e5e5;
-      box-sizing: border-box;
+      height: 415px;
+      margin-top: 10px;
 
-      .infoDetail {
-        padding-top: 30px;
-        text-align: center;
+      .userInfo {
+        width: 230px;
+        height: 240px;
+        border: 1px solid #e5e5e5;
+        box-sizing: border-box;
 
-        .avatar {
-          width: 55px;
-          margin: 0 auto 4px auto;
+        .infoDetail {
+          padding-top: 30px;
+          text-align: center;
 
-          img {
-            width: 47px;
-            height: 47px;
-            border-radius: 50%;
-            border: 4px solid #e5e5e5;
-            box-sizing: content-box;
+          .avatar {
+            width: 55px;
+            margin: 0 auto 4px auto;
+
+            img {
+              width: 47px;
+              height: 47px;
+              border-radius: 50%;
+              border: 4px solid #e5e5e5;
+              box-sizing: content-box;
+            }
           }
-          .iconContainer {
+          .iconContainer{
             padding: 0 15px;
             width: 100%;
-            .iconItem {
+            .iconItem{
               margin-top: 10px;
               float: left;
               width: 33.333%;
               cursor: pointer;
               font-size: 12px;
-              i {
+              i{
                 font-size: 22px;
-                color: #ffc300;
+                color: #FFC300;
               }
-              div {
+              div{
                 margin: 5px 0;
               }
             }
@@ -694,7 +693,7 @@ export default {
             transition: background 0.5s;
 
             &:hover {
-              background: #f7f7f7;
+              background: #F7F7F7;
             }
           }
         }
@@ -725,7 +724,7 @@ export default {
 
         p:last-child span:first-child {
           font-size: 12px;
-          color: #ec5330;
+          color: #EC5330;
           margin-right: 5px;
         }
 
@@ -736,5 +735,4 @@ export default {
       }
     }
   }
-}
 </style>

@@ -299,329 +299,459 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/*清除浮动*/
-.clearfix::after {
-  content: '';
-  display: block;
-  clear: both;
-  visibility: hidden;
-  height: 0;
-  font-size: 0;
-}
-.headerContainer {
-  width: 100%;
-  box-shadow: 0 2px 27px 0 rgba(0, 0, 0, 0.1);
-
-  .header {
+  /*清除浮动*/
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+  }
+  .headerContainer {
     width: 100%;
-    height: 40px;
-    background: #f4f4f4;
-    /*  头部顶端的导航条*/
+    box-shadow: 0 2px 27px 0 rgba(0, 0, 0, 0.10);
 
-    .headerBar {
-      width: 1190px;
+    .header {
+      width: 100%;
       height: 40px;
-      margin: 0 auto;
-      font-size: 12px;
-      color: #999999;
+      background: #F4F4F4;
+      /*  头部顶端的导航条*/
 
-      a {
-        color: #999999;
-      }
-
-      .leftHeaderBar {
+      .headerBar {
+        width: 1190px;
         height: 40px;
-        float: left;
-        line-height: 40px;
-        & > span {
-          color: #666;
+        margin: 0 auto;
+        font-size: 12px;
+        color: #999999;
+
+        a {
+          color: #999999;
         }
-        & > label {
-          cursor: pointer;
-          & > span:nth-child(2) {
-            float: left;
-            max-width: 100px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
+
+        .leftHeaderBar {
+          height: 40px;
+          float: left;
+          line-height: 40px;
+          &>span{
             color: #666;
           }
-          & > span:nth-child(3) {
-            width: 100px;
-            background: url('../../assets/loading3.gif');
-            background-position: 50% 50%;
-            background-size: 60px;
-            background-repeat: no-repeat;
-            height: 20px;
+          &>label{
+            cursor: pointer;
+            &>span:nth-child(2){
+              float: left;
+              max-width: 100px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              color: #666;
+            }
+            &>span:nth-child(3){
+              width: 100px;
+              background:url("../../assets/loading3.gif");
+              background-position: 50% 50%;
+              background-size: 60px;
+              background-repeat: no-repeat;
+              height: 20px;
+              float: left;
+              margin-top: 10px;
+            }
+          }
+          .location {
             float: left;
-            margin-top: 10px;
+            font-size: 12px;
+            vertical-align: bottom;
           }
-        }
-        .location {
-          float: left;
-          font-size: 12px;
-          vertical-align: bottom;
-        }
 
-        .changeCity {
-          background: #f4f4f4;
-          border: 1px solid #e5e5e5;
-          border-radius: 2px;
-          color: #666;
-          margin: 0 4px;
-          padding: 0 2px;
-          font-size: 12px;
-
-          &:hover {
-            color: #fe8c00;
-          }
-        }
-
-        .cityInfo {
-          display: inline-block;
-          padding: 0 2px 0 1px;
-
-          a {
+          .changeCity {
+            background: #F4F4F4;
+            border: 1px solid #E5E5E5;
+            border-radius: 2px;
+            color: #666;
             margin: 0 4px;
-          }
-        }
+            padding: 0 2px;
+            font-size: 12px;
 
-        .login,
-        .nickName {
-          color: #fe8c00;
-          margin-left: 21px;
-        }
-      }
-    }
-
-    .rightHeaderBar {
-      height: 40px;
-      line-height: 40px;
-      float: right;
-
-      li {
-        float: left;
-
-        .register,
-        .loginOut {
-          margin-left: 10px;
-
-          &:hover {
-            color: #fe8c00;
-          }
-        }
-
-        &:nth-child(1) {
-          position: relative;
-
-          &:hover .rightHeaderNavItem {
-            background: #fff;
-            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-            color: #fe8c00;
+            &:hover {
+              color: #FE8C00;
+            }
           }
 
-          &:hover .owner {
-            display: block;
-          }
-
-          .owner {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 40px;
-            padding: 0 14px;
-            background: #fff;
-            z-index: 90;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+          .cityInfo {
+            display: inline-block;
+            padding: 0 2px 0 1px;
 
             a {
+              margin: 0 4px;
+            }
+          }
+
+          .login,.nickName {
+            color: #FE8C00;
+            margin-left: 21px;
+          }
+
+          .register,.loginOut {
+            margin-left: 10px;
+
+            &:hover {
+              color: #FE8C00;
+            }
+          }
+        }
+
+        .rightHeaderBar {
+          height: 40px;
+          line-height: 40px;
+          float: right;
+
+          li {
+            float: left;
+
+            .rightHeaderNavItem {
               display: block;
-              line-height: 33px;
-              text-align: center;
-              width: 50px;
+              padding: 0 14px;
+              box-sizing: border-box;
+              border-left: 1px solid transparent;
+              border-right: 1px solid transparent;
 
               &:hover {
-                color: #fe8c00;
+                color: #FE8C00;
               }
             }
-          }
-        }
 
-        &:nth-child(3) {
-          position: relative;
+            &:nth-child(1) {
+              position: relative;
 
-          &:hover .rightHeaderNavItem {
-            background: #fff;
-            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-            color: #fe8c00;
-          }
+              &:hover .rightHeaderNavItem {
+                background: #fff;
+                box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+                color: #FE8C00;
+              }
 
-          &:hover .salerCenter {
-            display: block;
-          }
-
-          .salerCenter {
-            display: none;
-            position: absolute;
-            width: 140%;
-            right: 0;
-            top: 40px;
-            /*padding: 0 14px;*/
-            background: #fff;
-            z-index: 90;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
-
-            li {
-              width: 100%;
-
-              a {
+              &:hover .owner {
                 display: block;
-                line-height: 33px;
-                text-align: center;
-                width: 100%;
-
-                &:hover {
-                  color: #fe8c00;
-                }
-              }
-            }
-          }
-        }
-
-        &:nth-child(4) {
-          position: relative;
-
-          &:hover .rightHeaderNavItem {
-            background: #fff;
-            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-            color: #fe8c00;
-          }
-
-          &:hover .rulesList {
-            display: block;
-          }
-
-          .rulesList {
-            display: none;
-            position: absolute;
-            width: 100%;
-            right: 0;
-            top: 40px;
-            /*padding: 0 14px;*/
-            background: #fff;
-            z-index: 90;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
-
-            li {
-              width: 100%;
-
-              a {
-                display: block;
-                line-height: 33px;
-                text-align: center;
-                width: 100%;
-
-                &:hover {
-                  color: #fe8c00;
-                }
-              }
-            }
-          }
-        }
-
-        &:nth-child(5) {
-          position: relative;
-
-          &:hover .rightHeaderNavItem {
-            background: #fff;
-            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-            color: #fe8c00;
-          }
-
-          &:hover .websiteNav {
-            display: block;
-          }
-
-          .websiteNav {
-            display: none;
-            width: 1190px;
-            position: absolute;
-            right: -0.5px;
-            top: 40px;
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            box-sizing: border-box;
-            border-top: none;
-            box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
-            z-index: 90;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            padding: 20px 36px 36px 47px;
-
-            dl {
-              float: left;
-              margin-right: 47px;
-              text-align: center;
-
-              &.hotelTravel {
-                width: 234px;
-
-                dd {
-                  width: 33.333%;
-                }
               }
 
-              &.eatFood {
-                width: 156px;
+              .owner {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 40px;
+                padding: 0 14px;
+                background: #fff;
+                z-index: 90;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 
-                dd {
-                  width: 50%;
-                }
-              }
+                a {
+                  display: block;
+                  line-height: 33px;
+                  text-align: center;
+                  width: 50px;
 
-              &.movies {
-                width: 90px;
-
-                dd {
-                  width: 100%;
-                }
-              }
-
-              &.app {
-                float: right;
-                width: 380px;
-
-                dd {
-                  margin: 0 8px;
-                  padding: 5px 0;
-
-                  img {
-                    width: 60px;
-                    height: 60px;
+                  &:hover {
+                    color: #FE8C00;
                   }
                 }
               }
+            }
 
-              dt {
-                font-size: 14px;
-                color: #222;
-                font-weight: 500;
-                margin-bottom: 20px;
+            &:nth-child(3) {
+              position: relative;
+
+              &:hover .rightHeaderNavItem {
+                background: #fff;
+                box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+                color: #FE8C00;
               }
 
-              dd {
-                float: left;
-                line-height: 25px;
-                cursor: pointer;
+              &:hover .salerCenter {
+                display: block;
+              }
 
-                &:hover {
-                  color: #fe8c00;
+              .salerCenter {
+                display: none;
+                position: absolute;
+                width: 140%;
+                right: 0;
+                top: 40px;
+                /*padding: 0 14px;*/
+                background: #fff;
+                z-index: 90;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+
+                li {
+                  width: 100%;
+
+                  a {
+                    display: block;
+                    line-height: 33px;
+                    text-align: center;
+                    width: 100%;
+
+                    &:hover {
+                      color: #FE8C00;
+                    }
+                  }
+                }
+              }
+            }
+
+            &:nth-child(4) {
+              position: relative;
+
+              &:hover .rightHeaderNavItem {
+                background: #fff;
+                box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+                color: #FE8C00;
+              }
+
+              &:hover .rulesList {
+                display: block;
+              }
+
+              .rulesList {
+                display: none;
+                position: absolute;
+                width: 100%;
+                right: 0;
+                top: 40px;
+                /*padding: 0 14px;*/
+                background: #fff;
+                z-index: 90;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+
+                li {
+                  width: 100%;
+
+                  a {
+                    display: block;
+                    line-height: 33px;
+                    text-align: center;
+                    width: 100%;
+
+                    &:hover {
+                      color: #FE8C00;
+                    }
+                  }
+                }
+              }
+            }
+
+            &:nth-child(5) {
+              position: relative;
+
+              &:hover .rightHeaderNavItem {
+                background: #fff;
+                box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+                color: #FE8C00;
+              }
+
+              &:hover .websiteNav {
+                display: block;
+              }
+
+              .websiteNav {
+                display: none;
+                width: 1190px;
+                position: absolute;
+                right: -.5px;
+                top: 40px;
+                background: #fff;
+                border: 1px solid #e5e5e5;
+                box-sizing: border-box;
+                border-top: none;
+                box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
+                z-index: 90;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                padding: 20px 36px 36px 47px;
+
+                dl {
+                  float: left;
+                  margin-right: 47px;
+                  text-align: center;
+
+                  &.hotelTravel {
+                    width: 234px;
+
+                    dd {
+                      width: 33.333%;
+                    }
+                  }
+
+                  &.eatFood {
+                    width: 156px;
+
+                    dd {
+                      width: 50%;
+                    }
+                  }
+
+                  &.movies {
+                    width: 90px;
+
+                    dd {
+                      width: 100%;
+                    }
+                  }
+
+                  &.app {
+                    float: right;
+                    width: 380px;
+
+                    dd {
+                      margin: 0 8px;
+                      padding: 5px 0;
+
+                      img {
+                        width: 60px;
+                        height: 60px;
+                      }
+                    }
+                  }
+
+                  dt {
+                    font-size: 14px;
+                    color: #222;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                  }
+
+                  dd {
+                    float: left;
+                    line-height: 25px;
+                    cursor: pointer;
+
+                    &:hover {
+                      color: #FE8C00;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /*  logo+搜索框和按钮 */
+
+    .logoAndSearch {
+      width: 1190px;
+      margin: 0 auto;
+      padding-bottom: 35px;
+      position: relative;
+
+      &.city {
+        padding-bottom: 5px;
+      }
+
+      .logo {
+        float: left;
+        padding-top: 28px;
+        padding-bottom: 40px;
+        padding-right: 60px;
+        box-sizing: content-box;
+        min-width: 220px;
+        cursor: pointer;
+
+        img {
+          width: 126px;
+          height: 46px;
+        }
+      }
+
+      .searchContainer {
+        float: left;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 28px;
+        z-index: 89;
+
+        .searchBar {
+          width: 550px;
+          height: 40px;
+          position: relative;
+          .search {
+            width: 85.45%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            border-right: none;
+            background: transparent;
+            line-height: 100%;
+            border-radius: 4px 0 0 4px;
+            vertical-align: middle;
+
+            &::placeholder {
+              font-size: 14px;
+              color: #999999;
+              vertical-align: bottom;
+            }
+          }
+
+          .searchButton {
+            width: 14.55%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            background: #FFC300;
+            cursor: pointer;
+            vertical-align: middle;
+            line-height: 40px;
+            text-align: center;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+
+            span {
+              font-size: 21px;
+              color: #222;
+              font-weight: bold;
+            }
+          }
+          // 搜索历史记录
+          .searchHistory  {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 85.45%;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            font-size: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+            .title {
+              display: flex;
+              justify-content: space-between;
+              color: #999999;
+              margin-bottom: 10px;
+              h6 {
+                font-weight: 700;
+              }
+            }
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              li {
+                margin-right: 8px;
+                line-height: 24px;
+                a {
+                  color: #333;
+                  &:hover {
+                    color: #fe8c00;
+                  }
                 }
               }
             }
@@ -630,123 +760,4 @@ export default {
       }
     }
   }
-}
-
-/*  logo+搜索框和按钮 */
-
-.logoAndSearch {
-  width: 1190px;
-  margin: 0 auto;
-  padding-bottom: 35px;
-  position: relative;
-
-  &.city {
-    padding-bottom: 5px;
-  }
-
-  .logo {
-    float: left;
-    padding-top: 28px;
-    padding-bottom: 40px;
-    padding-right: 60px;
-    box-sizing: content-box;
-    min-width: 220px;
-    cursor: pointer;
-
-    img {
-      width: 126px;
-      height: 46px;
-    }
-  }
-
-  .searchContainer {
-    float: left;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-top: 28px;
-    z-index: 9;
-    .searchBar {
-      width: 550px;
-      height: 40px;
-      position: relative;
-      // 搜索历史记录
-      .searchHistory {
-        position: absolute;
-        top: 40px;
-        left: 0;
-        width: 85.45%;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        font-size: 12px;
-        padding: 10px;
-        box-sizing: border-box;
-        .title {
-          display: flex;
-          justify-content: space-between;
-          color: #999999;
-          margin-bottom: 10px;
-          h6 {
-            font-weight: 700;
-          }
-        }
-        ul {
-          display: flex;
-          flex-wrap: wrap;
-          li {
-            margin-right: 8px;
-            line-height: 24px;
-            a {
-              color: #333;
-              &:hover {
-                color: #fe8c00;
-              }
-            }
-          }
-        }
-      }
-      .search {
-        width: 85.45%;
-        height: 100%;
-        box-sizing: border-box;
-        padding: 15px;
-        border: 1px solid #e5e5e5;
-        border-right: none;
-        background: transparent;
-        line-height: 100%;
-        border-radius: 4px 0 0 4px;
-        vertical-align: middle;
-
-        &::placeholder {
-          font-size: 14px;
-          color: #999999;
-          vertical-align: bottom;
-        }
-      }
-
-      .searchButton {
-        width: 14.55%;
-        height: 40px;
-        box-sizing: border-box;
-        border: none;
-        background: #ffc300;
-        cursor: pointer;
-        vertical-align: middle;
-        line-height: 40px;
-        text-align: center;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-
-        span {
-          font-size: 21px;
-          color: #222;
-          font-weight: bold;
-        }
-      }
-    }
-  }
-}
 </style>
