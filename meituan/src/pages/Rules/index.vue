@@ -8,13 +8,13 @@
         <div class="headContent">
           <h1>美团规则中心</h1>
           <ul class="headerRight">
-            <li @click="changeNav(0)" class="active">
+            <li @click="changeNav(0)" :class="{active:navNum === 0}">
               <a href="javascript:;">首页</a>
             </li>
-            <li @click="changeNav(1)">
+            <li @click="changeNav(1)" :class="{active:navNum === 1}">
               <router-link to="/catalogue">规则目录</router-link>
             </li>
-            <li @click="changeNav(2)">
+            <li @click="changeNav(2)" :class="{active:navNum === 2}">
               <a href="javascript:;">规则评议院</a>
             </li>
           </ul>
@@ -307,38 +307,33 @@ export default {
   .headContent {
     width: 1200px;
     height: 100%;
+    line-height: 100px;
     margin: 0 auto;
     h1 {
       font-size: 28px;
       font-weight: bold;
       height: 100px;
       line-height: 100px;
-      display: inline-block;
+      float: left;
       color: #333;
     }
     .headerRight {
+      float: left;
       margin: 0 0 0 70px;
       display: inline-block;
       list-style-type: none;
       line-height: 100px;
       li {
-        position: relative;
         float: left;
-        height: 40px;
         display: inline-block;
+        height: 100px;
         font-size: 16px;
         font-weight: bold;
         margin-right: 40px;
-        line-height: 60px;
-        &.active:after {
-          position: absolute;
-          top: 40px;
-          content: "";
-          display: block;
-          height: 4px;
-          background-image: linear-gradient(135deg, #ffd000, #ffbd00);
+        line-height: 100px;
+        &.active{
+          border-bottom: 4px solid #ffd000;
         }
-
         a {
           color: #333;
           &:hover {

@@ -3,17 +3,16 @@
   <div>
     <!-- 头部 -->
     <div class="header">
-      <div class="headContent">
+      <div class="headContent clearfix">
         <h1>美团规则中心</h1>
         <ul class="headerRight">
-          <li>
+          <li @click="changeNav(0)" :class="{active:navNum === 0}"> 
             <a href="javascript:;">首页</a>
           </li>
-          <li>
-            <router-link to="/rules/catalouge">规则目录</router-link>
-            <!-- <a href="javascript:;">规则目录</a> -->
+          <li @click="changeNav(1)" :class="{active:navNum === 1}">
+            <a href="javascript:;">规则目录</a>
           </li>
-          <li>
+          <li @click="changeNav(2)" :class="{active:navNum === 2}">
             <a href="javascript:;">规则评议院</a>
           </li>
         </ul>
@@ -43,28 +42,28 @@
             <a href="javascript:;" class="item">平台基础规则</a>
             <a href="javascript:;" class="item">美团平台规则</a>
             <li class="firstItem">
-              <div class="firstList">
+              <div class="firstList" @click="showList" data-currentIndex='0' :data-currentFlag='currentFlag'  >
                 大众点评平台规则
-                <i class="iconfont iconjiantouarrow487"></i>
+                <i class="iconfont iconjiantouarrow487" data-currentIndex='0' :data-currentFlag='currentFlag'></i>
               </div>
-              <ul>
+              <ul v-show="currentFlag === '0-1'">
                 <a href="javascript:;" class="secondItem">大众点评基础规则</a>
                 <a href="javascript:;" class="secondItem">大众点评商户管理</a>
                 <a href="javascript:;" class="secondItem">大众点评运营规则</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div class="firstList">
+              <div class="firstList" @click="showList" data-currentIndex='1' :data-currentFlag='currentFlag' >
                 业务规则
-                <i class="iconfont iconjiantouarrow487"></i>
+                <i class="iconfont iconjiantouarrow487" data-currentIndex='1' :data-currentFlag='currentFlag'></i>
               </div>
-              <ul>
+              <ul v-show="currentFlag === '1-1'">
                 <li>
-                  <div class="second">
+                  <div class="second" @click="showList" data-currentIndex='1-1' :data-currentFlag='currentFlag'>
                     美团外卖
-                    <i class="iconfont iconjiantouarrow487"></i>
+                    <i class="iconfont iconjiantouarrow487" data-currentIndex='1-1' :data-currentFlag='currentFlag'></i>
                   </div>
-                  <ul>
+                  <ul v-show="currentFlag2 === '1-1:1'">
                     <a href="javascript:;" class="thirdItem">招商规范</a>
                     <a href="javascript:;" class="thirdItem">商品规范</a>
                     <a href="javascript:;" class="thirdItem">品控规范</a>
@@ -79,38 +78,38 @@
             <a href="javascript:;" class="item">消费者权益保障</a>
             <a href="javascript:;" class="item">隐私政策</a>
             <li class="firstItem">
-              <div class="firstList">
+              <div class="firstList" @click="showList" data-currentIndex='2' :data-currentFlag='currentFlag' >
                 公示通知
-                <i class="iconfont iconjiantouarrow487"></i>
+                <i class="iconfont iconjiantouarrow487" data-currentIndex='2' :data-currentFlag='currentFlag'></i>
               </div>
-              <ul>
+              <ul v-show="currentFlag === '2-1'">
                 <a href="javascript:;" class="secondItem">规则公告</a>
                 <a href="javascript:;" class="secondItem">平台公告</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div class="firstList">
+              <div class="firstList" @click="showList" data-currentIndex='3' :data-currentFlag='currentFlag' >
                 普法专栏
-                <i class="iconfont iconjiantouarrow487"></i>
+                <i class="iconfont iconjiantouarrow487" data-currentIndex='3' :data-currentFlag='currentFlag'></i>
               </div>
-              <ul>
+              <ul v-show="currentFlag === '3-1'">
                 <a href="javascript:;" class="secondItem">法规解读</a>
                 <a href="javascript:;" class="secondItem">政策解读</a>
               </ul>
             </li>
             <li class="firstItem">
-              <div class="firstList">
+              <div class="firstList" @click="showList" data-currentIndex='4' :data-currentFlag='currentFlag' >
                 规则动态
-                <i class="iconfont iconjiantouarrow487"></i>
+                <i class="iconfont iconjiantouarrow487" data-currentIndex='4' :data-currentFlag='currentFlag'></i>
               </div>
-              <ul>
+              <ul v-show="currentFlag === '4-1'">
                 <a href="javascript:;" class="secondItem">意见征集</a>
                 <li>
-                  <div class="second">
+                  <div class="second" @click="showList" data-currentIndex='4-1' :data-currentFlag='currentFlag'>
                     历史规则
-                    <i class="iconfont iconjiantouarrow487"></i>
+                    <i class="iconfont iconjiantouarrow487" data-currentIndex='4-1' :data-currentFlag='currentFlag'></i>
                   </div>
-                  <ul>
+                  <ul v-show="currentFlag2 ==='4-1:1'">
                     <a href="javascript:;" class="thirdItem">失效规则</a>
                     <a href="javascript:;" class="thirdItem">发布汇总</a>
                   </ul>
@@ -124,33 +123,15 @@
           <div class="container">
             <div>
               <ul>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
-                </li>
-                <li>
-                  <a href="javascript:;">美团团购用户服务条款</a>
+                <li v-for="item in allRulesList" :key="item.id">
+                  <a href="javascript:;">{{item.title}}</a>
                 </li>
               </ul>
               <!-- 自我封装分页组件 -->
               <div class="my-pagination">
-                <el-pagination layout="prev, pager, next" :total="80">
-                  <!-- :current-page="currentPage" -->
-                  <!-- pager-count="pagerCount" -->
+                <el-pagination layout="prev, pager, next" :total="8">
+                  current-page="1"
+                  pager-count="pagerCount"
                 </el-pagination>
               </div>
             </div>
@@ -246,13 +227,62 @@
 </template>
 
 <script>
+import {reqAllRulesList} from '@/Api'
 export default {
   name: "Catalogue",
   data() {
-    return {};
+    return {
+      allRulesList:[],
+      navNum:1,
+      // 第一个0是index 第二个0是显示与隐藏开关 
+      currentFlag:'0-0-0',
+      currentFlag2:"0-0:0"
+    };
   },
-  methods: {},
-};
+  mounted() {
+    this.getAllRulesList()
+  },
+  methods: {
+    async getAllRulesList(){
+      let result = await reqAllRulesList()
+      this.allRulesList = result.data
+    },
+    changeNav(navNum){
+      this.navNum = navNum
+    },
+
+    showList(e){
+      let target= e.target
+      let {currentindex,currentflag} = target.dataset
+      currentflag = currentflag.split('-')[1]
+      let currentIndex = this.currentFlag.split("-")[0]
+      let currentIndex2 = this.currentFlag2.split(":")[0]
+      let currentFlag2 = this.currentFlag2.split(":")[1]
+      if (currentflag==='0') { 
+        this.currentFlag = `${currentindex}-1`
+      }else if(currentIndex === currentindex){
+        this.currentFlag = `${currentindex}-0`
+      }else if((currentIndex !== currentindex) && (currentindex.length===1)){
+        this.currentFlag = `${currentindex}-1`
+      }else if(currentindex === currentIndex2){
+        if(currentFlag2==="1"){
+          this.currentFlag2 = `${currentindex}:0`
+        }else{
+          this.currentFlag2 = `${currentindex}:1`
+        }
+      }else{
+        this.currentFlag2 = `${currentindex}:1`
+      }
+    //   return
+    //   thirdList = currentflag.split(':')[1]
+    //   if(thirdList === '0') {
+    //     this.currentFlag = `${currentindex}-1-${thirdList}`
+    //   }else{
+    //     this.currentFlag = `${currentindex}-0-${thirdList}`
+    //   }
+    }
+  },
+}
 </script>
 
 <style lang="less" scoped>
@@ -264,16 +294,18 @@ export default {
   .headContent {
     width: 1200px;
     height: 100%;
+    line-height: 100px;
     margin: 0 auto;
     h1 {
       font-size: 28px;
       font-weight: bold;
       height: 100px;
       line-height: 100px;
-      display: inline-block;
+      float: left;
       color: #333;
     }
     .headerRight {
+      float: left;
       margin: 0 0 0 70px;
       display: inline-block;
       list-style-type: none;
@@ -281,23 +313,19 @@ export default {
       li {
         float: left;
         display: inline-block;
+        height: 100px;
         font-size: 16px;
         font-weight: bold;
         margin-right: 40px;
-        line-height: 22px;
+        line-height: 100px;
+        &.active{
+          border-bottom: 4px solid #ffd000;
+        }
         a {
           color: #333;
           &:hover {
             transition: color 0.2s ease;
             color: #ffbd00;
-          }
-          &:after {
-            position: relative;
-            top: 40px;
-            content: "";
-            display: block;
-            height: 4px;
-            background-image: linear-gradient(135deg, #ffd000, #ffbd00);
           }
         }
       }

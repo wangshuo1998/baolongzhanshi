@@ -3,7 +3,7 @@ import {
   reqHotCity,
   reqHotHouse,
   reqCommentTextList,
-  reqSurroundingList
+  reqSurroundingList,
 } from "@/Api";
 
 let state = {
@@ -35,6 +35,8 @@ let mutations = {
   getSurroundingListMutation(state,data){
     state.surroundingList = data
   }
+
+
 }
 
 let actions = {
@@ -67,7 +69,7 @@ let actions = {
     let result = await reqSurroundingList()
     commit('getSurroundingListMutation',result.data)
   }
-  
+ 
 }
 
 
