@@ -4,7 +4,7 @@
     <div class="header" id="001">
       <div class="headerContent clearfix">
         <div class="logo">
-          <a href="javascript:;" title="返回首页">
+          <a href="javascript:;" title="返回首页" @click="$router.push('/')">
             <img src="./images/logo.svg" />
           </a>
         </div>
@@ -233,7 +233,7 @@
           </div>
           <div class="container">
             <div class="leftMap">
-              <Map :position='position' :label='label'></Map>
+              <Map :position='position' :label='label' ></Map>
             </div>
             <div class="right">
               <div class="address">
@@ -806,7 +806,7 @@
         </div>
       </div>
       <!-- 主要内容右侧 -->
-      <div class="rightContent">
+      <div class="rightContent" :class="{active:isFixed === true}">
         <div class="price">
           <i>￥</i>
           <span>126.4</span>
@@ -903,13 +903,13 @@
       </p>
     </div>
     <!-- 吸顶导航 -->
-    <div class="fiexNav">
+    <!-- <div class="fiexNav">
       <ul @click="fiexNavHandler">
         <li data-fiexIndex="1">概念</li>
         <li data-fiexIndex="2">房东</li>
         <li data-fiexIndex="3">位置</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -925,7 +925,9 @@ export default {
       chosedNum: 0,
       value1:'',
       position: [116.363641, 39.96737],
-      label:{}
+      label:{},
+      pageHeight:0,
+      isFixed:false
     };
   },
   components:{
@@ -934,8 +936,17 @@ export default {
   mounted() {
     this.getInformation();
     this.initMapData()
+    window.addEventListener('scroll', this.handleScrollx, true)
   },
   methods: {
+    handleScrollx() {
+      this.pageHeight = window.pageYOffset
+      if(this.pageHeight >= 650){
+        this.isFixed = true
+      }else{
+        this.isFixed = false
+      }
+    },
     getInformation() {
       //获取民宿详情页附近房源的列表数据
       this.$store.dispatch("getSimilarInfoList");
@@ -960,23 +971,23 @@ export default {
     changeSurrounding(chosedNum) {
       this.chosedNum = chosedNum;
     },
-    fiexNavHandler(e) {
-      const target = e.target;
-      switch (target.dataset.fiexindex) {
-        case "1":
-          let currentScrollTop =
-            document.documentElement.scrollTop || document.body.scrollTop;
-          // let tiem = 500
-          // let frameTime = 25
-          // let MoveScrollTop =  currentScrollTop - 100
-          console.log(this.$refs.hostPos.offsetTop);
-          break;
+    // fiexNavHandler(e) {
+    //   const target = e.target;
+    //   switch (target.dataset.fiexindex) {
+    //     case "1":
+    //       let currentScrollTop =
+    //         document.documentElement.scrollTop || document.body.scrollTop;
+    //       // let tiem = 500
+    //       // let frameTime = 25
+    //       // let MoveScrollTop =  currentScrollTop - 100
+    //       console.log(this.$refs.hostPos.offsetTop);
+    //       break;
 
-        default:
-          break;
-      }
-      console.log();
-    },
+    //     default:
+    //       break;
+    //   }
+    //   console.log();
+    // },
     // 初始化地图数据
     initMapData() {
       // 地图经纬度
@@ -1416,16 +1427,15 @@ html {
         .container {
           width: 100%;
           background: #e4e8f4;
-          min-height: 335px;
           padding: 6px;
           display: flex;
           .leftMap {
             width: 50%;
             height: 100%;
             margin-right: 8px;
-            .img {
+            .map {
               width: 100%;
-              height: 100%;
+              // height: 100%;
             }
           }
           .right {
@@ -2047,6 +2057,11 @@ html {
       background: #fff;
       float: right;
       padding: 16px;
+      &.active{
+        position: fixed;
+        top: 0;
+        left: 903px
+      }
       .price {
         i {
           font-size: 18px;
@@ -2207,6 +2222,7 @@ html {
         color: #666;
         line-height: 20px;
         margin-right: 40px;
+        cursor: pointer;
       }
     }
   }
@@ -2275,23 +2291,23 @@ html {
       }
     }
   }
-  // 吸顶导航
-  .fiexNav {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    ul {
-      padding: 16px 16px 4px;
-      max-width: 1180px;
-      margin: 0 auto;
-      border: none;
-      display: flex;
-      li {
-        margin-right: 20px;
-      }
-    }
-  }
+  // // 吸顶导航
+  // .fiexNav {
+  //   width: 100%;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   background-color: #fff;
+  //   ul {
+  //     padding: 16px 16px 4px;
+  //     max-width: 1180px;
+  //     margin: 0 auto;
+  //     border: none;
+  //     display: flex;
+  //     li {
+  //       margin-right: 20px;
+  //     }
+  //   }
+  // }
 }
 </style>

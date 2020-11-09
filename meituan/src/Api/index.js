@@ -107,6 +107,13 @@ export const reqSurroundingList = () => {
     method: 'GET'
   })
 }
+//获取规则目录界面全部规则
+export const reqAllRulesList = () => {
+  return Ajax({
+    url:'/allRules',
+    method:'GET'
+  })
+}
 
 // 接口格式  每个接口必须注释 注释格式为
 
