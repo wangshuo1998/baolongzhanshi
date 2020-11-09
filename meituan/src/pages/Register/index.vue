@@ -112,29 +112,32 @@
         verifyCode: "",//短信验证码
         password: "",//创建的密码
         repeatPassword: "",//重复的密码
-        time: 60,//60秒
+        time: 10,//60秒
         isClick: false
       };
     },
     methods: {
       async sendVerifyCode() {
-        let {phone} = this;
+        let {phone,isClick} = this;
+        if (isClick) return ;
         if (phone !== "") {
           let result = await reqVerifyCode(phone);
-          if (result.code === "200") {
+          if (result.code === 200) {
             if (this.isClick === false) {
               this.$alert(result.data, {
-                confirmButtonText: '确定'
-              });
-              this.isClick = true;
-              let timer = setInterval(() => {
-                this.time -= 1
-                if (this.time === 0) {
-                  this.isClick = false;
-                  clearInterval(timer);
-                  this.time = 60;
+                confirmButtonText: '确定',
+                callback:confirm=>{
+                  this.isClick = true;
+                  let timer = setInterval(() => {
+                    this.time -= 1
+                    if (this.time === 0) {
+                      this.isClick = false;
+                      clearInterval(timer);
+                      this.time = 10;
+                    }
+                  }, 1000);
                 }
-              }, 1000);
+              });
             }
           } else {
             this.$alert(result.data, {
