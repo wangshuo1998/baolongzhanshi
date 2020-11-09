@@ -22,7 +22,7 @@
                   <a href="javascript:;">全部</a>
                 </span>
               </div>
-              <div class="panel-content"> 
+              <div class="panel-content">
                 <dl class="move-list">
                   <dd v-for="(cat, index) in hotMoviesListHot" :key="cat.id">
                     <div class="move-item">
@@ -107,7 +107,7 @@
                         <img :src="comed.img" alt="">
                       </div>
                       <div class="move-title">{{comed.nm}}</div>
-                      
+
                     </div>
                   </dd>
                 </dl>
@@ -210,7 +210,7 @@
                         </div>
                       </div>
                     </a>
-                  </div> 
+                  </div>
                 </li>
                 <!-- ul 2 -->
                 <li class="second-2">
@@ -562,7 +562,7 @@ export default {
   },
   watch: {
     hotMoviesList(value){
-      
+
       this.hotMoviesListHot = value.hot.slice(0,8)
     },
     comingMoviesList:{
@@ -1077,7 +1077,7 @@ export default {
   height: 60px;
   margin-top: -4px;
   border: 1px solid #efefef;
- 
+
 }
 .cebian-second-panel .dibu1{
   font-size: 18px;
@@ -1095,7 +1095,7 @@ export default {
   height: 60px;
   margin-top: -4px;
   border: 1px solid #efefef;
- 
+
 }
 .cebian-second-panel .dibu3{
   font-size: 18px;

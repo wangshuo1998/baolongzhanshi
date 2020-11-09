@@ -6,7 +6,7 @@
       <!-- 头部 -->
       <div class="header">
         <div class="headContent">
-          <h1>美团规则中心</h1>
+          <h1 @click="$router.push('/')">美团规则中心</h1>
           <ul class="headerRight">
             <li @click="changeNav(0)" :class="{active:navNum === 0}">
               <a href="javascript:;">首页</a>

@@ -59,7 +59,7 @@
             <li>
               <a class="rightHeaderNavItem" href="javascript:;">美团规则</a>
               <ul class="rulesList">
-                <li><a href="javascript:;">规则中心</a></li>
+                <li><a @click="$router.push('/rules')" href="javascript:;">规则中心</a></li>
                 <li><a href="javascript:;">规则目录</a></li>
                 <li><a href="javascript:;">规则评议院</a></li>
               </ul>

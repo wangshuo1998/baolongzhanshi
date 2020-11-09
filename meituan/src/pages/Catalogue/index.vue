@@ -6,8 +6,8 @@
       <div class="headContent clearfix">
         <h1>美团规则中心</h1>
         <ul class="headerRight">
-          <li @click="changeNav(0)" :class="{active:navNum === 0}"> 
-            <a href="javascript:;">首页</a>
+          <li @click="changeNav(0)" :class="{active:navNum === 0}">
+            <a @click="$router.push('/rules')" href="javascript:;">首页</a>
           </li>
           <li @click="changeNav(1)" :class="{active:navNum === 1}">
             <a href="javascript:;">规则目录</a>
@@ -234,7 +234,7 @@ export default {
     return {
       allRulesList:[],
       navNum:1,
-      // 第一个0是index 第二个0是显示与隐藏开关 
+      // 第一个0是index 第二个0是显示与隐藏开关
       currentFlag:'0-0-0',
       currentFlag2:"0-0:0"
     };
@@ -258,7 +258,7 @@ export default {
       let currentIndex = this.currentFlag.split("-")[0]
       let currentIndex2 = this.currentFlag2.split(":")[0]
       let currentFlag2 = this.currentFlag2.split(":")[1]
-      if (currentflag==='0') { 
+      if (currentflag==='0') {
         this.currentFlag = `${currentindex}-1`
       }else if(currentIndex === currentindex){
         this.currentFlag = `${currentindex}-0`
