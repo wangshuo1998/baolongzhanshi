@@ -11,6 +11,7 @@ import FastFood from '@/pages/FastFood'
 import HomestayInfo from '@/pages/HomestayInfo'
 import Catalogue from '@/pages/Catalogue'
 import Homestay from '@/pages/Homestay'
+import maoyanshouye from '@/pages/maoyanshouye'
 
 export default [{
     path: '/',
@@ -73,5 +74,10 @@ export default [{
   {
     path: '/homestayInfo',
     component: HomestayInfo
+  },
+  {
+    path: '/maoyanshouye',
+    name: 'maoyanshouye',
+    component: maoyanshouye,
   }
 ]
