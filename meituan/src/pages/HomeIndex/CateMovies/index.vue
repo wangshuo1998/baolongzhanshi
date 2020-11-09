@@ -14,7 +14,7 @@
       </dl>
     </div>
     <!--      下边的电影展示-->
-    <div class="swiper-container" ref="slideBanner">
+    <div class="swiper-container" ref="slideBanner" @click="toCateMovies">
       <div class="swiper-wrapper">
         <div v-if="showMovie === 'hot'" class="swiper-slide" v-for="(movie, index) in hotMoviesList" :key="movie.id">
           <img class="moviePic" :src="movie.img" alt="" />
@@ -84,6 +84,13 @@ export default {
     // this.showMoviesList = this.hotMoviesList;
   },
   methods: {
+    // 去猫眼路由跳转
+    toCateMovies() {
+      const location = {
+        name: 'maoyanshouye',
+      }
+      this.$router.push(location)
+    },
     changeMoviesList(type) {
       if (type === 'hot') {
         this.showMovie = 'hot'
