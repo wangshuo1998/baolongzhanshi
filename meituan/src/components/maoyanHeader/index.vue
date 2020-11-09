@@ -3,7 +3,7 @@
     <div class="header-inner">
       <!-- 猫眼电影logo -->
       <h1>
-        <a href="javascript:;" class="logo">
+        <a href="/#/" class="logo">
           <img src="@/assets/xiaohuImages/maoyan.png" alt="" />
         </a>
       </h1>
