@@ -233,7 +233,7 @@
           </div>
           <div class="container">
             <div class="leftMap">
-              <Map :position='position' :label='label' ></Map>
+              <Map :position="position" :label="label"></Map>
             </div>
             <div class="right">
               <div class="address">
@@ -248,41 +248,25 @@
               </div>
               <div class="nearby">
                 <div class="category">
-                  <div
-                    @click="changeSurrounding(0)"
-                    :class="{ chosed: chosedNum === 0 }"
-                  >
+                  <div @click="changeSurrounding(0)" :class="{ chosed: chosedNum === 0 }">
                     <i class="iconfont iconjiaotong"></i>
                     <span>交通</span>
                   </div>
-                  <div
-                    @click="changeSurrounding(1)"
-                    :class="{ chosed: chosedNum === 1 }"
-                  >
+                  <div @click="changeSurrounding(1)" :class="{ chosed: chosedNum === 1 }">
                     <i class="iconfont iconcanyin"></i>
                     <span>餐饮</span>
                   </div>
-                  <div
-                    @click="changeSurrounding(2)"
-                    :class="{ chosed: chosedNum === 2 }"
-                  >
+                  <div @click="changeSurrounding(2)" :class="{ chosed: chosedNum === 2 }">
                     <i class="iconfont icongouwu"></i>
                     <span>购物</span>
                   </div>
-                  <div
-                    @click="changeSurrounding(3)"
-                    :class="{ chosed: chosedNum === 3 }"
-                  >
+                  <div @click="changeSurrounding(3)" :class="{ chosed: chosedNum === 3 }">
                     <i class="iconfont iconjingdian"></i>
                     <span>景点</span>
                   </div>
                 </div>
                 <div class="detailList">
-                  <div
-                    class="detail"
-                    v-for="item in surroundingList[chosedNum]"
-                    :key="item.id"
-                  >
+                  <div class="detail" v-for="item in surroundingList[chosedNum]" :key="item.id">
                     <div class="number">{{ item.sortNum }}</div>
                     <div class="content">
                       {{ item.title }}
@@ -375,11 +359,7 @@
               </div>
             </div>
             <div class="unfoldedComments" v-show="isFold">
-              <div
-                class="content2"
-                v-for="comment in commentTextList"
-                :key="comment.commentId"
-              >
+              <div class="content2" v-for="comment in commentTextList" :key="comment.commentId">
                 <img class="avatar" :src="comment.userAvatarUrl" />
                 <div class="details">
                   <div class="nickName">{{ comment.userNickName }}</div>
@@ -394,23 +374,13 @@
                     <span>{{ comment.commentDate }}发布</span>
                   </div>
                   <div class="label" v-show="comment.commentTextList">
-                    <span
-                      class="blue"
-                      v-for="(tag, index) in comment.commentTextList"
-                      :key="index"
-                      >{{ tag }}</span
-                    >
+                    <span class="blue" v-for="(tag, index) in comment.commentTextList" :key="index">{{ tag }}</span>
                   </div>
                   <div class="desc">
                     {{ comment.body }}
                   </div>
                   <div class="commentPic" v-show="comment.picModelList">
-                    <img
-                      class="pic"
-                      :src="pic.url"
-                      v-for="pic in comment.picModelList"
-                      :key="pic.id"
-                    />
+                    <img class="pic" :src="pic.url" v-for="pic in comment.picModelList" :key="pic.id" />
                   </div>
                   <div class="replay" v-show="comment.hostReply">
                     {{ comment.hostReply }}
@@ -741,11 +711,7 @@
             <span>SIMILAR</span>
           </div>
           <div class="similarList">
-            <div
-              class="similarItem"
-              v-for="similarInfo in similarInfoList"
-              :key="similarInfo.id"
-            >
+            <div class="similarItem" v-for="similarInfo in similarInfoList" :key="similarInfo.id">
               <div
                 class="top"
                 :style="{
@@ -753,11 +719,7 @@
                 }"
               ></div>
               <div class="content">
-                <p>
-                  整套·{{ similarInfo.roomNum }}居室·可住{{
-                    similarInfo.allowNum
-                  }}人
-                </p>
+                <p>整套·{{ similarInfo.roomNum }}居室·可住{{ similarInfo.allowNum }}人</p>
                 <span>
                   {{ similarInfo.desc }}
                 </span>
@@ -788,9 +750,7 @@
                   千万保障赔付先行 · 7*24小时贴心客服
                 </div>
               </div>
-              <i
-                class="iconfont iconxiangyouyuanjiantouyoujiantouxiangyoumianxing right"
-              ></i>
+              <i class="iconfont iconxiangyouyuanjiantouyoujiantouxiangyoumianxing right"></i>
             </div>
             <div class="phone">
               <div>
@@ -798,15 +758,13 @@
                 <span>客服电话</span>
                 <div class="description">400-0660-190</div>
               </div>
-              <i
-                class="iconfont iconxiangyouyuanjiantouyoujiantouxiangyoumianxing right"
-              ></i>
+              <i class="iconfont iconxiangyouyuanjiantouyoujiantouxiangyoumianxing right"></i>
             </div>
           </div>
         </div>
       </div>
       <!-- 主要内容右侧 -->
-      <div class="rightContent" :class="{active:isFixed === true}">
+      <div class="rightContent" :class="{ active: isFixed === true }">
         <div class="price">
           <i>￥</i>
           <span>126.4</span>
@@ -914,62 +872,62 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import Map from "@/pages/Map";
+import { mapState } from 'vuex'
+import Map from '@/pages/Map'
 export default {
-  name: "HomestayInfo",
+  name: 'HomestayInfo',
   data() {
     return {
       isFold: false,
       navNum: 0,
       chosedNum: 0,
-      value1:'',
+      value1: '',
       position: [116.363641, 39.96737],
-      label:{},
-      pageHeight:0,
-      isFixed:false
-    };
+      label: {},
+      pageHeight: 0,
+      isFixed: false,
+    }
   },
-  components:{
-    Map
+  components: {
+    Map,
   },
   mounted() {
-    this.getInformation();
+    this.getInformation()
     this.initMapData()
     window.addEventListener('scroll', this.handleScrollx, true)
   },
   methods: {
     handleScrollx() {
       this.pageHeight = window.pageYOffset
-      if(this.pageHeight >= 650){
+      if (this.pageHeight >= 650) {
         this.isFixed = true
-      }else{
+      } else {
         this.isFixed = false
       }
     },
     getInformation() {
       //获取民宿详情页附近房源的列表数据
-      this.$store.dispatch("getSimilarInfoList");
+      this.$store.dispatch('getSimilarInfoList')
       //获取民宿详情页底部热门城市数据
-      this.$store.dispatch("getHotCity");
+      this.$store.dispatch('getHotCity')
       //获取民宿详情页底部热门房源数据
-      this.$store.dispatch("getHotHouse");
+      this.$store.dispatch('getHotHouse')
       //获取民宿详情页评价列表数据
-      this.$store.dispatch("getCommentTextList");
+      this.$store.dispatch('getCommentTextList')
       //获取房源位置周边列表数据
-      this.$store.dispatch("getSurroundingList");
+      this.$store.dispatch('getSurroundingList')
     },
     // 点击打开收起评论
     foldComments() {
-      this.isFold = !this.isFold;
+      this.isFold = !this.isFold
     },
     // 点击导航锚点跳转
     changeNavNum(navNum) {
-      this.navNum = navNum;
+      this.navNum = navNum
     },
     // 点击切换周边
     changeSurrounding(chosedNum) {
-      this.chosedNum = chosedNum;
+      this.chosedNum = chosedNum
     },
     // fiexNavHandler(e) {
     //   const target = e.target;
@@ -993,11 +951,11 @@ export default {
       // 地图经纬度
       // this.position.push(116.397128, 39.916527);
       const label = {
-        direction: "top",
-      };
+        direction: 'top',
+      }
       // 地图定位点提示内容
-      label.content = '泰安万达';
-      this.$set(this.$data, "label", label);
+      label.content = '泰安万达'
+      this.$set(this.$data, 'label', label)
     },
   },
   computed: {
@@ -1009,7 +967,7 @@ export default {
       surroundingList: (state) => state.homestayInfoModule.surroundingList,
     }),
   },
-};
+}
 </script>
 
 <style lang="less" scoped>
@@ -1174,7 +1132,7 @@ html {
             display: block;
           }
           &.active::after {
-            content: "";
+            content: '';
             position: absolute;
             bottom: -2px;
             left: 50%;
@@ -1685,7 +1643,7 @@ html {
               line-height: 20px;
               font-size: 14px;
               &::before {
-                content: "";
+                content: '';
                 position: absolute;
                 top: -10px;
                 left: 16px;
@@ -1828,7 +1786,7 @@ html {
                   position: absolute;
                   left: 0;
                   bottom: 0;
-                  content: "";
+                  content: '';
                   display: block;
                   height: 5px;
                   width: 1px;
@@ -1858,7 +1816,7 @@ html {
                   position: absolute;
                   left: 0;
                   bottom: 0;
-                  content: "";
+                  content: '';
                   display: block;
                   height: 5px;
                   width: 1px;
@@ -2057,10 +2015,10 @@ html {
       background: #fff;
       float: right;
       padding: 16px;
-      &.active{
+      &.active {
         position: fixed;
         top: 0;
-        left: 903px
+        left: 1103px;
       }
       .price {
         i {
@@ -2091,11 +2049,11 @@ html {
         line-height: 44px;
         border: 0;
         font-size: 12px;
-        .el-date-editor--daterange.el-input__inner{
-          border:none;
-          background:none;
+        .el-date-editor--daterange.el-input__inner {
+          border: none;
+          background: none;
           /deep/ .el-range-input {
-          background:none;
+            background: none;
           }
           /deep/ .el-range-separator {
             width: 15%;
@@ -2266,8 +2224,8 @@ html {
           width: 120px;
           height: 120px;
           margin-right: 40px;
-          background: url("./images/logo1.png") no-repeat 50% / auto 30%,
-            url("./images/2codePic.svg") no-repeat 50% / auto 100%;
+          background: url('./images/logo1.png') no-repeat 50% / auto 30%,
+            url('./images/2codePic.svg') no-repeat 50% / auto 100%;
         }
         p {
           color: #333;
