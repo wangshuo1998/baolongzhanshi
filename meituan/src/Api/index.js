@@ -64,6 +64,14 @@ export const reqProvinceCity = () => {
     method: "GET"
   })
 }
+// 获取热门入住底的列表数据
+export const reqHotPlaceList = () => {
+  return Ajax({
+    url:'/hotplacelist',
+    method:'GET'
+  })
+}
+
 //获取民宿详情页附近房源的列表数据
 export const reqSimilarInfoList = () => {
   return Ajax({
