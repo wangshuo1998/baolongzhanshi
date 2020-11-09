@@ -487,7 +487,7 @@
                               <div class="pro-img">
                                 <img
                                   class="origin-img"
-                                  :src="airPortItem.imgUrl"
+                                  v-lazy="airPortItem.imgUrl"
                                 />
                               </div>
                             </div>

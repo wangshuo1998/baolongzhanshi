@@ -118,7 +118,7 @@
             <div class="login-group-buy">
               <img src="https://p0.meituan.net/codeman/56a7d5abcb5ce3d90fc91195e5b5856911194.png" alt="" />
               <span>请登录后查看详细团购优惠</span>
-              <button>立即登录</button>
+              <button @click="toLogin">立即登录</button>
             </div>
           </div>
           <!-- 推荐菜 -->
@@ -418,6 +418,13 @@ export default {
     },
   },
   methods: {
+    //点击去登录
+    toLogin(){
+      const location = {
+        name:'login'
+      }
+      this.$router.push(location)
+    },
     isShowMap() {
       this.isMap = true
       // 初始化地图数据
