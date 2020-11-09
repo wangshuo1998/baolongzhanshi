@@ -59,10 +59,24 @@ dd {
 button, input {
   outline: none;
 }
+
+.jiaxiangSwiper>.swiper-pagination-bullet{
+  width: 20px !important;
+  height: 3px !important;
+  background-color: #fff !important;
+  border-radius: 0px !important;
+}
 /*kaikai的轮播*/
 .kaikaiSwiper>.swiper-pagination-bullet{
   width: 10px !important;
   height: 2px !important;
+  background-color: #fff !important;
+  border-radius: 0px !important;
+}
+
+.jiaxiangSwiper>.swiper-pagination-bullet{
+  width: 20px !important;
+  height: 3px !important;
   background-color: #fff !important;
   border-radius: 0px !important;
 }
