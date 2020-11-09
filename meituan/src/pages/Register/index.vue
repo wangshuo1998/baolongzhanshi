@@ -115,107 +115,72 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  import {reqVerifyCode, submitRegister} from "@/Api/mysqlApi";
-  import Encryption from "@/utils/encryption";
+  import { reqVerifyCode, submitRegister } from '@/Api/mysqlApi'
+  import Encryption from '@/utils/encryption'
 
   export default {
-    name: "Register",
+    name: 'Register',
     data() {
       return {
-        phone: "",//电话的字段
-        verifyCode: "",//短信验证码
-        password: "",//创建的密码
-        repeatPassword: "",//重复的密码
-        time: 10,//60秒
-        isClick: false
-      };
+        phone: '', //电话的字段
+        verifyCode: '', //短信验证码
+        password: '', //创建的密码
+        repeatPassword: '', //重复的密码
+        time: 10, //60秒
+        isClick: false,
+      }
     },
     methods: {
       async sendVerifyCode() {
-        let {phone,isClick} = this;
-        if (isClick) return ;
-        if (phone !== "") {
-          let result = await reqVerifyCode(phone);
+        let { phone } = this
+        if (phone !== '') {
+          let result = await reqVerifyCode(phone)
           if (result.code === 200) {
             if (this.isClick === false) {
               this.$alert(result.data, {
                 confirmButtonText: '确定',
-                callback:confirm=>{
-                  this.isClick = true;
-                  let timer = setInterval(() => {
-                    this.time -= 1
-                    if (this.time === 0) {
-                      this.isClick = false;
-                      clearInterval(timer);
-                      this.time = 10;
-                    }
-                  }, 1000);
+              })
+              this.isClick = true
+              let timer = setInterval(() => {
+                this.time -= 1
+                if (this.time === 0) {
+                  this.isClick = false
+                  clearInterval(timer)
+                  this.time = 10
                 }
-              });
+              }, 1000)
             }
           } else {
-=======
-import { reqVerifyCode, submitRegister } from '@/Api/mysqlApi'
-import Encryption from '@/utils/encryption'
-
-export default {
-  name: 'Register',
-  data() {
-    return {
-      phone: '', //电话的字段
-      verifyCode: '', //短信验证码
-      password: '', //创建的密码
-      repeatPassword: '', //重复的密码
-      time: 10, //60秒
-      isClick: false,
-    }
-  },
-  methods: {
-    async sendVerifyCode() {
-      let { phone } = this
-      if (phone !== '') {
-        let result = await reqVerifyCode(phone)
-        if (result.code === 200) {
-          if (this.isClick === false) {
->>>>>>> dev
             this.$alert(result.data, {
               confirmButtonText: '确定',
             })
-            this.isClick = true
-            let timer = setInterval(() => {
-              this.time -= 1
-              if (this.time === 0) {
-                this.isClick = false
-                clearInterval(timer)
-                this.time = 10
-              }
-            }, 1000)
+            this.phone = ''
           }
-        } else {
-          this.$alert(result.data, {
-            confirmButtonText: '确定',
-          })
-          this.phone = ''
         }
-      }
+      },
+      async submitRegister() {
+        let { phone, verifyCode, password } = this
+        const success = await this.$validator.validateAll() // 对所有表单项进行验证
+        if (success) {
+          password = Encryption.encrypt(password, 'meituanasdfghjkl')
+          let result = await submitRegister(phone, verifyCode, password)
+          if (result.code === "203"){
+            this.$alert(result.data, {
+              confirmButtonText: '确定',
+            })
+            this.verifyCode = "";
+          }else if(result.code === "200"){
+            this.$alert(result.data, {
+              confirmButtonText: '确定',
+              callback:confirm=>{
+                this.$router.push("/login");
+              }
+            })
+          }
+        }
+      },
     },
-    async submitRegister() {
-      let { phone, verifyCode, password } = this
-      const success = await this.$validator.validateAll() // 对所有表单项进行验证
-      if (success) {
-        password = Encryption.encrypt(password, 'meituanasdfghjkl')
-        let result = await submitRegister(phone, verifyCode, password)
-        this.$alert(result.data, {
-          confirmButtonText: '确定',
-          callback: (confirm) => {
-            this.$router.push('/login')
-          },
-        })
-      }
-    },
-  },
-}
+  }
 </script>
 
 <style scoped lang="less">
