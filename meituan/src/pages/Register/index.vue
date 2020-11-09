@@ -17,30 +17,37 @@
         <!-- 手机号 -->
         <div class="from-field">
           <span class="span">手机号</span>
-          <input v-validate="{required: true,regex: /^(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/}"
-                 :class="{invalid: errors.has('phone')}"
-                 name="phone" v-model="phone" type="text" class="f-text"/>
-          <span v-show="phone!==''" class="error-msg">
-            <i v-show="errors.first('phone')"
-               class="iconfont iconcuowu"></i>
+          <input
+            v-validate="{ required: true, regex: /^(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/ }"
+            :class="{ invalid: errors.has('phone') }"
+            name="phone"
+            v-model="phone"
+            type="text"
+            class="f-text"
+          />
+          <span v-show="phone !== ''" class="error-msg">
+            <i v-show="errors.first('phone')" class="iconfont iconcuowu"></i>
             {{ errors.first('phone') }}
           </span>
           <span v-if="!errors.first('phone')" class="unitive-tip">注册成功后, 全美团通用</span>
         </div>
         <!-- 获取验证码按钮 -->
         <div class="vbtn">
-          <button @click="sendVerifyCode"
-                  :disabled="errors.first('phone')" class="btn-mini">
-            免费获取短信动态码<span v-if="isClick">({{time}})</span>
+          <button @click="sendVerifyCode" :disabled="errors.first('phone')" class="btn-mini">
+            免费获取短信动态码<span v-if="isClick">({{ time }})</span>
           </button>
         </div>
         <!-- 短信动态码 -->
         <div class="from-sms">
           <span class="span1">短信动态码</span>
-          <input name="code"
-                 v-validate="{required:true,regex:/^\d{6}$/}"
-                 :class="{invalid: errors.has('code')}"
-                 v-model="verifyCode" type="text" class="f-sms"/>
+          <input
+            name="code"
+            v-validate="{ required: true, regex: /^\d{6}$/ }"
+            :class="{ invalid: errors.has('code') }"
+            v-model="verifyCode"
+            type="text"
+            class="f-sms"
+          />
           <span class="error-msg">
             <i v-show="errors.first('code')" class="iconfont iconcuowu"></i>
             {{ errors.first('code') }}
@@ -57,30 +64,37 @@
             </div>
           </div>
           <span class="span2">创建密码</span>
-          <input name="password"
-                 v-validate="{required:true,regex:/^\w{6,20}$/}"
-                 :class="{invalid: errors.has('password')}"
-                 v-model="password" type="password" class="f-pwd"/>
+          <input
+            name="password"
+            v-validate="{ required: true, regex: /^\w{6,20}$/ }"
+            :class="{ invalid: errors.has('password') }"
+            v-model="password"
+            type="password"
+            class="f-pwd"
+          />
           <span class="error-msg">
-            <i v-show="errors.first('password')"
-               class="iconfont iconcuowu"></i>
+            <i v-show="errors.first('password')" class="iconfont iconcuowu"></i>
             {{ errors.first('password') }}
           </span>
         </div>
         <!-- 确认密码 -->
         <div class="frow-pwd2">
           <span class="span2">确认密码</span>
-          <input name="password2"
-                 v-validate="{required:true,regex:/^\w{6,20}$/,is:(password)}"
-                 :class="{invalid: errors.has('password2')}"
-                 v-model="repeatPassword" type="password" class="f-pwd2"/>
+          <input
+            name="password2"
+            v-validate="{ required: true, regex: /^\w{6,20}$/, is: password }"
+            :class="{ invalid: errors.has('password2') }"
+            v-model="repeatPassword"
+            type="password"
+            class="f-pwd2"
+          />
           <span class="error-msg">
             <i v-show="errors.first('password2')" class="iconfont iconcuowu"></i>
             {{ errors.first('password2') }}
           </span>
         </div>
         <div class="form-btn">
-          <input @click="submitRegister" type="submit" class="btn" value="同意以下协议并注册"/>
+          <input @click="submitRegister" type="submit" class="btn" value="同意以下协议并注册" />
           <a href target="_blank"></a>
         </div>
 
@@ -101,6 +115,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import {reqVerifyCode, submitRegister} from "@/Api/mysqlApi";
   import Encryption from "@/utils/encryption";
 
@@ -140,29 +155,67 @@
               });
             }
           } else {
+=======
+import { reqVerifyCode, submitRegister } from '@/Api/mysqlApi'
+import Encryption from '@/utils/encryption'
+
+export default {
+  name: 'Register',
+  data() {
+    return {
+      phone: '', //电话的字段
+      verifyCode: '', //短信验证码
+      password: '', //创建的密码
+      repeatPassword: '', //重复的密码
+      time: 10, //60秒
+      isClick: false,
+    }
+  },
+  methods: {
+    async sendVerifyCode() {
+      let { phone } = this
+      if (phone !== '') {
+        let result = await reqVerifyCode(phone)
+        if (result.code === 200) {
+          if (this.isClick === false) {
+>>>>>>> dev
             this.$alert(result.data, {
               confirmButtonText: '确定',
-            });
-            this.phone = "";
+            })
+            this.isClick = true
+            let timer = setInterval(() => {
+              this.time -= 1
+              if (this.time === 0) {
+                this.isClick = false
+                clearInterval(timer)
+                this.time = 10
+              }
+            }, 1000)
           }
-        }
-      },
-      async submitRegister() {
-        let {phone, verifyCode, password} = this;
-        const success = await this.$validator.validateAll(); // 对所有表单项进行验证
-        if (success) {
-          password = Encryption.encrypt(password, "meituanasdfghjkl");
-          let result = await submitRegister(phone, verifyCode, password);
+        } else {
           this.$alert(result.data, {
             confirmButtonText: '确定',
-            callback: confirm => {
-              this.$router.push("/login");
-            }
-          });
+          })
+          this.phone = ''
         }
       }
-    }
-  };
+    },
+    async submitRegister() {
+      let { phone, verifyCode, password } = this
+      const success = await this.$validator.validateAll() // 对所有表单项进行验证
+      if (success) {
+        password = Encryption.encrypt(password, 'meituanasdfghjkl')
+        let result = await submitRegister(phone, verifyCode, password)
+        this.$alert(result.data, {
+          confirmButtonText: '确定',
+          callback: (confirm) => {
+            this.$router.push('/login')
+          },
+        })
+      }
+    },
+  },
+}
 </script>
 
 <style scoped lang="less">

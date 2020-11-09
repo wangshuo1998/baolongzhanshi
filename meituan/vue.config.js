@@ -9,9 +9,15 @@ module.exports = {
         // 改成本地地址
         target: 'http://www.wangshuo1998.cn:7300/mock/5f9fc77b5739e560520990e0',
       },
-      '/mysql':{
-        target:"http://localhost:3000",
-        pathRewrite: {"^/mysql" : ""}
+      '/poi': {
+        // 改成本地地址
+        target: 'https://bj.meituan.com/meishi/api',
+      },
+      '/mysql': {
+        target: "http://localhost:3000",
+        pathRewrite: {
+          "^/mysql": ""
+        }
       }
     }
   }

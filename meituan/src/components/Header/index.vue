@@ -1,4 +1,5 @@
 <template>
+  <!-- <div> -->
   <div class="container">
     <!--  头部-->
     <div class="headerContainer">
@@ -9,11 +10,13 @@
           <div class="leftHeaderBar">
             <label @click="getLocationInfo">
               <span class="iconfont iconweizhi location"></span>
-              <span v-show="!loading">{{location}}</span>
+              <span v-show="!loading">{{ location }}</span>
               <span v-show="loading"></span>
             </label>
-            <button class="changeCity" :disabled="$route.path==='/changecity'" @click="$router.push('/changecity')">切换城市</button>
-            <span>{{city}}</span>
+            <button class="changeCity" :disabled="$route.path === '/changecity'" @click="$router.push('/changecity')">
+              切换城市
+            </button>
+            <span>{{ city }}</span>
             <div class="cityInfo">
               <span>[</span>
               <a href="javascript:;">门头沟区</a>
@@ -21,7 +24,7 @@
               <a href="javascript:;">廊坊</a>
               <span>]</span>
             </div>
-            <a v-if="userInfo" class="nickName" href="javascript:;">{{userInfo.nickName}}</a>
+            <a v-if="userInfo" class="nickName" href="javascript:;">{{ userInfo.nickName }}</a>
             <a v-else class="login" href="javascript:;" @click="$router.push('/login')">立即登录</a>
             <a v-if="userInfo" @click="loginOut" class="loginOut" href="javascript:;">退出</a>
             <a v-else class="register" href="javascript:;" @click="$router.push('/register')">注册</a>
@@ -56,7 +59,7 @@
             <li>
               <a class="rightHeaderNavItem" href="javascript:;">美团规则</a>
               <ul class="rulesList">
-                <li><a href="javascript:;">规则中心</a></li>
+                <li><a @click="$router.push('/rules')" href="javascript:;">规则中心</a></li>
                 <li><a href="javascript:;">规则目录</a></li>
                 <li><a href="javascript:;">规则评议院</a></li>
               </ul>
@@ -68,7 +71,7 @@
                   <dt>酒店旅游</dt>
                   <dd>国际机票</dd>
                   <dd>火车票</dd>
-                  <dd>民宿</dd>
+                  <dd @click="$router.push('/homestay')">民宿</dd>
                   <dd>经济型酒店</dd>
                   <dd>主题酒店</dd>
                   <dd>商务酒店</dd>
@@ -102,19 +105,19 @@
                 <dl class="app">
                   <dt>手机应用</dt>
                   <dd>
-                    <img src="../../assets/meituan.png" alt="美团APP">
+                    <img src="../../assets/meituan.png" alt="美团APP" />
                   </dd>
                   <dd>
-                    <img src="../../assets/waimai.png" alt="美团外卖APP">
+                    <img src="../../assets/waimai.png" alt="美团外卖APP" />
                   </dd>
                   <dd>
-                    <img src="../../assets/minsu.png" alt="民宿APP">
+                    <img src="../../assets/minsu.png" alt="民宿APP" />
                   </dd>
                   <dd>
-                    <img src="../../assets/dianping.png" alt="大众点评APP">
+                    <img src="../../assets/dianping.png" alt="大众点评APP" />
                   </dd>
                   <dd>
-                    <img src="../../assets/maoyan.png" alt="猫眼APP">
+                    <img src="../../assets/maoyan.png" alt="猫眼APP" />
                   </dd>
                 </dl>
               </div>
@@ -123,16 +126,39 @@
         </div>
       </div>
       <!--        logo+搜索框-->
-      <div class="logoAndSearch clearfix" :class="{city:$route.path==='/changecity'}">
+      <div class="logoAndSearch clearfix" :class="{ city: $route.path === '/changecity' }">
         <h1 class="logo">
-          <img @click="$router.push('/')" src="../../assets/logo.png" alt="美团logo">
+          <img @click="$router.push('/')" src="../../assets/logo.png" alt="美团logo" />
         </h1>
         <div class="searchContainer">
-          <div class="searchBar">
-            <input class="search" placeholder="搜索商家或地点" type="text">
-            <button class="searchButton">
+          <div class="searchBar" @click.stop="clearSearchHistory">
+            <input
+              class="search"
+              placeholder="搜索商家或地点"
+              type="text"
+              value=""
+              v-model="searchText"
+              @focus.stop="showSearchHistory(true)"
+              @blur="showSearchHistory(false)"
+              @keyup.enter="searchShopOrMap"
+            />
+            <!--  -->
+            <button class="searchButton" @click="searchShopOrMap">
               <span class="iconfont iconsousuo"></span>
             </button>
+            <div class="searchHistory" v-if="changeSearchHistoryFlag">
+              <div class="title">
+                <h6>最近搜索</h6>
+                <span>删除搜索历史</span>
+              </div>
+              <ul>
+                <li v-for="(item, index) in searchArr" :key="index">
+                  <a href="javascript:;">
+                    {{ item }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -141,96 +167,135 @@
 </template>
 
 <script>
-  import {mapState} from "vuex";
-
-  export default {
-    name: 'Header',
-    data() {
-      return {
-        location: "点击获取当前定位",
-        loading:false,
-        userInfo:{}
-      }
-    },
-    mounted(){
-      this.userInfo = JSON.parse(localStorage.getItem("USERINFO_KEY"));
-    },
-    methods: {
-      getLocationInfo(){
-        if (this.location !== "点击获取当前定位") return;
-        this.loading = true;
-        setTimeout(()=>{
-          this.getLocation();
-          this.loading = false;
-        },2000)
-      },
-      //获取自身的定位
-      getLocation() {
-        let _this = this;
-        const self = this
-        AMap.plugin('AMap.Geolocation', function () {
-          var geolocation = new AMap.Geolocation({
-            // 是否使用高精度定位，默认：true
-            enableHighAccuracy: true,
-            // 设置定位超时时间，默认：无穷大
-            timeout: 10000,
-          })
-
-          geolocation.getCurrentPosition()
-          AMap.event.addListener(geolocation, 'complete', onComplete);
-          AMap.event.addListener(geolocation, 'error', onError);
-
-          function onComplete(data) {
-            // data是具体的定位信息
-            _this.location = data.formattedAddress;
-          }
-
-          function onError(data) {
-            // 定位出错
-            console.log('定位失败错误：', data);
-            // 调用ip定位
-            self.getLngLatLocation();
-          }
-        })
-      },
-      getLngLatLocation() {
-        AMap.plugin('AMap.CitySearch', function () {
-          var citySearch = new AMap.CitySearch();
-          citySearch.getLocalCity(function (status, result) {
-            if (status === 'complete' && result.info === 'OK') {
-              // 查询成功，result即为当前所在城市信息
-              console.log('通过ip获取当前城市：', result)
-              //逆向地理编码
-              AMap.plugin('AMap.Geocoder', function () {
-                var geocoder = new AMap.Geocoder({
-                  // city 指定进行编码查询的城市，支持传入城市名、adcode 和 citycode
-                  city: result.adcode
-                })
-
-                var lnglat = result.rectangle.split(';')[0].split(',');
-                geocoder.getAddress(lnglat, function (status, data) {
-                  if (status === 'complete' && data.info === 'OK') {
-                    // result为对应的地理位置详细信息
-                    console.log(data)
-                  }
-                })
-              })
-            }
-          })
-        })
-      },
-      loginOut(){
-        this.userInfo = null;
-        this.$bus.$emit("changeStatus",null);
-        localStorage.removeItem("USERINFO_KEY");
-      }
-    },
-    computed: {
-      ...mapState({
-        city: state => state.headerModule.city
-      })
+import { mapState } from 'vuex'
+export default {
+  name: 'Header',
+  data() {
+    return {
+      location: '点击获取当前定位',
+      loading: false,
+      searchText: '',
+      searchArr: [],
+      changeSearchHistoryFlag: false,
+      userInfo: {},
     }
-  }
+  },
+  mounted() {
+    this.userInfo = JSON.parse(localStorage.getItem('USERINFO_KEY'))
+    this.initUserSearchArr()
+  },
+  methods: {
+    // 初始化搜索数据
+    initUserSearchArr() {
+      this.searchArr = JSON.parse(window.sessionStorage.getItem('USERSEARCHVALUE_KEY')) || []
+    },
+    // 清空历史记录
+    clearSearchHistory(e) {
+      const target = e.target
+      if (target.nodeName === 'SPAN') {
+        window.sessionStorage.removeItem('USERSEARCHVALUE_KEY')
+        this.initUserSearchArr()
+      }
+    },
+    // 显示搜索记录
+    showSearchHistory(flag) {
+      if (flag) {
+        this.changeSearchHistoryFlag = flag
+      } else {
+        clearTimeout(this.timer)
+        this.timer = setTimeout(() => {
+          this.changeSearchHistoryFlag = flag
+        }, 200)
+      }
+    },
+    // 搜索记录
+    searchShopOrMap() {
+      let { searchText } = this
+      if (!searchText.trim()) return
+      let flag = this.searchArr.find((item) => {
+        return searchText === item
+      })
+      // 推送到数组
+      if (!flag) {
+        this.searchArr.unshift(this.searchText)
+      }
+      window.sessionStorage.setItem('USERSEARCHVALUE_KEY', JSON.stringify(this.searchArr))
+    },
+    getLocationInfo() {
+      if (this.location !== '点击获取当前定位') return
+      this.loading = true
+      setTimeout(() => {
+        this.getLocation()
+        this.loading = false
+      }, 2000)
+    },
+    //获取自身的定位
+    getLocation() {
+      let _this = this
+      const self = this
+      AMap.plugin('AMap.Geolocation', function() {
+        var geolocation = new AMap.Geolocation({
+          // 是否使用高精度定位，默认：true
+          enableHighAccuracy: true,
+          // 设置定位超时时间，默认：无穷大
+          timeout: 10000,
+        })
+
+        geolocation.getCurrentPosition()
+        AMap.event.addListener(geolocation, 'complete', onComplete)
+        AMap.event.addListener(geolocation, 'error', onError)
+
+        function onComplete(data) {
+          // data是具体的定位信息
+          _this.location = data.formattedAddress
+        }
+
+        function onError(data) {
+          // 定位出错
+          console.log('定位失败错误：', data)
+          // 调用ip定位
+          self.getLngLatLocation()
+        }
+      })
+    },
+    getLngLatLocation() {
+      AMap.plugin('AMap.CitySearch', function() {
+        var citySearch = new AMap.CitySearch()
+        citySearch.getLocalCity(function(status, result) {
+          if (status === 'complete' && result.info === 'OK') {
+            // 查询成功，result即为当前所在城市信息
+            console.log('通过ip获取当前城市：', result)
+            //逆向地理编码
+            AMap.plugin('AMap.Geocoder', function() {
+              var geocoder = new AMap.Geocoder({
+                // city 指定进行编码查询的城市，支持传入城市名、adcode 和 citycode
+                city: result.adcode,
+              })
+
+              var lnglat = result.rectangle.split(';')[0].split(',')
+              geocoder.getAddress(lnglat, function(status, data) {
+                if (status === 'complete' && data.info === 'OK') {
+                  // result为对应的地理位置详细信息
+                  console.log(data)
+                }
+              })
+            })
+          }
+        })
+      })
+    },
+    loginOut() {
+      this.userInfo = null
+      this.$bus.$emit('changeStatus', null)
+      localStorage.removeItem('USERINFO_KEY')
+    },
+  },
+  computed: {
+    ...mapState({
+      city: (state) => state.headerModule.city,
+    }),
+  },
+}
 </script>
 
 <style lang="less" scoped>
@@ -609,11 +674,12 @@
         left: 50%;
         transform: translateX(-50%);
         padding-top: 28px;
+        z-index: 89;
 
         .searchBar {
           width: 550px;
           height: 40px;
-
+          position: relative;
           .search {
             width: 85.45%;
             height: 100%;
@@ -650,6 +716,44 @@
               font-size: 21px;
               color: #222;
               font-weight: bold;
+            }
+          }
+          // 搜索历史记录
+          .searchHistory  {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 85.45%;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            font-size: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+            .title {
+              display: flex;
+              justify-content: space-between;
+              color: #999999;
+              margin-bottom: 10px;
+              h6 {
+                font-weight: 700;
+              }
+            }
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              li {
+                margin-right: 8px;
+                line-height: 24px;
+                a {
+                  color: #333;
+                  &:hover {
+                    color: #fe8c00;
+                  }
+                }
+              }
             }
           }
         }

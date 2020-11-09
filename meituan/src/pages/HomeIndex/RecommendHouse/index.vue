@@ -19,7 +19,7 @@
     <!--    下侧得信息展示-->
     <div class="recommendHouseList">
       <div class="houseListContainer clearfix">
-        <div class="houseItemDetail" v-for="(product,index) in productList" :key="product.poiId">
+        <div class="houseItemDetail" @click="$router.push('/homestayInfo')" v-for="(product,index) in productList" :key="product.poiId">
           <div class="topPic">
             <img v-lazy="product.coverImage" alt="">
             <img src="https://p0.meituan.net/mmc/35ad1f9253761ea6ff822b5e659f234f3758.png" alt="">
