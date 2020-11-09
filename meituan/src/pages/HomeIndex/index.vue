@@ -96,13 +96,43 @@
       <!--      右侧的用户信息-->
       <div class="rightUserInfo">
         <div class="userInfo">
-          <div class="infoDetail">
+<!--          登录时的状态信息-->
+          <div v-if="userInfo" class="infoDetail">
+            <div class="avatar">
+              <img src="../../assets/avatar.gif" alt="登录头像">
+            </div>
+            <p>{{userInfo.nickName}}</p>
+            <div class="iconContainer clearfix">
+              <div class="iconItem">
+                <i class="iconfont icondingdan"></i>
+                <div>我的订单</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont iconshoucang1"></i>
+                <div>我的收藏</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont icondiyongquan1"></i>
+                <div>抵用券</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont iconyue"></i>
+                <div>金额</div>
+              </div>
+              <div class="iconItem">
+                <i class="iconfont icongengduo_tr"></i>
+                <div>更多</div>
+              </div>
+            </div>
+          </div>
+<!--          未登录时的界面-->
+          <div v-else class="infoDetail">
             <div class="avatar">
               <img src="../../assets/avatar.jpg" alt="未登录头像">
             </div>
             <p>Hi！你好</p>
-            <a href="javascript:;">注册</a>
-            <a href="javascript:;">立即登录</a>
+            <a @click="$router.push('/register')" href="javascript:;">注册</a>
+            <a @click="$router.push('/login')" href="javascript:;">立即登录</a>
           </div>
         </div>
         <div class="mtCode">
@@ -155,7 +185,8 @@
         comingMoviesList: [],
         recommendHouseCities: [],
         recommendHouseList: [],
-        guessLikeList: []
+        guessLikeList: [],
+        userInfo:{}
       }
     },
     components: {
@@ -178,6 +209,9 @@
       this.getRecommendHouseList();
       //获取猜你喜欢信息列表
       this.getGuessLikeList();
+      //获取用户的信息
+      this.userInfo = JSON.parse(localStorage.getItem("USERINFO_KEY"));
+      this.$bus.$on("changeStatus",this.changeStatus);
     },
     methods: {
       //移入分类列表
@@ -242,6 +276,10 @@
           }
           console.log(location);
         }
+      },
+      //改变登录状态
+      changeStatus(status){
+        this.userInfo = status;
       }
     },
     computed: {
@@ -581,6 +619,24 @@
               border-radius: 50%;
               border: 4px solid #e5e5e5;
               box-sizing: content-box;
+            }
+          }
+          .iconContainer{
+            padding: 0 15px;
+            width: 100%;
+            .iconItem{
+              margin-top: 10px;
+              float: left;
+              width: 33.333%;
+              cursor: pointer;
+              font-size: 12px;
+              i{
+                font-size: 22px;
+                color: #FFC300;
+              }
+              div{
+                margin: 5px 0;
+              }
             }
           }
 

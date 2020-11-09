@@ -5,6 +5,9 @@ import FastFood from '@/pages/FastFood'
 import HomestayInfo from '@/pages/HomestayInfo'
 import Catalogue from '@/pages/Catalogue'
 import ChangeCity from "@/pages/ChangeCity"
+import Login from "@/pages/Login"
+import Register from "@/pages/Register"
+
 export default [
   {
     path: '/',
@@ -37,6 +40,14 @@ export default [
   {
     path:"/changecity",
     component:ChangeCity
+  },
+  {
+    path:"/login",
+    component:Login
+  },
+  {
+    path:"/register",
+    component:Register
   }
 ]
 

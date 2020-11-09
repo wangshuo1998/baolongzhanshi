@@ -11,6 +11,8 @@ Vue.use(Vuelazyload,{
 })
 
 import 'element-ui/lib/theme-chalk/index.css';
+// 添加表单验证
+import "@/utils/validate.js";
 // 引入element-ui 全部引入 项目完毕整理
 import {
   Pagination,
@@ -186,6 +188,9 @@ Vue.config.productionTip = false
 // Vue.use(ElementUI); 
 
 new Vue({
+  beforeCreate(){
+    Vue.prototype.$bus = this
+  },
   router,
   store,
   render: h => h(App)
