@@ -70,11 +70,11 @@
             <a href="javascript:;">《美团用户服务协议》《美团隐私政策》</a>
           </label>
         </div>
-<!--        其他网站登录-->
+        <!--        其他网站登录-->
         <div class="otherWebsite">
           <span>用合作网站登录</span>
         </div>
-<!--        qq和微信登录-->
+        <!--        qq和微信登录-->
         <div class="qqAndWechat">
           <i class="iconfont iconQQfang"></i>
           <i class="iconfont iconweibo3"></i>
@@ -130,18 +130,18 @@
         <div class="toRegister">
           <span>还没有账号?<a href="javascript:;" @click="$router.push('/register')">免费注册</a></span>
         </div>
-<!--        其他网站登录-->
+        <!--        其他网站登录-->
         <div class="otherWebsite">
           <span>用合作网站登录</span>
         </div>
-<!--        qq和微信登录-->
+        <!--        qq和微信登录-->
         <div class="qqAndWechat">
           <i class="iconfont iconQQfang"></i>
           <i class="iconfont iconweibo3"></i>
         </div>
       </div>
     </div>
-<!--    login底部-->
+    <!--    login底部-->
     <div class="loginFooter">
       <dl class="siteInfo clearfix">
         <dd>关于美团</dd>
@@ -158,7 +158,7 @@
 </template>
 <script>
   import Encryption from '@/utils/encryption'
-  import { login, getPhoneCode, phoneCodeLogin } from '@/Api/mysqlApi'
+  import {login, getPhoneCode, phoneCodeLogin} from '@/Api/mysqlApi'
 
   export default {
     name: 'Login',
@@ -174,7 +174,7 @@
     },
     methods: {
       async login() {
-        let { phone, password } = this
+        let {phone, password} = this
         const success = await this.$validator.validateAll() // 对所有表单项进行验证
         if (success) {
           password = Encryption.encrypt(password, 'meituanasdfghjkl')
@@ -206,15 +206,15 @@
         }
       },
       async getPhoneCode() {
-        let { phone } = this
+        let {phone} = this
         if (phone.length === 11) {
           let result = await getPhoneCode(phone)
-          if (result.code === "209"){
-            this.$alert(result.data,{
+          if (result.code === "209") {
+            this.$alert(result.data, {
               confirmButtonText: '确定'
             })
             this.phone = "";
-          } else if(result.code === "200"){
+          } else if (result.code === "200") {
             this.$alert(result.data, {
               confirmButtonText: '确定',
               callback: (confirm) => {
@@ -233,7 +233,7 @@
         }
       },
       async phoneCodeLogin() {
-        let { phone, code } = this
+        let {phone, code} = this
         const success = await this.$validator.validateAll() // 对所有表单项进行验证
         if (success) {
           if (phone !== '' && code !== '') {
@@ -308,6 +308,7 @@
         float: left;
         width: 270px;
         padding-top: 40px;
+
         .loginWay {
           width: 100%;
           color: #666;
@@ -324,6 +325,7 @@
             color: #666;
           }
         }
+
         .phone {
           width: 100%;
           height: 36px;
@@ -337,7 +339,7 @@
             color: #646464;
           }
 
-          &>i {
+          & > i {
             width: 8px;
             height: 8px;
             position: absolute;
@@ -362,13 +364,14 @@
             }
           }
         }
+
         .password {
           width: 100%;
           height: 36px;
           margin: 8px 0;
           position: relative;
 
-          &>i {
+          & > i {
             position: absolute;
             left: 8px;
             color: #ddd;
@@ -390,9 +393,10 @@
               border: 1px solid #FE8C00;
             }
           }
-          .phoneCode{
+
+          .phoneCode {
             position: absolute;
-            top:11px;
+            top: 11px;
             right: 5px;
             font-size: 12px;
             background: #fff;
@@ -401,6 +405,7 @@
             color: #666;
           }
         }
+
         .forgetPassword {
           width: 100%;
           padding-bottom: 8px;
@@ -412,6 +417,7 @@
             cursor: pointer;
           }
         }
+
         .login {
           width: 100%;
           padding: 8px 0;
@@ -428,26 +434,31 @@
             border-radius: 4px;
           }
         }
+
         .toRegister {
           width: 100%;
           color: #666;
           font-size: 14px;
-          label{
+
+          label {
             font-size: 12px;
           }
+
           a {
             color: #FE8C00;
             margin-left: 5px;
           }
         }
-        .otherWebsite{
+
+        .otherWebsite {
           width: 100%;
           text-align: center;
           margin-top: 15px;
           color: #666;
           font-size: 14px;
           position: relative;
-          &:before{
+
+          &:before {
             content: "";
             width: 28%;
             height: 1px;
@@ -456,7 +467,8 @@
             left: 0;
             top: 9px;
           }
-          &:after{
+
+          &:after {
             content: "";
             width: 28%;
             height: 1px;
@@ -466,23 +478,29 @@
             top: 9px;
           }
         }
-        .qqAndWechat{
+
+        .qqAndWechat {
           width: 100%;
           margin-top: 20px;
           padding-left: 100px;
-          i{
+
+          i {
             margin-right: 20px;
             cursor: pointer;
-            &:first-child{
+
+            &:first-child {
               color: #93C8ED;
             }
-            &:last-child{
+
+            &:last-child {
               color: #FF978C;
             }
           }
         }
-      /*  验证错误的样式*/
-        .error-msg{
+
+        /*  验证错误的样式*/
+
+        .error-msg {
           position: absolute;
           top: 8px;
           left: 280px !important;
@@ -491,35 +509,43 @@
         }
       }
     }
-  /*  login底部*/
-    .loginFooter{
+
+    /*  login底部*/
+
+    .loginFooter {
       width: 100%;
       margin-top: 70px;
-      .siteInfo{
+
+      .siteInfo {
         padding: 12px 0;
         box-sizing: border-box;
         border-top: 1px solid #eee;
         border-bottom: 1px solid #eee;
         margin-bottom: 20px;
-        dd{
+
+        dd {
           float: left;
           font-size: 12px;
           color: #999;
           margin: 5px 0;
           line-height: 14px;
           cursor: pointer;
-          &:not(:last-child){
+
+          &:not(:last-child) {
             border-right: 1px solid #ddd;
           }
-          &:first-child{
+
+          &:first-child {
             padding-right: 16px;
           }
-          &:not(:first-child){
+
+          &:not(:first-child) {
             padding: 0 16px;
           }
         }
       }
-      .copyright{
+
+      .copyright {
         font-size: 12px;
         color: #999;
       }
