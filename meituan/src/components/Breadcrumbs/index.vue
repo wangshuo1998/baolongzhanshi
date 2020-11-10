@@ -24,17 +24,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import url('../../assets/less/config.less');
 // 面包屑导航
 .detailTopNavContainer {
   .breadcrumbs {
-    font-size: 12px;
-    color: #222;
+    font-size: @f01;
+    color: @c04;
     line-height: 17px;
     padding: 19px 0;
     a {
       text-decoration: none;
       cursor: pointer;
-      color: #222;
+      color: @c04;
     }
     span ::after {
       content: '>';

@@ -352,6 +352,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+@import url('../../assets/less/config.less');
 /*  清除浮动*/
 .clearfix::after {
   content: '';
@@ -363,7 +364,7 @@ export default {
 }
 
 .container {
-  width: 100%;
+  width: @w100;
   /*轮播首屏*/
 
   .bannerContainer {
@@ -376,20 +377,20 @@ export default {
       float: left;
       width: 230px;
       height: 475px;
-      background: #fff;
-      border: 1px solid #e5e5e5;
+      background: @b02;
+      border: 1px solid @bdc01;
       position: relative;
       top: -50px;
       box-sizing: border-box;
 
       .title {
-        width: 100%;
+        width: @w100;
         height: 50px;
         padding-top: 15px;
 
         span {
           margin-left: 15px;
-          color: #222;
+          color: @c04;
           font-weight: 700;
         }
       }
@@ -405,7 +406,7 @@ export default {
             /*position: relative;*/
 
             i {
-              font-size: 16px;
+              font-size: @f03;
             }
 
             a {
@@ -422,8 +423,8 @@ export default {
               width: 4px;
               height: 4px;
               float: right;
-              border-bottom: 1px solid #999;
-              border-right: 1px solid #999;
+              border-bottom: 1px solid @bdc02;
+              border-right: 1px solid @bdc02;
               transform: rotate(-45deg);
               margin-top: 9px;
             }
@@ -434,16 +435,16 @@ export default {
 
             &:hover label a {
               font-weight: bold;
-              color: #222;
+              color: @c04;
             }
 
             &:hover > a {
               font-weight: bold;
-              color: #222;
+              color: @c04;
             }
 
             &:hover .rightArrow {
-              border-color: #222;
+              border-color: @c04;
             }
 
             &:hover .navDetail {
@@ -457,7 +458,7 @@ export default {
               left: 229px;
               width: 400px;
               height: 416px;
-              background: #fff;
+              background: @b02;
               padding: 0px 0 12px;
               z-index: 99;
 
@@ -474,21 +475,21 @@ export default {
                   margin: 5px 8px;
 
                   &:hover {
-                    color: #fe8c00;
+                    color: @c03;
                   }
                 }
 
                 .firstChild {
                   display: block;
-                  font-size: 16px;
-                  color: #222;
+                  font-size: @f03;
+                  color: @c04;
                   font-weight: 500;
-                  width: 100%;
+                  width: @w100;
                   margin-top: 24px;
                   height: 35px;
                   line-height: 22px;
                   padding-bottom: 10px;
-                  border-bottom: 1px solid #e5e5e5;
+                  border-bottom: 1px solid @bdc01;
 
                   & > span:first-child {
                     float: left;
@@ -497,7 +498,7 @@ export default {
                   & > span:last-child {
                     float: right;
                     font-size: 12px;
-                    color: #999;
+                    color: @c01;
                     font-weight: 400;
                     margin-right: 6px;
 
@@ -505,8 +506,8 @@ export default {
                       display: inline-block;
                       width: 5px;
                       height: 5px;
-                      border-bottom: 1px solid #999;
-                      border-right: 1px solid #999;
+                      border-bottom: 1px solid @bdc02;
+                      border-right: 1px solid @bdc02;
                       background: transparent;
                       transform: translateY(-1px) rotate(-45deg);
                       vertical-align: middle;
@@ -514,7 +515,7 @@ export default {
                   }
 
                   &:hover {
-                    color: #222;
+                    color: @c04;
                   }
                 }
               }
@@ -541,8 +542,8 @@ export default {
 
       a {
         font-weight: 700;
-        color: #222;
-        font-size: 16px;
+        color: @c04;
+        font-size: @f03;
         margin: 0 20px;
 
         &.waimai:hover {
@@ -572,7 +573,7 @@ export default {
     }
 
     .topBanner {
-      width: 100%;
+      width: @w100;
 
       .swiper-container {
         float: left;
@@ -594,7 +595,7 @@ export default {
           opacity: 0;
           background: rgba(0, 0, 0, 0.8);
           font-size: 20px;
-          color: #fff;
+          color: @c09;
           width: 40px;
           height: 40px;
           border-radius: 50%;
@@ -613,7 +614,7 @@ export default {
   }
 
   .bottomBanner {
-    width: 100%;
+    width: @w100;
 
     .leftPic,
     .middlePic {
@@ -642,7 +643,7 @@ export default {
     .userInfo {
       width: 230px;
       height: 240px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid @bdc01;
       box-sizing: border-box;
 
       .infoDetail {
@@ -657,22 +658,22 @@ export default {
             width: 47px;
             height: 47px;
             border-radius: 50%;
-            border: 4px solid #e5e5e5;
+            border: 4px solid @bdc01;
             box-sizing: content-box;
           }
         }
         .iconContainer {
           padding: 0 15px;
-          width: 100%;
+          width: @w100;
           .iconItem {
             margin-top: 10px;
             float: left;
-            width: 33.333%;
+            width: @w33;
             cursor: pointer;
             font-size: 12px;
             i {
               font-size: 22px;
-              color: #ffc300;
+              color: @c06;
             }
             div {
               margin: 5px 0;
@@ -681,25 +682,25 @@ export default {
         }
 
         p {
-          font-size: 16px;
-          color: #222;
+          font-size: @f03;
+          color: @c04;
         }
 
         a {
           display: block;
           font-size: 14px;
-          color: #333333;
+          color: @c05;
           width: 118px;
           margin: 10px auto 15px auto;
-          border: 1px solid #e5e5e5;
+          border: 1px solid @bdc01;
           border-radius: 40px;
           line-height: 38px;
           text-align: center;
-          background: #fff;
+          background: @b02;
           transition: background 0.5s;
 
           &:hover {
-            background: #f7f7f7;
+            background: @b05;
           }
         }
       }
@@ -708,7 +709,7 @@ export default {
     .mtCode {
       width: 230px;
       height: 167px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid @bdc01;
       margin-top: 10px;
       text-align: center;
       box-sizing: border-box;
@@ -724,19 +725,19 @@ export default {
       }
 
       p:first-child {
-        font-size: 16px;
+        font-size: @f03;
         font-weight: 500;
       }
 
       p:last-child span:first-child {
         font-size: 12px;
-        color: #ec5330;
+        color: @c08;
         margin-right: 5px;
       }
 
       p:last-child span:last-child {
         font-size: 12px;
-        color: #3f3f3f;
+        color: @c07;
       }
     }
   }

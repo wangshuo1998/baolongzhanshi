@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-<!--    底部扩展列表-->
+    <!--    底部扩展列表-->
     <div class="footerList clearfix">
       <div class="column">
         <dl>
@@ -117,7 +117,7 @@
         </dl>
       </div>
     </div>
-<!--    底部备案等信息-->
+    <!--    底部备案等信息-->
     <div class="footerOtherInfo clearfix">
       <div class="footerLeftInfo">
         <p>
@@ -139,18 +139,18 @@
       <div class="footerRightInfo">
         <div class="clearfix">
           <a class="beian" href="javascript:;">
-            <img src="../../assets/gongan.png" alt="公安">
+            <img src="../../assets/gongan.png" alt="公安" />
             <span>京公网安备 11000002002052号</span>
           </a>
         </div>
         <div class="otherWebsite">
           <div class="clearfix">
-            <img src="../../assets/pliace.png" alt="电子营业执照">
+            <img src="../../assets/pliace.png" alt="电子营业执照" />
             <span>北京三快科技有限公司</span>
           </div>
-          <img src="../../assets/beian.png" alt="备案">
-          <img src="../../assets/believewebsite.png" alt="可信网站">
-          <img src="../../assets/12315.png" alt="12315">
+          <img src="../../assets/beian.png" alt="备案" />
+          <img src="../../assets/believewebsite.png" alt="可信网站" />
+          <img src="../../assets/12315.png" alt="12315" />
         </div>
       </div>
     </div>
@@ -164,112 +164,113 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  /*清除浮动*/
-  .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    height: 0;
-    font-size: 0;
-  }
-  .footer{
-    width: 1190px;
-    margin: 0 auto;
-    .footerList{
-      width: 100%;
-      border-top: 1px solid #e5e5e5;
-      border-bottom: 1px solid #e5e5e5;
-      box-sizing: border-box;
-      padding: 40px 45px;
-      .column{
-        float: left;
-        width: 20%;
-        dl{
-          padding-bottom: 20px;
-          color: #666;
-          dt{
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-            padding-bottom: 5px;
-            a{
-              color: #666;
-              &:hover{
-                color: #FE8C00;
-              }
+@import url('../../assets/less/config.less');
+/*清除浮动*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
+.footer {
+  width: 1190px;
+  margin: 0 auto;
+  .footerList {
+    width: @w100;
+    border-top: 1px solid @bdc01;
+    border-bottom: 1px solid @bdc01;
+    box-sizing: border-box;
+    padding: 40px 45px;
+    .column {
+      float: left;
+      width: @w20;
+      dl {
+        padding-bottom: 20px;
+        color: @c02;
+        dt {
+          font-size: @f02;
+          font-weight: 500;
+          color: @c05;
+          padding-bottom: 5px;
+          a {
+            color: @c02;
+            &:hover {
+              color: @b04;
             }
           }
-          dd{
-            font-size: 12px;
-            line-height: 25px;
-            cursor: pointer;
-            &:hover{
-              color: #FE8C00;
-            }
+        }
+        dd {
+          font-size: @f01;
+          line-height: @lh04;
+          cursor: pointer;
+          &:hover {
+            color: @b04;
           }
         }
       }
     }
-    .footerOtherInfo{
-      padding: 15px 0 30px 20px;
-      color: #999;
-      font-size: 12px;
-      .footerLeftInfo{
-        float: left;
-        p{
-          line-height: 20px;
-          a{
-            color: #999;
-            margin-right: 20px;
-            &:hover{
-              color: #FE8C00;
-            }
-            &.firstP{
-              margin-left: 20px;
-            }
+  }
+  .footerOtherInfo {
+    padding: 15px 0 30px 20px;
+    color: @c01;
+    font-size: @f01;
+    .footerLeftInfo {
+      float: left;
+      p {
+        line-height: @lh02;
+        a {
+          color: @c01;
+          margin-right: 20px;
+          &:hover {
+            color: @b04;
+          }
+          &.firstP {
+            margin-left: 20px;
           }
         }
       }
-      .footerRightInfo{
+    }
+    .footerRightInfo {
+      float: right;
+      .beian {
         float: right;
-        .beian{
-          float: right;
-          color: #999;
-          padding-bottom: 8px;
-          img{
-            width: 15px;
-            height: 15px;
-            vertical-align: middle;
+        color: @c01;
+        padding-bottom: 8px;
+        img {
+          width: 15px;
+          height: 15px;
+          vertical-align: middle;
+        }
+        &:hover {
+          color: @b04;
+        }
+      }
+      .otherWebsite {
+        div {
+          display: inline-block;
+          cursor: pointer;
+          img {
+            width: 38px;
+            height: 38px;
+            float: left;
           }
-          &:hover{
-            color: #FE8C00;
+          span {
+            line-height: @lh03;
+            float: left;
+            margin: 0 5px;
+          }
+          &:hover {
+            color: @b04;
           }
         }
-        .otherWebsite{
-          div{
-            display: inline-block;
-            cursor: pointer;
-            img{
-              width: 38px;
-              height: 38px;
-              float:left;
-            }
-            span{
-              line-height: 38px;
-              float: left;
-              margin: 0 5px;
-            }
-            &:hover{
-              color: #FE8C00;
-            }
-          }
-          &>img{
-            margin: 0 2px;
-            cursor: pointer;
-          }
+        & > img {
+          margin: 0 2px;
+          cursor: pointer;
         }
       }
     }
   }
+}
 </style>
